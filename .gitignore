@@ -1,6 +1,9 @@
 # Compiled Python files
 *.pyc
 
+# Common IDE files
+.idea
+
 # Folder view configuration files
 .DS_Store
 Desktop.ini

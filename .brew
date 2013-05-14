@@ -19,8 +19,8 @@ brew install wget --enable-iri
 
 # Install RingoJS and Narwhal
 # Note that the order in which these are installed is important; see http://git.io/brew-narwhal-ringo.
-brew install ringojs
-brew install narwhal
+#brew install ringojs
+#brew install narwhal
 
 # Install more recent versions of some OS X tools
 brew tap homebrew/dupes
@@ -32,24 +32,50 @@ brew install php54
 #brew install homebrew/dupes/vim
 #brew install homebrew/dupes/screen
 
+
 # Install other useful binaries
+# -----------------------------
+
+# A tool like grep, optimized for programmers
 brew install ack
+
+# Tool to manage image metadata
 #brew install exiv2
+
 brew install git
+
 #brew install imagemagick
-brew install lynx
+
+# If you are into text browsing
+#brew install lynx
+
+# Node.js
 brew install node
+
+# Parallel implementation of gzip
 brew install pigz
+
+# The rename command on steroids
 brew install rename
-brew install rhino
+
+# Javascript implementation in Java
+#brew install rhino
+
+# Recursive directory listing command
 brew install tree
+
+# Take screenshots of webpages 'webkit2png http://www.google.com/'
 brew install webkit2png
-brew install zopfli
+
+# New zlib (gzip, deflate) compatible compressor (100x slower, 5% better compression)
+#brew install zopfli
 
 brew tap homebrew/versions
-brew install lua52
+#brew install lua52
+
 
 # Install native apps
+# -------------------
 brew tap phinze/homebrew-cask
 brew install brew-cask
 
@@ -67,7 +93,7 @@ installcask google-chrome-canary
 installcask imagealpha
 installcask imageoptim
 installcask iterm2
-installcask macvim
+#installcask macvim
 installcask miro-video-converter
 installcask sublime-text
 installcask the-unarchiver
