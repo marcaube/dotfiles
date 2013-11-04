@@ -1,4 +1,4 @@
-# Make vim the default editor
+# Make nano the default editor
 export EDITOR="nano"
 
 # Larger bash history (allow 32³ entries; default is 500)

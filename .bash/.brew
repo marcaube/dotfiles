@@ -39,6 +39,9 @@ brew install php54
 # A tool like grep, optimized for programmers
 brew install ack
 
+# A tool to count lines of code
+brew install cloc
+
 # Tool to manage image metadata
 #brew install exiv2
 
@@ -60,6 +63,11 @@ brew install rename
 
 # Javascript implementation in Java
 #brew install rhino
+
+brew install siege
+
+# Yet another tool to count lines of code
+brew install sloccount
 
 # Recursive directory listing command
 brew install tree
@@ -87,21 +95,26 @@ function installcask() {
 	fi
 }
 
+installcask codekit
 installcask dropbox
+installcask firefox
+installcask f-lux
+# installcask heroku-toolbelt
 installcask google-chrome
-installcask google-chrome-canary
-installcask imagealpha
 installcask imageoptim
-installcask iterm2
-#installcask macvim
-installcask miro-video-converter
+installcask imagealpha
+installcask phpstorm
+installcask pycharm-community
+# installcask screenhero
+# installcask sitesucker
+installcask skype
 installcask sublime-text
-installcask the-unarchiver
-installcask tor-browser
-installcask transmission
-installcask ukelele
+# installcask the-unarchiver
+installcask total-terminal
 installcask virtualbox
 installcask vlc
+
+# Other apps installed from the AppStore
 
 # Remove outdated versions from the cellar
 brew cleanup
