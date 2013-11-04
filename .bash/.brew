@@ -26,7 +26,7 @@ brew install wget --enable-iri
 brew tap homebrew/dupes
 brew install homebrew/dupes/grep
 brew tap josegonzalez/homebrew-php
-brew install php54
+brew install php55
 
 # These two formulae didn’t work well last time I tried them:
 #brew install homebrew/dupes/vim
@@ -80,41 +80,6 @@ brew install webkit2png
 
 brew tap homebrew/versions
 #brew install lua52
-
-
-# Install native apps
-# -------------------
-brew tap phinze/homebrew-cask
-brew install brew-cask
-
-function installcask() {
-	if brew cask info "${@}" | grep "Not installed" > /dev/null; then
-		brew cask install "${@}"
-	else
-		echo "${@} is already installed."
-	fi
-}
-
-installcask codekit
-installcask dropbox
-installcask firefox
-installcask f-lux
-# installcask heroku-toolbelt
-installcask google-chrome
-installcask imageoptim
-installcask imagealpha
-installcask phpstorm
-installcask pycharm-community
-# installcask screenhero
-# installcask sitesucker
-installcask skype
-installcask sublime-text
-# installcask the-unarchiver
-installcask total-terminal
-installcask virtualbox
-installcask vlc
-
-# Other apps installed from the AppStore
 
 # Remove outdated versions from the cellar
 brew cleanup

@@ -1,0 +1,31 @@
+# Install native apps
+# -------------------
+brew tap phinze/homebrew-cask
+brew install brew-cask
+
+function installcask() {
+    if brew cask info "${@}" | grep "Not installed" > /dev/null; then
+        brew cask install "${@}"
+    else
+        echo "${@} is already installed."
+    fi
+}
+
+installcask codekit
+installcask dropbox
+installcask firefox
+installcask f-lux
+# installcask heroku-toolbelt
+installcask google-chrome
+installcask imageoptim
+installcask imagealpha
+installcask phpstorm
+installcask pycharm-community
+# installcask screenhero
+# installcask sitesucker
+installcask skype
+installcask sublime-text
+# installcask the-unarchiver
+installcask total-terminal
+installcask virtualbox
+installcask vlc

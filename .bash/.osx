@@ -21,6 +21,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Set standby delay to 1 hours (default is 1 hour), love my battery life
 sudo pmset -a standbydelay 3600
 
+# Disable the sound effects on boot
+sudo nvram SystemAudioVolume=" "
+
 # Menu bar: disable transparency
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 
@@ -83,8 +86,8 @@ defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 defaults write com.apple.helpviewer DevMode -bool true
 
 # Fix for the ancient UTF-8 bug in QuickLook (http://mths.be/bbo)
-# Commented out, as this is known to cause problems when saving files in
-# Adobe Illustrator CS5 :(
+# Commented out, as this is known to cause problems in various Adobe apps :(
+# See https://github.com/mathiasbynens/dotfiles/issues/237
 #echo "0x08000100:0" > ~/.CFUserTextEncoding
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock
@@ -132,12 +135,6 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
-
-# Enable access for assistive devices
-echo -n 'a' | sudo tee /private/var/db/.AccessibilityAPIEnabled > /dev/null 2>&1
-sudo chmod 444 /private/var/db/.AccessibilityAPIEnabled
-# TODO: avoid GUI password prompt somehow (http://apple.stackexchange.com/q/60476/4408)
-#sudo osascript -e 'tell application "System Events" to set UI elements enabled to true'
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
@@ -219,7 +216,7 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
 
 # Finder: show path bar
-defaults write com.apple.finder ShowPathBar -bool true
+defaults write com.apple.finder ShowPathbar -bool true
 
 # Finder: allow text selection in Quick Look
 defaults write com.apple.finder QLEnableTextSelection -bool true
@@ -335,6 +332,9 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 # Disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
 
+# Don’t automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
 # Remove the auto-hiding Dock delay
 defaults write com.apple.dock autohide-delay -float 0
 # Remove the animation when hiding/showing the Dock
@@ -435,7 +435,7 @@ defaults write com.apple.iTunes disableRadio -bool true
 # To use these commands in another language, browse iTunes’s package contents,
 # open `Contents/Resources/your-language.lproj/Localizable.strings`, and look
 # for `kHiddenMenuItemTargetSearch`.
-defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Field" "@F"
+defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Field" -string "@F"
 
 ###############################################################################
 # Mail                                                                        #
@@ -449,7 +449,47 @@ defaults write com.apple.mail DisableSendAnimations -bool true
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
 # Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
-defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\\U21a9"
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
+
+# Display emails in threaded mode, sorted by date (oldest at the top)
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
+
+###############################################################################
+# Spotlight                                                                   #
+###############################################################################
+
+# Hide Spotlight tray-icon (and subsequent helper)
+#sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+# Disable Spotlight indexing for any volume that gets mounted and has not yet
+# been indexed before.
+# Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
+sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
+# Change indexing order and disable some file types
+defaults write com.apple.spotlight orderedItems -array \
+        '{"enabled" = 1;"name" = "APPLICATIONS";}' \
+        '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
+        '{"enabled" = 1;"name" = "DIRECTORIES";}' \
+        '{"enabled" = 1;"name" = "PDF";}' \
+        '{"enabled" = 1;"name" = "FONTS";}' \
+        '{"enabled" = 0;"name" = "DOCUMENTS";}' \
+        '{"enabled" = 0;"name" = "MESSAGES";}' \
+        '{"enabled" = 0;"name" = "CONTACT";}' \
+        '{"enabled" = 0;"name" = "EVENT_TODO";}' \
+        '{"enabled" = 0;"name" = "IMAGES";}' \
+        '{"enabled" = 0;"name" = "BOOKMARKS";}' \
+        '{"enabled" = 0;"name" = "MUSIC";}' \
+        '{"enabled" = 0;"name" = "MOVIES";}' \
+        '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
+        '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
+        '{"enabled" = 0;"name" = "SOURCE";}'
+# Load new settings before rebuilding the index
+killall mds
+# Make sure indexing is enabled for the main volume
+sudo mdutil -i on /
+# Rebuild the index from scratch
+sudo mdutil -E /
 
 ###############################################################################
 # Terminal                                                                    #
@@ -513,6 +553,19 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 defaults write com.apple.appstore ShowDebugMenu -bool true
 
 ###############################################################################
+# Messages                                                                    #
+###############################################################################
+
+# Disable automatic emoji substitution (i.e. use plain text smileys)
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
+
+# Disable smart quotes as it’s annoying for messages that contain code
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
+
+# Disable continuous spell checking
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
+
+###############################################################################
 # Google Chrome & Google Chrome Canary                                        #
 ###############################################################################
 
@@ -532,7 +585,8 @@ defaults write com.irradiatedsoftware.Cinch StartAtLogin -bool true
 ###############################################################################
 
 for app in "Address Book" "Calendar" "Contacts" "Dashboard" "Dock" "Finder" \
-	"Mail" "Safari" "Cinch" "SystemUIServer" "Terminal" "iCal" "iTunes"; do
-	killall "$app" > /dev/null 2>&1
+    "Mail" "Messages" "Safari" "Cinch" "SystemUIServer" "Terminal" "iCal" \
+    "iTunes"; do
+    killall "$app" > /dev/null 2>&1
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
