@@ -3,6 +3,12 @@
 
 # Common IDE files
 .idea
+.sass-cache
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
 
 # Folder view configuration files
 .DS_Store
