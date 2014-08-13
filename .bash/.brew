@@ -55,6 +55,9 @@ brew install git
 # Node.js
 brew install node
 
+# PHP mess detector
+brew install phpmd
+
 # Parallel implementation of gzip
 brew install pigz
 
@@ -68,6 +71,9 @@ brew install siege
 
 # Yet another tool to count lines of code
 brew install sloccount
+
+# Pentesting tool for sql injections
+brew install sqlmap
 
 # Recursive directory listing command
 brew install tree
