@@ -1,5 +1,4 @@
 # Taps
-tap 'homebrew/bundle'
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'       # for Fira Code
 tap 'homebrew/cask-versions'    # for alternate versions of Casks
@@ -22,6 +21,7 @@ brew 'zsh-completions'  # more auto-completions for Zsh
 # Development
 brew 'exercism'         # to submit code solutions to Exercism.io
 brew 'git'              # OSX's version is out of date
+brew 'node'
 brew 'php@7.2'          # for Laravel/Symfony dev
 brew 'python@2'         # for Django dev
 
