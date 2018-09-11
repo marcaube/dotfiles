@@ -1,8 +1,8 @@
-# Marc’s dotfiles
+# My dotfiles
 
 Inspired by...
-    - Mathias Bynens [dotfiles](https://github.com/mathiasbynens/dotfiles)
-    - Dries Vints [dotfiles](https://github.com/driesvints/dotfiles)
+- Mathias Bynens [dotfiles](https://github.com/mathiasbynens/dotfiles)
+- Dries Vints [dotfiles](https://github.com/driesvints/dotfiles)
 
 ## Installation
 
