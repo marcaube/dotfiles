@@ -44,6 +44,7 @@ cask 'google-chrome'
 cask 'imagealpha'       # optimize transparent PNGs
 cask 'imageoptim'       # optimize images
 cask 'iterm2'           # a better terminal
+cask 'ksdiff'           # CLI launcher for my difftool (Kaleidoscope)
 cask 'phpstorm'
 cask 'pycharm-ce'
 cask 'sequel-pro'
