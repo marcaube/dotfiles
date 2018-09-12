@@ -25,7 +25,7 @@ sh .dotfiles/install.sh
 mackup restore
 
 # 7. Restart your computer to finalize the process
-shutdown -r
+shutdown -r now
 ```
 
 ## Multi-user setup
