@@ -8,6 +8,7 @@ Inspired by...
 
 ```bash
 # 1. Update macOS to the latest version with the App Store
+sudo softwareupdate -i -a
 
 # 2. Install macOS Command Line Tools by running xcode-select --install
 xcode-select --install
