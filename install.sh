@@ -46,7 +46,7 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 
 # Set my global gitignore
-git config –global core.excludesfile $HOME/.dotfiles/.gitignore_global
+git config global core.excludesfile $HOME/.dotfiles/.gitignore_global
 
 # Set macOS preferences
 # We will run this last because this will reload the shell
