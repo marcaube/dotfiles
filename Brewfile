@@ -71,8 +71,8 @@ cask 'font-fira-code'
 mas '1Password', id: 1333542190     # password manager
 mas 'Bear', id: 1091189122          # note taking app
 mas 'Deliveries', id: 924726344     # package tracking
-mas 'Calcbot', id: 931657367        # better calculator
-mas 'Giphy Capture', id: 668208984  # make GIF animations
 mas 'Kaleidoscope', id: 587512244   # the best difftool ever, fight me
+mas 'Pixelmator', id: 407963104
 mas 'Reeder', id: 880001334         # nope, RSS is not dead
+mas 'Soulver', id: 413965349
 mas 'Tweetbot', id: 557168941       # less and less powerful Twitter client (not their fault though!)
