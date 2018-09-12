@@ -15,7 +15,9 @@ brew tap homebrew/bundle
 brew bundle
 
 # Add Zsh to the list of shells
-sudo sh -c 'which zsh >> /etc/shells'
+if ! grep -q $(which zsh) /etc/shells; then
+  sudo sh -c 'which zsh >> /etc/shells'
+fi
 
 # Make ZSH the default shell environment
 chsh -s $(which zsh)
