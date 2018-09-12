@@ -14,18 +14,21 @@ brew update
 brew tap homebrew/bundle
 brew bundle
 
+# Add Zsh to the list of shells
+sudo sh -c 'which zsh >> /etc/shells'
+
 # Make ZSH the default shell environment
 chsh -s $(which zsh)
 
 # Install Composer
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
+# curl -sS https://getcomposer.org/installer | php
+# mv composer.phar /usr/local/bin/composer
 
 # Install global Composer packages
-/usr/local/bin/composer global require laravel/installer laravel/spark-installer laravel/valet psy/psysh
+# /usr/local/bin/composer global require laravel/installer laravel/spark-installer laravel/valet psy/psysh
 
 # Install Laravel Valet
-$HOME/.composer/vendor/bin/valet install
+# $HOME/.composer/vendor/bin/valet install
 
 # Install global NPM packages
 npm install --global yarn
