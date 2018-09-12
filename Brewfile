@@ -22,7 +22,7 @@ brew 'zsh-completions'  # more auto-completions for Zsh
 brew 'exercism'         # to submit code solutions to Exercism.io
 brew 'git'              # OSX's version is out of date
 brew 'node'
-brew 'php@7.2'          # for Laravel/Symfony dev
+brew 'php72'            # for Laravel/Symfony dev
 brew 'python@2'         # for Django dev
 
 # Pentesting / CTF / Forensics
