@@ -14,6 +14,11 @@ brew update
 brew tap homebrew/bundle
 brew bundle
 
+# Install Oh My ZSH
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
+
 # Add Zsh to the list of shells
 if ! grep -q $(which zsh) /etc/shells; then
   sudo sh -c 'which zsh >> /etc/shells'
