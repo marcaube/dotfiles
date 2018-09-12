@@ -27,3 +27,13 @@ mackup restore
 # 7. Restart your computer to finalize the process
 shutdown -r
 ```
+
+## Multi-user setup
+
+1. create a group `brew` and add users in it
+1. execute `brew doctor` to check if brew is installed correctly
+1. `sudo chgrp -R brew /usr/local` to change the owner of the homebrew install dir
+1. `sudo chmod -R g+w /usr/local` to allow write access to group members
+1. `sudo chgrp -R brew /Library/Caches/Homebrew` to change the owner of the homebrew cache dir
+1. `sudo chmod -R g+w /Library/Caches/Homebrew` to allow write access to group members
+1. `brew doctor` to make sure everything is alright
