@@ -19,14 +19,14 @@ alias reload="source ~/.zshrc"
 # Navigation
 alias ..="cd .."
 alias ...="cd ../.."
-alias www='cd ~/Code;pwd'
 alias code="cd ~/Code;pwd"
 alias dl='cd ~/Downloads'
-alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/;pwd'
 alias dotfiles="cd $DOTFILES"
+alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/;pwd'
 alias library="cd $HOME/Library"
+alias www='cd ~/Code;pwd'
 
-# Applications
+# Application launchers
 alias chromeopen='/usr/bin/open -a "/Applications/Google Chrome.app"'
 alias pstorm='open -a /Applications/PhpStorm.app "`pwd`"'
 
@@ -34,7 +34,7 @@ alias pstorm='open -a /Applications/PhpStorm.app "`pwd`"'
 alias hide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
 alias show='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
 
-# Hide/show all desktop icons (useful when presenting)
+# Show/hide all desktop icons (useful when presenting)
 alias hidedesktop='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
 alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true && killall Finder'
 
@@ -58,23 +58,52 @@ alias busy='export GREP_COLOR='\''1;32'\''; cat /dev/urandom | hexdump -C | grep
 # (useful when executing time-consuming commands)
 alias notify='/usr/bin/osascript -e "display notification \"Finished!\" with title \"Zsh\""'
 
-# Flush Directory Service (DNS) cache
-alias flush='dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
-
 # Get week number
 alias week='date +%V'
 
-# MISC
-weather() { curl -4 fr.wttr.in/${1:-quebec} }
-alias holdmybeer=sudo
-alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
-alias update='brew update; brew upgrade; brew cleanup; brew cask cleanup; composer self-update; php-cs-fixer self-update; composer global update'
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
+# Get macOS Software Updates, and update composer, Homebrew, and their installed packages
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; composer self-update; composer global update'
+
+# IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias ips='ifconfig -a | grep -o '\''inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)'\'' | awk '\''{ sub(/inet6? (addr:)? ?/, ""); print }'\'''
 alias localip='ipconfig getifaddr en0'
+alias ips='ifconfig -a | grep -o '\''inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)'\'' | awk '\''{ sub(/inet6? (addr:)? ?/, ""); print }'\'''
+
+# Show active network interfaces
+alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
+
+# Flush Directory Service (DNS) cache
+alias flush='dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
 
 # Pipe my public key to my clipboard.
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
+
+# Show how much diskspace I got left (shouldn't have bought that puny 128GB MBA...)
+alias diskspace="df -P -kHl"
+
+# MISC
+alias holdmybeer=sudo
+alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
+
+# Functions
+weather() { curl -4 fr.wttr.in/${1:-quebec} }
+
+# Determine size of a file or total size of a directory
+function fs() {
+    if du -b /dev/null > /dev/null 2>&1; then
+        local arg=-sbh;
+    else
+        local arg=-sh;
+    fi
+    if [[ -n "$@" ]]; then
+        du $arg -- "$@";
+    else
+        du $arg .[^.]* ./*;
+    fi;
+}
 
 # Utilities
 alias base64encode='php -r "echo base64_encode(trim(fgets(STDIN))) . PHP_EOL;"'
