@@ -65,7 +65,7 @@ alias week='date +%V'
 alias path='echo -e ${PATH//:/\\n}'
 
 # Get macOS Software Updates, and update composer, Homebrew, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; composer self-update; composer global update'
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; mas upgrade; composer self-update; composer global update'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
