@@ -1,10 +1,5 @@
 # My dotfiles
 
-Inspired by...
-- Mathias Bynens [dotfiles](https://github.com/mathiasbynens/dotfiles)
-- Dries Vints [dotfiles](https://github.com/driesvints/dotfiles)
-
-
 ## Before installation
 
 If you have a working computer, make sure you first go through this checklist before reinstalling everything from scratch...
@@ -36,7 +31,10 @@ sh .dotfiles/install.sh
 # 6. Restore preferences
 mackup restore
 
-# 7. Restart your computer to finalize the process
+# 8. Check that homebrew installations are A1
+brew doctor
+
+# 9. Restart your computer to finalize the process
 shutdown -r now
 ```
 
@@ -70,3 +68,11 @@ shutdown -r now
 - [`exports.zsh`](./exports.zsh) contains the `PATH` env variable configs
 - [`extra.zsh`](./extra.zsh) is a file ignored by git where you can add your git credentials, custom commands, private aliases, etc.
 - [`install.sh`](./install.sh) is the installation script to make this all work "automagically"
+
+
+## Inspired by...
+
+- Mathias Bynens' [dotfiles](https://github.com/mathiasbynens/dotfiles)
+- Dries Vints' [dotfiles](https://github.com/driesvints/dotfiles)
+- Sourabh Bajaj's [macOS Setup Guide](https://sourabhbajaj.com/mac-setup/)
+- [A practical guide to securing macOS](https://github.com/drduh/macOS-Security-and-Privacy-Guide)
