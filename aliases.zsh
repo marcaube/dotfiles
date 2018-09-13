@@ -16,6 +16,9 @@ alias hostconf='subl ~/.ssh/config'
 # Reload my CLI configs
 alias reload="source ~/.zshrc"
 
+# Restart the computer
+alias restart="sudo shutdown -r now"
+
 # Navigation
 alias ..="cd .."
 alias ...="cd ../.."
