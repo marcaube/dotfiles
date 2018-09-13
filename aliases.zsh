@@ -65,7 +65,7 @@ alias flush='dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
 alias week='date +%V'
 
 # MISC
-weather() { curl -4 wttr.in/${1:-quebec} }
+weather() { curl -4 fr.wttr.in/${1:-quebec} }
 alias holdmybeer=sudo
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 alias update='brew update; brew upgrade; brew cleanup; brew cask cleanup; composer self-update; php-cs-fixer self-update; composer global update'
