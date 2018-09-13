@@ -1,8 +1,15 @@
 # Compiled Python files
 *.pyc
 
+# Compiled C++ files
+*.out
+
 # Common IDE files
 .idea
+
+# Application specific files
+venv
+node_modules
 .sass-cache
 
 # Logs and databases
