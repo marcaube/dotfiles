@@ -1,5 +1,8 @@
 # My dotfiles
 
+This repo contains my dotfiles, terminal configs, a "manifest" of apps that should be installed on my system and an installation script to make the process of setting up a new computer as seamless as possible.
+
+
 ## Before installation
 
 If you have a working computer, make sure you first go through this checklist before reinstalling everything from scratch...
@@ -39,6 +42,32 @@ shutdown -r now
 ```
 
 
+## Update
+
+To pull the latest changes from the repo and update your setup.
+
+```bash
+# 1. Move into the dotfiles directory
+dotfiles
+
+# 2. Pull the changes from master
+git pull
+
+# 3. Reload the configs
+reload
+
+# 4. Restore preferences
+mackup restore
+```
+
+
+## Tweaking the setup
+
+To add git credentials, custom commands, or private aliases, you should create an `extra.zsh` file. This file is going to be picked up by ZSH but ignored by git. You can use this file to add stuff you don't want to commit to a public repository.
+
+For example, that's where I define my `GIT_AUTHOR_NAME` and `GIT_AUTHOR_EMAIL`.
+
+
 ## Features
 
 - sensible [`.macos`](./.macos) configs, see [this repo](https://github.com/kevinSuttle/MacOS-Defaults) for more options
@@ -66,7 +95,7 @@ shutdown -r now
 - [`Brewfile`](./Brewfile) contains the list of binaries (homebrew) and apps (cask and mas) that I want installed on my system
 - [`com.googlecode.iterm2.plist`](./com.googlecode.iterm2.plist) is my iTerm2 config
 - [`exports.zsh`](./exports.zsh) contains the `PATH` env variable configs
-- [`extra.zsh`](./extra.zsh) is a file ignored by git where you can add your git credentials, custom commands, private aliases, etc.
+- extra.zsh is a file ignored by git where you can add your git credentials, custom commands, private aliases, etc.
 - [`install.sh`](./install.sh) is the installation script to make this all work "automagically"
 
 
