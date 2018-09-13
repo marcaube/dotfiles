@@ -4,7 +4,7 @@ echo "Setting up your Mac..."
 
 # Check for Homebrew and install if we don't have it
 if test ! $(which brew); then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # Update Homebrew recipes
@@ -16,16 +16,16 @@ brew bundle
 
 # Install Oh My ZSH
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
 # Add Zsh to the list of shells
 if ! grep -q $(which zsh) /etc/shells; then
-  sudo sh -c 'which zsh >> /etc/shells'
-fi
+    sudo sh -c 'which zsh >> /etc/shells'
 
-# Make ZSH the default shell environment
-chsh -s $(which zsh)
+    # Make ZSH the default shell environment
+    chsh -s $(which zsh)
+fi
 
 # Install Composer
 curl -sS https://getcomposer.org/installer | php
