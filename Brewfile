@@ -7,6 +7,7 @@ tap 'homebrew/php'
 # Install Binaries
 brew 'cloc'             # to quickly count lines of code
 brew 'coreutils'        # Those that come with macOS are outdated
+brew 'curl'
 brew 'docker-compose'   # Docker without the hassle
 brew 'graphviz'         # graph/diagrams generation
 brew 'httpie'           # to test HTTP calls from the CLI
