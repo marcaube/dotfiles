@@ -28,14 +28,14 @@ fi
 chsh -s $(which zsh)
 
 # Install Composer
-# curl -sS https://getcomposer.org/installer | php
-# mv composer.phar /usr/local/bin/composer
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
 
 # Install global Composer packages
-# /usr/local/bin/composer global require laravel/installer laravel/spark-installer laravel/valet psy/psysh
+/usr/local/bin/composer global require laravel/installer laravel/spark-installer laravel/valet psy/psysh
 
 # Install Laravel Valet
-# $HOME/.composer/vendor/bin/valet install
+$HOME/.composer/vendor/bin/valet install
 
 # Install global NPM packages
 npm install --global yarn
@@ -51,7 +51,7 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 
 # Set my global gitignore
-git global config core.excludesfile $HOME/.dotfiles/.gitignore_global
+git config --global core.excludesfile $HOME/.dotfiles/.gitignore_global
 
 # Set macOS preferences
 # We will run this last because this will reload the shell
