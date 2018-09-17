@@ -5,6 +5,7 @@ tap 'homebrew/cask-versions'    # for alternate versions of Casks
 tap 'homebrew/php'
 
 # Install Binaries
+brew 'bat'              # like 'cat', with highlighting, git support and pagination
 brew 'cloc'             # to quickly count lines of code
 brew 'coreutils'        # Those that come with macOS are outdated
 brew 'curl'

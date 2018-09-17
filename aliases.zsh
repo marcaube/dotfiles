@@ -30,6 +30,7 @@ alias library="cd $HOME/Library"
 alias www='cd ~/Code;pwd'
 
 # Application launchers
+alias cat='bat'
 alias chromeopen='/usr/bin/open -a "/Applications/Google Chrome.app"'
 alias pstorm='open -a /Applications/PhpStorm.app "`pwd`"'
 
