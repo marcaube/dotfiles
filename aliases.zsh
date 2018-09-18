@@ -4,6 +4,9 @@ alias zshconfig="subl ~/.dotfiles/.zshrc"
 # Edit my aliases in Sublime
 alias aliases="subl ~/.dotfiles/aliases.zsh"
 
+# Edit my extra configs
+alias extras="subl ~/.dotfiles/extra.zsh"
+
 # Open the Sublime scratchpad
 alias scratchpad='subl ~/Library/Application\ Support/Sublime\ Text\ 3/scratchpad.txt'
 
