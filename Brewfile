@@ -2,7 +2,6 @@
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'       # for Fira Code
 tap 'homebrew/cask-versions'    # for alternate versions of Casks
-tap 'homebrew/php'
 
 # Install Binaries
 brew 'bat'              # like 'cat', with highlighting, git support and pagination
@@ -26,6 +25,13 @@ brew 'git'              # OSX's version is out of date
 brew 'node'
 brew 'php72'            # for Laravel/Symfony dev
 brew 'python@2'         # for Django dev
+
+brew 'awscli'
+brew 'jq'
+brew 'python'
+brew 'pyenv-virtualenv'
+brew 'postgresql'
+brew 'redis'
 
 # Pentesting / CTF / Forensics
 brew 'binwalk'          # search for files hidden via steganography
