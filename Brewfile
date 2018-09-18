@@ -30,7 +30,7 @@ brew 'awscli'
 brew 'jq'
 brew 'python'
 brew 'pyenv-virtualenv'
-brew 'postgresql'
+brew 'postgresql@9.6'
 brew 'redis'
 
 # Pentesting / CTF / Forensics
