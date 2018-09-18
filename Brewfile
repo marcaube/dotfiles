@@ -54,6 +54,9 @@ cask 'slack'
 cask 'spectacle'        # no better ways to move windows around
 cask 'sublime-text'
 cask 'the-unarchiver'
+cask 'intellij-idea'
+cask 'gpg-suite'
+cask 'keybase'
 
 # Quicklook
 cask 'betterzip'        # preview zip archives
