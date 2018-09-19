@@ -37,6 +37,10 @@ mv composer.phar /usr/local/bin/composer
 # Install Laravel Valet
 $HOME/.composer/vendor/bin/valet install
 
+# Install VirtualEnv and VirtualEnvWrapper
+pip install virtualenv
+pip install virtualenvwrapper
+
 # Install global NPM packages
 npm install --global yarn
 
