@@ -29,9 +29,17 @@ brew 'python@2'         # for Django dev
 brew 'awscli'
 brew 'jq'
 brew 'python'
-brew 'pyenv-virtualenv'
 brew 'postgresql@9.6'
 brew 'redis'
+brew 'libjpeg'
+brew 'libpng'
+brew 'libmagic'
+cask 'java8'        # required to install elasticsearch
+brew 'elasticsearch'
+brew 'redis'
+brew 'memcached'
+brew 'gettext'      # to compile messages, don't forget to link!
+brew 'libmaxminddb' # for GeoIP
 
 # Pentesting / CTF / Forensics
 brew 'binwalk'          # search for files hidden via steganography
