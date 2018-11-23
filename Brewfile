@@ -54,6 +54,7 @@ brew 'zbar'             # barcode /qrcode reading
 
 # Apps
 cask 'caffeine'         # when I don't want my computer to fall asleep
+cask 'dash'             # offline docs and code snippets FTW!
 cask 'deckset'          # slide decks for conference talks
 cask 'docker'
 cask 'google-chrome'
@@ -71,6 +72,7 @@ cask 'the-unarchiver'
 cask 'intellij-idea'
 cask 'gpg-suite'
 cask 'keybase'
+cask 'paw'
 
 # Quicklook
 cask 'betterzip'        # preview zip archives
@@ -89,6 +91,7 @@ cask 'font-fira-code'
 
 # Install Mac App Store apps
 mas '1Password', id: 1333542190     # password manager
+mas 'Annotate', id: 918207447       # annotate screenshots like a boss
 mas 'Bear', id: 1091189122          # note taking app
 mas 'Deliveries', id: 924726344     # package tracking
 mas 'Kaleidoscope', id: 587512244   # the best difftool ever, fight me
