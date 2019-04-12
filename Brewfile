@@ -2,6 +2,7 @@
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'       # for Fira Code
 tap 'homebrew/cask-versions'    # for alternate versions of Casks
+tap 'eddieantonio/eddieantonio' # for imgcat
 
 # Install Binaries
 brew 'bat'              # like 'cat', with highlighting, git support and pagination
@@ -11,6 +12,7 @@ brew 'curl'
 brew 'docker-compose'   # Docker without the hassle
 brew 'graphviz'         # graph/diagrams generation
 brew 'httpie'           # to test HTTP calls from the CLI
+brew 'imgcat'           # like 'cat', but for images
 brew 'mackup'           # to sync my Mac configs
 brew 'mas'              # to install Mac App Store apps from the CLI
 brew 'tldr'             # like 'man' but for lazy people with deadlines
