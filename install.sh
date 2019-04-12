@@ -38,8 +38,8 @@ mv composer.phar /usr/local/bin/composer
 $HOME/.composer/vendor/bin/valet install
 
 # Install VirtualEnv and VirtualEnvWrapper
-pip install virtualenv
-pip install virtualenvwrapper
+pip3 install virtualenv
+pip3 install virtualenvwrapper
 
 # Install global NPM packages
 npm install --global yarn

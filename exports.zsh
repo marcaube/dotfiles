@@ -33,3 +33,9 @@ export HOMEBREW_NO_INSECURE_REDIRECT=1
 
 # Abort installation of a cask if no checksum is defined
 export HOMEBREW_CASK_OPTS=--require-sha
+
+# Python
+VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+
+# For psycopg2, see:https://github.com/psycopg/psycopg2/issues/890
+export LDFLAGS="-L/usr/local/opt/openssl/lib"

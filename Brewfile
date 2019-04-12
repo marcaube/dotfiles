@@ -26,7 +26,6 @@ brew 'exercism'         # to submit code solutions to Exercism.io
 brew 'git'              # OSX's version is out of date
 brew 'node'
 brew 'php72'            # for Laravel/Symfony dev
-brew 'python@2'         # for Django dev
 
 brew 'awscli'
 brew 'jq'
