@@ -34,6 +34,7 @@ alias www='cd ~/Code;pwd'
 
 # Application launchers
 alias cat='bat'
+alias woman=tldr # Grace Hopper approved
 alias chromeopen='/usr/bin/open -a "/Applications/Google Chrome.app"'
 alias pstorm='open -a /Applications/PhpStorm.app "`pwd`"'
 
@@ -54,6 +55,9 @@ alias spoton="sudo mdutil -a -i on"
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
 alias chromekill='ps ux | grep '\''[C]hrome Helper --type=renderer'\'' | grep -v extension-process | tr -s '\'' '\'' | cut -d '\'' '\'' -f2 | xargs kill'
+
+# Kill a runaway docker run command, when your test suite just don't want to finish...
+alias dockerrunkill='ps | grep '\''docker run'\'' | grep -v grep | awk '\''{print $1}'\'' | xargs kill -9'
 
 # How long until Christmas ?
 alias noel='php -r "echo (new DateTime())->diff(new DateTime('\''December 25th'\''), true)->format('\''%y ans, %m mois et %d jours (%a jours)'\'') . PHP_EOL;"'
@@ -97,6 +101,7 @@ alias diskspace="df -P -kHl"
 # MISC
 alias holdmybeer=sudo
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
+alias tableflip="echo '(╯°□°）╯︵ ┻━┻' | pbcopy"
 
 # Functions
 weather() { curl -4 fr.wttr.in/${1:-quebec} }
