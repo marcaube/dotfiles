@@ -10,11 +10,13 @@ brew 'cloc'             # to quickly count lines of code
 brew 'coreutils'        # Those that come with macOS are outdated
 brew 'curl'
 brew 'docker-compose'   # Docker without the hassle
+brew 'gnu-sed'          # sed, but a better version than what ships with OSX
 brew 'graphviz'         # graph/diagrams generation
 brew 'httpie'           # to test HTTP calls from the CLI
 brew 'imgcat'           # like 'cat', but for images
 brew 'mackup'           # to sync my Mac configs
 brew 'mas'              # to install Mac App Store apps from the CLI
+brew 'telnet'
 brew 'tldr'             # like 'man' but for lazy people with deadlines
 brew 'tree'             # to display directories tree
 brew 'wget'
@@ -30,7 +32,7 @@ brew 'php72'            # for Laravel/Symfony dev
 brew 'awscli'
 brew 'jq'
 brew 'python'
-brew 'postgresql@9.6'
+brew 'postgresql@9.6', restart_service: true, link: true
 brew 'redis'
 brew 'libjpeg'
 brew 'libpng'
@@ -96,6 +98,7 @@ mas 'Annotate', id: 918207447       # annotate screenshots like a boss
 mas 'Bear', id: 1091189122          # note taking app
 mas 'Deliveries', id: 924726344     # package tracking
 mas 'Kaleidoscope', id: 587512244   # the best difftool ever, fight me
+mas 'Pastebot', id: 1179623856
 mas 'Pixelmator', id: 407963104
 mas 'Reeder', id: 880001334         # nope, RSS is not dead
 mas 'Soulver', id: 413965349
