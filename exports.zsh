@@ -13,6 +13,9 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 # Local bin directories before anything else
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
+# Pyenv
+export PATH="$(pyenv root)/shims:$PATH"
+
 # Load custom commands
 # I've disabled this for now because I've got none
 # export PATH="$DOTFILES/bin:$PATH"
@@ -37,5 +40,5 @@ export HOMEBREW_CASK_OPTS=--require-sha
 # Python
 VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
-# For psycopg2, see:https://github.com/psycopg/psycopg2/issues/890
+# For psycopg2, see: https://github.com/psycopg/psycopg2/issues/890
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
