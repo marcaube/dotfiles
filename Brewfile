@@ -50,12 +50,17 @@ brew 'libmaxminddb' # for GeoIP
 brew 'binwalk'          # search for files hidden via steganography
 brew 'exiftool'         # reading and writing EXIF metadata
 brew 'exiv2'            # EXIF and IPTC metadata
+brew 'ffmpeg'
 brew 'foremost'         # file recovery based on headers/footer (forensics)
 brew 'hashcat'          # GPU password cracking
 brew 'john-jumbo'       # John the ripper
+brew 'gdb'              # the basic Binjitsu weapon
+brew 'pngcheck'
 brew 'sqlmap'           # SQL injection
 brew 'wpscan'           # WordPress vulnerability scanner
 brew 'zbar'             # barcode /qrcode reading
+cask 'audacity'
+cask 'sonic-visualizer'
 
 # Apps
 cask 'caffeine'         # when I don't want my computer to fall asleep
