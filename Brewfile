@@ -24,8 +24,10 @@ brew 'zsh'              # has to be installed before installing Oh My Zsh
 brew 'zsh-completions'  # more auto-completions for Zsh
 
 # Development
+brew 'bfg'              # for that time the intern added passwords to the repo
 brew 'exercism'         # to submit code solutions to Exercism.io
 brew 'git'              # OSX's version is out of date
+brew 'git-lfs'          # git's large file system
 brew 'node'
 brew 'php72'            # for Laravel/Symfony dev
 
