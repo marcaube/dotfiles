@@ -60,6 +60,7 @@ brew 'sqlmap'           # SQL injection
 brew 'wpscan'           # WordPress vulnerability scanner
 brew 'zbar'             # barcode /qrcode reading
 cask 'audacity'
+cask 'hex-fiend'        # a simple GUI hex editor
 cask 'sonic-visualizer'
 
 # Apps
