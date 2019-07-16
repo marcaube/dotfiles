@@ -13,9 +13,6 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 # Local bin directories before anything else
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
-# Pyenv
-export PATH="$(pyenv root)/shims:$PATH"
-
 # Load custom commands
 # I've disabled this for now because I've got none
 # export PATH="$DOTFILES/bin:$PATH"
