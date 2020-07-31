@@ -28,6 +28,7 @@ brew 'bfg'              # for that time the intern added passwords to the repo
 brew 'exercism'         # to submit code solutions to Exercism.io
 brew 'git'              # OSX's version is out of date
 brew 'git-lfs'          # git's large file system
+brew 'insomnia'
 brew 'node'
 
 # Tools for work
