@@ -26,7 +26,7 @@ xcode-select --install
 # 3. Copy your public and private SSH keys to ~/.ssh and make sure they're set to 600
 
 # 4. Clone this repo to ~/.dotfiles
-cd ~; git clone git@github.com:marcaube/dotfiles.git .dotfiles
+cd ~; git clone https://github.com/marcaube/dotfiles.git .dotfiles
 
 # 5. Run install.sh to start the installation
 sh .dotfiles/install.sh
