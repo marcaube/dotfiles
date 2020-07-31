@@ -27,16 +27,6 @@ if ! grep -q $(which zsh) /etc/shells; then
     chsh -s $(which zsh)
 fi
 
-# Install Composer
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
-
-# Install global Composer packages
-/usr/local/bin/composer global require laravel/installer laravel/spark-installer laravel/valet psy/psysh
-
-# Install Laravel Valet
-$HOME/.composer/vendor/bin/valet install
-
 # Install VirtualEnv and VirtualEnvWrapper
 pip3 install virtualenv
 pip3 install virtualenvwrapper

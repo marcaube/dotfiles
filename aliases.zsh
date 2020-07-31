@@ -36,7 +36,6 @@ alias www='cd ~/Code;pwd'
 alias cat='bat'
 alias woman=tldr # Grace Hopper approved
 alias chromeopen='/usr/bin/open -a "/Applications/Google Chrome.app"'
-alias pstorm='open -a /Applications/PhpStorm.app "`pwd`"'
 
 # Show/hide hidden files in Finder
 alias hide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
@@ -59,9 +58,6 @@ alias chromekill='ps ux | grep '\''[C]hrome Helper --type=renderer'\'' | grep -v
 # Kill a runaway docker run command, when your test suite just don't want to finish...
 alias dockerrunkill='ps | grep '\''docker run'\'' | grep -v grep | awk '\''{print $1}'\'' | xargs kill -9'
 
-# How long until Christmas ?
-alias noel='php -r "echo (new DateTime())->diff(new DateTime('\''December 25th'\''), true)->format('\''%y ans, %m mois et %d jours (%a jours)'\'') . PHP_EOL;"'
-
 # For those times when you just don't look busy enough
 alias busy='export GREP_COLOR='\''1;32'\''; cat /dev/urandom | hexdump -C | grep --color=auto "ca fe"'
 
@@ -75,11 +71,11 @@ alias week='date +%V'
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
-# Get macOS Software Updates, and update composer, Homebrew, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup; mas upgrade; composer self-update; composer global update'
+# Get macOS Software Updates, update Homebrew and its installed packages
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup; mas upgrade'
 
 # Check if I've got outdated versions of applications
-alias outdated='brew outdated; brew cask outdated; mas outdated;composer global outdated'
+alias outdated='brew outdated; brew cask outdated; mas outdated'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -119,16 +115,3 @@ function fs() {
         du $arg .[^.]* ./*;
     fi;
 }
-
-# Utilities
-alias base64encode='php -r "echo base64_encode(trim(fgets(STDIN))) . PHP_EOL;"'
-alias base64decode='php -r "echo base64_decode(trim(fgets(STDIN))) . PHP_EOL;"'
-alias rot13='php -r "echo str_rot13(trim(fgets(STDIN))) . PHP_EOL;"'
-alias urlencode='php -r "echo urlencode(trim(fgets(STDIN))) . PHP_EOL;"'
-alias urldecode='php -r "echo urldecode(trim(fgets(STDIN))) . PHP_EOL;"'
-alias md5='php -r "echo hash(\"md5\", trim(fgets(STDIN))) . PHP_EOL;"'
-alias sha1='php -r "echo hash(\"sha1\", trim(fgets(STDIN))) . PHP_EOL;"'
-alias sha256='php -r "echo hash(\"sha256\", trim(fgets(STDIN))) . PHP_EOL;"'
-alias sha512='php -r "echo hash(\"sha512\", trim(fgets(STDIN))) . PHP_EOL;"'
-alias bcrypt='php -r "echo password_hash(trim(fgets(STDIN)), PASSWORD_BCRYPT) . PHP_EOL;"'
-alias strlen='php -r "echo strlen(trim(fgets(STDIN))) . PHP_EOL;"'

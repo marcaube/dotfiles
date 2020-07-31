@@ -29,7 +29,6 @@ brew 'exercism'         # to submit code solutions to Exercism.io
 brew 'git'              # OSX's version is out of date
 brew 'git-lfs'          # git's large file system
 brew 'node'
-brew 'php72'            # for Laravel/Symfony dev
 
 brew 'awscli'
 brew 'jq'
@@ -73,8 +72,6 @@ cask 'imagealpha'       # optimize transparent PNGs
 cask 'imageoptim'       # optimize images
 cask 'iterm2'           # a better terminal
 cask 'ksdiff'           # CLI launcher for my difftool (Kaleidoscope)
-cask 'phpstorm'
-cask 'pycharm-ce'
 cask 'sequel-pro'
 cask 'slack'
 cask 'spectacle'        # no better ways to move windows around

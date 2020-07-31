@@ -77,7 +77,7 @@ For example, that's where I define my `GIT_AUTHOR_NAME` and `GIT_AUTHOR_EMAIL`.
 - an [`aliases.zsh`](./aliases.zsh) file with a bunch of useful aliases and functions
     - CLI app launchers
     - encoding and crypto utility functions
-    - an `update` alias to update macOS, mac app store apps, Homebrew binaries, Cask apps and globally installed composer packages
+    - an `update` alias to update macOS, mac app store apps, Homebrew binaries and Cask apps
     - a `weather` function to get weather reports from [wttr.in](https://github.com/chubin/wttr.in)
     - and much more...
 - a [`.zshrc`](./.zshrc) file to tweak my Oh My Zsh setup, see the [docs](https://github.com/robbyrussell/oh-my-zsh/wiki/Customization) for more
