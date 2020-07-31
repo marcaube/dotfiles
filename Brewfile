@@ -30,18 +30,15 @@ brew 'git'              # OSX's version is out of date
 brew 'git-lfs'          # git's large file system
 brew 'node'
 
+# Tools for work
 brew 'awscli'
 brew 'jq'
 brew 'python'
-brew 'postgresql@9.6', restart_service: true, link: true
-brew 'redis'
+brew 'pyenv'
+brew 'postgresql', restart_service: true, link: true
 brew 'libjpeg'
 brew 'libpng'
 brew 'libmagic'
-cask 'java8'        # required to install elasticsearch
-brew 'elasticsearch'
-brew 'redis'
-brew 'memcached'
 brew 'gettext'      # to compile messages, don't forget to link!
 brew 'libmaxminddb' # for GeoIP
 
@@ -72,15 +69,14 @@ cask 'imagealpha'       # optimize transparent PNGs
 cask 'imageoptim'       # optimize images
 cask 'iterm2'           # a better terminal
 cask 'ksdiff'           # CLI launcher for my difftool (Kaleidoscope)
-cask 'sequel-pro'
 cask 'slack'
 cask 'spectacle'        # no better ways to move windows around
 cask 'sublime-text'
-cask 'the-unarchiver'
 cask 'intellij-idea'
 cask 'gpg-suite'
 cask 'keybase'
 cask 'paw'
+cask 'zoom'
 
 # Quicklook
 cask 'betterzip'        # preview zip archives
