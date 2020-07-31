@@ -30,8 +30,8 @@
     whitespace = fix
 
 [core]
+    excludesfile = ~/.dotfiles/.gitignore_global
     # Use custom `.gitignore` and `.gitattributes`
-    excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
     # Treat spaces before tabs, lines that are indented with 8 or more spaces, and
     # all kinds of trailing whitespace as an error.
@@ -79,4 +79,4 @@
 [push]
     default = matching
 [help]
-	autocorrect = 5
+    autocorrect = 5
