@@ -29,7 +29,7 @@ xcode-select --install
 cd ~; git clone https://github.com/marcaube/dotfiles.git .dotfiles
 
 # 5. Run install.sh to start the installation
-sh .dotfiles/install.sh
+cd ~/.dotfiles; sh install.sh; cd -
 
 # 6. Restore preferences
 mackup restore
