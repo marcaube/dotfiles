@@ -26,12 +26,14 @@ xcode-select --install
 # 3. Copy your public and private SSH keys to ~/.ssh and make sure they're set to 600
 
 # 4. Clone this repo to ~/.dotfiles
-cd ~; git clone https://github.com/marcaube/dotfiles.git .dotfiles
+cd ~; git clone git@github.com:marcaube/dotfiles.git .dotfiles
 
 # 5. Run install.sh to start the installation
 cd ~/.dotfiles; sh install.sh; cd -
 
-# 6. Restore preferences
+# 6. Login with your Apple ID, check iCloud Drive and let it sync for a while
+
+# 7. Restore preferences
 mackup restore
 
 # 8. Check that homebrew installations are A1
