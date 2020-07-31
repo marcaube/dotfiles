@@ -31,9 +31,6 @@ fi
 pip3 install virtualenv
 pip3 install virtualenvwrapper
 
-# Install global NPM packages
-npm install --global yarn
-
 # Create my code directory
 mkdir $HOME/Code
 
