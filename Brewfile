@@ -79,6 +79,10 @@ cask 'gpg-suite'
 cask 'keybase'
 cask 'zoomus'
 
+# Gaming
+cask 'battle-net'
+cask 'discord'
+
 # Quicklook
 cask 'betterzip'        # preview zip archives
 cask 'epubquicklook'    # preview zip archives
