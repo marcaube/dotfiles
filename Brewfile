@@ -77,7 +77,6 @@ cask 'sublime-text'
 cask 'intellij-idea'
 cask 'gpg-suite'
 cask 'keybase'
-cask 'paw'
 cask 'zoomus'
 
 # Quicklook
