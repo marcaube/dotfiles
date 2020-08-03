@@ -35,7 +35,7 @@ brew 'awscli'
 brew 'jq'
 brew 'python'
 brew 'pyenv'
-brew 'postgresql', restart_service: true, link: true
+brew 'libpq', link: true
 brew 'libjpeg'
 brew 'libpng'
 brew 'libmagic'
