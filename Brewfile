@@ -3,6 +3,7 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'       # for Fira Code
 tap 'homebrew/cask-versions'    # for alternate versions of Casks
 tap 'eddieantonio/eddieantonio' # for imgcat
+tap 'remind101/formulae'        # for assume-role
 
 # Install Binaries
 brew 'bat'              # like 'cat', with highlighting, git support and pagination
@@ -31,16 +32,18 @@ brew 'git-lfs'          # git's large file system
 brew 'node'
 
 # Tools for work
+brew 'assume-role'
 brew 'awscli'
-brew 'jq'
-brew 'python'
-brew 'pyenv'
-brew 'libpq', link: true
-brew 'libjpeg'
-brew 'libpng'
-brew 'libmagic'
 brew 'gettext'      # to compile messages, don't forget to link!
+brew 'jq'
+brew 'libjpeg'
+brew 'libmagic'
 brew 'libmaxminddb' # for GeoIP
+brew 'libpng'
+brew 'libpq', link: true
+brew 'python'
+brew 'pipenv'
+brew 'pyenv'
 
 # Pentesting / CTF / Forensics
 brew 'binwalk'          # search for files hidden via steganography
