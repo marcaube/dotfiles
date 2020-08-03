@@ -65,18 +65,20 @@ cask 'caffeine'         # when I don't want my computer to fall asleep
 cask 'dash'             # offline docs and code snippets FTW!
 cask 'deckset'          # slide decks for conference talks
 cask 'docker'
+cask 'firefox'
 cask 'google-chrome'
+cask 'gpg-suite'
+cask 'grammarly'
 cask 'imagealpha'       # optimize transparent PNGs
 cask 'imageoptim'       # optimize images
 cask 'insomnia'
+cask 'intellij-idea'
 cask 'iterm2'           # a better terminal
+cask 'keybase'
 cask 'ksdiff'           # CLI launcher for my difftool (Kaleidoscope)
 cask 'slack'
 cask 'spectacle'        # no better ways to move windows around
 cask 'sublime-text'
-cask 'intellij-idea'
-cask 'gpg-suite'
-cask 'keybase'
 cask 'zoomus'
 
 # Gaming
