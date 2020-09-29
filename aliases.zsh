@@ -72,7 +72,7 @@ alias week='date +%V'
 alias path='echo -e ${PATH//:/\\n}'
 
 # Get macOS Software Updates, update Homebrew and its installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup; mas upgrade'
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew upgrade --cask; brew cleanup; mas upgrade'
 
 # Check if I've got outdated versions of applications
 alias outdated='brew outdated; brew cask outdated; mas outdated'
