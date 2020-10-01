@@ -1,2 +1,4 @@
 # To add git credentials, custom commands, private aliases, etc.
 extra.zsh
+
+Brewfile.lock.json
