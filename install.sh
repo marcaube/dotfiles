@@ -28,10 +28,6 @@ if ! grep -q $(which zsh) /etc/shells; then
     chsh -s $(which zsh)
 fi
 
-# Install VirtualEnv and VirtualEnvWrapper
-pip3 install virtualenv
-pip3 install virtualenvwrapper
-
 # Create my code directory
 mkdir $HOME/Code
 
