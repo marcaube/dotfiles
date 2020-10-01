@@ -8,6 +8,7 @@
 .idea
 
 # Application specific files
+.venv
 venv
 node_modules
 .sass-cache
