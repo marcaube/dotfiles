@@ -111,4 +111,5 @@ mas 'Pastebot', id: 1179623856
 mas 'Pixelmator', id: 407963104
 mas 'Reeder', id: 880001334         # nope, RSS is not dead
 mas 'Soulver', id: 413965349
+mas 'stts', id: 1187772509          # status of cloud services, right in the status bar
 mas 'Tweetbot', id: 557168941       # less and less powerful Twitter client (not their fault though!)
