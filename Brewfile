@@ -61,6 +61,7 @@ brew 'zbar'             # barcode /qrcode reading
 cask 'hex-fiend'        # a simple GUI hex editor
 
 # Apps
+cask 'anki'             # flash cards, for learning and memorization (active recall, spaced repetition, etc)
 cask 'caffeine'         # when I don't want my computer to fall asleep
 cask 'dash'             # offline docs and code snippets FTW!
 cask 'deckset'          # slide decks for conference talks

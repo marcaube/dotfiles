@@ -38,6 +38,10 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 # Symlink the Mackup config file to the home directory
 ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 
+# Symlink my custom Mackup configs for unsupported applications
+# See: https://github.com/lra/mackup/tree/master/doc#add-support-for-an-application-or-any-file-or-directory
+ln -s $HOME/.dotfiles/.mackup $HOME/.mackup
+
 # Set my global git configs
 rm $HOME/.gitconfig
 cp $HOME/.dotfiles/.gitconfig $HOME/.gitconfig
