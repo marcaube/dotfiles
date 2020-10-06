@@ -16,7 +16,7 @@ brew bundle
 
 # Install Oh My ZSH
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     compaudit | xargs chmod g-w,o-w
 fi
 
