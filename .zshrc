@@ -72,6 +72,11 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Keep more than the last 10000 commands in my history
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000000
+SAVEHIST=$HISTSIZE
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
