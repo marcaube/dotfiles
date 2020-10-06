@@ -106,6 +106,7 @@ mas '1Password', id: 1333542190     # password manager
 mas 'Annotate', id: 918207447       # annotate screenshots like a boss
 mas 'Bear', id: 1091189122          # note taking app
 mas 'Deliveries', id: 924726344     # package tracking
+mas 'Grammarly for Safari', id: 1462114288
 mas 'Kaleidoscope', id: 587512244   # the best difftool ever, fight me
 mas 'Next Meeting', id: 1017470484  # See what meeting is up next, right in the status bar
 mas 'Pastebot', id: 1179623856
