@@ -17,6 +17,7 @@ brew 'httpie'           # to test HTTP calls from the CLI
 brew 'imgcat'           # like 'cat', but for images
 brew 'mackup'           # to sync my Mac configs
 brew 'mas'              # to install Mac App Store apps from the CLI
+brew 'ngrok'
 brew 'telnet'
 brew 'tldr'             # like 'man' but for lazy people with deadlines
 brew 'tree'             # to display directories tree
