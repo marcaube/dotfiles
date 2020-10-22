@@ -7,6 +7,9 @@ export DOTFILES=$HOME/.dotfiles
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+# Hide username in prompt
+DEFAULT_USER=`whoami`
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -72,7 +75,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# Keep more than the last 10000 commands in my history
+# Keep more than the last 10000000 commands in my history
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000000
 SAVEHIST=$HISTSIZE
@@ -103,18 +106,3 @@ SAVEHIST=$HISTSIZE
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-prompt_context() {
-    if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-      prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-    fi
-}
-
-build_prompt() {
-    # RETVAL=$?
-    # prompt_status
-    prompt_context
-    prompt_dir
-    prompt_git
-    prompt_end
-}
