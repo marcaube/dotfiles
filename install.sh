@@ -32,18 +32,24 @@ if ! grep -q $(which zsh) /etc/shells; then
 fi
 
 # Create my code directory
-mkdir $HOME/Code
+if [ ! -d "$HOME/Code" ]; then
+    mkdir $HOME/Code
+fi
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
 rm -rf $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
 # Symlink the Mackup config file to the home directory
-ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
+if [ ! -f "$HOME/.mackup.cfg" ]; then
+    ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
+fi
 
 # Symlink my custom Mackup configs for unsupported applications
 # See: https://github.com/lra/mackup/tree/master/doc#add-support-for-an-application-or-any-file-or-directory
-ln -s $HOME/.dotfiles/.mackup $HOME/.mackup
+if [ ! -d "$HOME/.mackup" ]; then
+    ln -s $HOME/.dotfiles/.mackup $HOME/.mackup
+fi
 
 # Set my global git configs
 rm $HOME/.gitconfig
