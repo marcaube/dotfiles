@@ -11,6 +11,7 @@ brew 'cloc'             # to quickly count lines of code
 brew 'coreutils'        # Those that come with macOS are outdated
 brew 'curl'
 brew 'docker-compose'   # Docker without the hassle
+brew 'gawk'             # Like awk, but with a g. Not to be confused with the large bird of prey
 brew 'gnu-sed'          # sed, but a better version than what ships with OSX
 brew 'graphviz'         # graph/diagrams generation
 brew 'httpie'           # to test HTTP calls from the CLI
