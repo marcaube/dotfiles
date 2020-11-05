@@ -137,6 +137,11 @@ function ql() {
 
 # Function to easily match text using regexes in a command pipeline, second param is the capture group number
 # e.g. `find . -name '*.py' | xargs cat | regex '^class (\w+)' 1 | sort | uniq` to find all the classes in a Py project
-function regex {
+function regex() {
     gawk 'match($0,/'$1'/, ary) {print ary['${2:-'0'}']}';
+}
+
+# When you want the length of a string and wc won't do
+function length() {
+    awk '{print length, $0}'
 }
