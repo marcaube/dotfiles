@@ -57,4 +57,11 @@ cp $HOME/.dotfiles/.gitconfig $HOME/.gitconfig
 
 # Set macOS preferences
 # We will run this last because this will reload the shell
-source .macos
+while true; do
+    read -p "Do you wish to overwrite the macOS preferences? [y/n]" yn
+    case $yn in
+        [Yy]* ) source .macos; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
