@@ -18,7 +18,6 @@ brew 'httpie'           # to test HTTP calls from the CLI
 brew 'imgcat'           # like 'cat', but for images
 brew 'mackup'           # to sync my Mac configs
 brew 'mas'              # to install Mac App Store apps from the CLI
-brew 'ngrok'
 brew 'telnet'
 brew 'tldr'             # like 'man' but for lazy people with deadlines
 brew 'tree'             # to display directories tree
@@ -79,6 +78,7 @@ cask 'intellij-idea'
 cask 'iterm2'           # a better terminal
 cask 'keybase'
 cask 'ksdiff'           # CLI launcher for my difftool (Kaleidoscope)
+cask 'ngrok'
 cask 'slack'
 cask 'spectacle'        # no better ways to move windows around
 cask 'sublime-text'
