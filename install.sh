@@ -54,6 +54,7 @@ fi
 # Set my global git configs
 rm $HOME/.gitconfig
 cp $HOME/.dotfiles/.gitconfig $HOME/.gitconfig
+echo "Don't forget to setup your git signing key."
 
 # Set macOS preferences
 # We will run this last because this will reload the shell
