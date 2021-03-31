@@ -1,4 +1,5 @@
 # Load Node global installed binaries
+export PATH="/usr/local/opt/node@14/bin:$PATH"
 export PATH="$HOME/.node/bin:$PATH"
 
 # Use project specific binaries before global ones
@@ -35,4 +36,5 @@ export HOMEBREW_CASK_OPTS=--require-sha
 VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
 # For psycopg2, see: https://github.com/psycopg/psycopg2/issues/890
-export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"

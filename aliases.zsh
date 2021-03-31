@@ -75,7 +75,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew upgrade --cask; brew cleanup; mas upgrade'
 
 # Check if I've got outdated versions of applications
-alias outdated='brew outdated; brew cask outdated; mas outdated'
+alias outdated='brew outdated; mas outdated'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
