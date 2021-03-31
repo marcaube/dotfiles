@@ -51,7 +51,7 @@
     # a line
     whitespace = tab-in-indent,tabwidth=4,trailing-space
 
-    editor = nano
+    editor = vim
     pager = $(brew --prefix git)/share/git-core/contrib/diff-highlight/diff-highlight | less
     autocrlf = input
 

@@ -40,6 +40,14 @@ fi
 rm -rf $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
+# Symlink my .vimrc and install plugins
+if [ -d $HOME/.vimrc ]; then
+    mv $HOME/.vimrc $HOME/.vimrc.bak
+    ls -s $HOME/.dotfiles/.vimrc $HOME/.vimrc
+fi
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim 2> /dev/null || true
+vim +BundleInstall! +qall
+
 # Symlink the Mackup config file to the home directory
 if [ ! -f "$HOME/.mackup.cfg" ]; then
     ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg

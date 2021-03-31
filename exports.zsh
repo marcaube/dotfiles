@@ -15,8 +15,8 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # export PATH="$DOTFILES/bin:$PATH"
 
 # Specify default editor. Possible values: vim, nano, ed etc.
-export EDITOR=nano
-export VISUAL=nano
+export EDITOR=vim
+export VISUAL=vim
 
 # Specify my language environment, you can check your configs with `locale`
 export LANG=en_CA.UTF-8
