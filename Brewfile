@@ -82,7 +82,7 @@ cask 'ngrok'
 cask 'slack'
 cask 'spectacle'        # no better ways to move windows around
 cask 'sublime-text'
-cask 'zoomus'
+cask 'zoom'
 
 # Gaming
 cask 'battle-net'
