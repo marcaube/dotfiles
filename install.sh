@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 GREEN="\e[32m"
 YELLOW="\e[33m"
 BLUE="\e[34m"
@@ -52,7 +52,7 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 printf "${GREEN}[+] Configuring vim...${ENDCOLOR}\n"
 if [ -d $HOME/.vimrc ]; then
     mv $HOME/.vimrc $HOME/.vimrc.bak
-    ls -s $HOME/.dotfiles/.vimrc $HOME/.vimrc
+    ln -s $HOME/.dotfiles/.vimrc $HOME/.vimrc
 fi
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim 2> /dev/null || true
 vim +BundleInstall! +qall
