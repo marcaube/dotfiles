@@ -35,34 +35,12 @@ filetype plugin indent on    " required
 set splitbelow
 set splitright
 
-
-" Keyboard Shortcuts and key mappings
-" =============================================================================
-
-" Split navigations, moving between window panes
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Nerdtree hotkeys
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-" nnoremap <C-f> :NERDTreeFind<CR>
-
-" Search
-nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <C-f> :Ag<CR>
-
-" Start NERDTree and leave the cursor in it.
-" autocmd VimEnter * NERDTree
+" Highlight the cursor row
+set cursorline
 
 " Enable code-folding
 set foldmethod=indent
 set foldlevel=99
-
-" Enable folding with the spacebar
-nnoremap <space> za
 
 " Enable syntax highlighting
 let python_highlight_all=1
@@ -88,9 +66,8 @@ set encoding=utf-8
 " Highlight whitespace at the end of a line
 autocmd Filetype python match Error /\s\+$/
 
-" Highlight long line
-highlight ColorColumn ctermbg=235 guibg=#2c2d27
-let &colorcolumn="80,".join(range(120,999),",")
+" Highlight long lines
+let &colorcolumn="120"
 
 " Open file at the same line number as last close
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
@@ -101,4 +78,44 @@ set backspace=indent,eol,start
 " Adjust colors for GitGutter
 highlight clear SignColumn
 
-let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
+let NERDTreeShowHidden=1 " Show hidden files...
+let NERDTreeIgnore=['\.pyc$', '\.idea', '\.git', 'node_modules', '\~$', '.DS_Store', '\.swp' ] " ... but not all of them
+
+" Highlight search results
+set hlsearch
+set is hls " incremental search
+
+
+" Keyboard Shortcuts and key mappings
+" =============================================================================
+
+" Split navigations, moving between window panes
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Nerdtree hotkeys
+nnoremap <C-n> :NERDTreeFocus<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+
+" Search
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-f> :Ag<CR>
+
+" Start NERDTree and leave the cursor in it.
+" autocmd VimEnter * NERDTree
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+" Clear search highlights
+nnoremap <esc><esc> :silent! nohls<cr>
+
+" Move a block of code up or down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
