@@ -20,26 +20,23 @@ If you have a working computer, make sure you first go through this checklist be
 # 1. Update macOS to the latest version with the App Store
 sudo softwareupdate -i -a
 
-# 2. Install macOS Command Line Tools
-xcode-select --install
+# 2. Copy your public and private SSH keys to ~/.ssh and make sure they're set to 600
 
-# 3. Copy your public and private SSH keys to ~/.ssh and make sure they're set to 600
-
-# 4. Clone this repo to ~/.dotfiles
+# 3. Clone this repo to ~/.dotfiles
 cd ~; git clone git@github.com:marcaube/dotfiles.git .dotfiles
 
-# 5. Run install.sh to start the installation
+# 4. Run install.sh to start the installation
 cd ~/.dotfiles; sh install.sh; cd -
 
-# 6. Login with your Apple ID, check iCloud Drive and let it sync for a while
+# 5. Login with your Apple ID, check iCloud Drive and let it sync for a while
 
-# 7. Restore preferences
+# 6. Restore preferences
 mackup restore
 
-# 8. Check that homebrew installations are A1
+# 7. Check that homebrew installations are A1
 brew doctor
 
-# 9. Restart your computer to finalize the process
+# 8. Restart your computer to finalize the process
 shutdown -r now
 ```
 

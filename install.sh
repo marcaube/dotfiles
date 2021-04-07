@@ -8,8 +8,18 @@ printf "${GREEN}[+] Setting up your Mac...${ENDCOLOR}\n"
 # Hide "last login" line when starting a new terminal session
 touch $HOME/.hushlogin
 
+command_does_not_exist(){
+    ! command -v "$1" > /dev/null
+}
+
+# Install macOS Command Line Tools
+if command_does_not_exist xcodebuild; then
+    printf "${GREEN}[+] Installing XCode Command Line Tools...${ENDCOLOR}\n"
+    xcode-select --install
+fi
+
 # Check for Homebrew and install if we don't have it
-if test ! $(which brew); then
+if command_does_not_exist brew; then
     printf "${GREEN}[+] Installing Homebrew...${ENDCOLOR}\n"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
