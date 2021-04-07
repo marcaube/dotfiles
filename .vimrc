@@ -22,6 +22,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'valloric/youcompleteme'                             " Autocomplete
 Plugin 'jiangmiao/auto-pairs'                               " Insert or delete brackets, parens, quotes in pair. TODO: Use autoclose instead?
 Plugin 'airblade/vim-gitgutter'                             " Git status in the gutter TODO: use Signify instead?
+Plugin 'editorconfig/editorconfig-vim'                      " Add support for .editorconfig files in projects
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
