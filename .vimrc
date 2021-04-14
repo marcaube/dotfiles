@@ -11,19 +11,20 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'kristijanhusak/vim-hybrid-material'                 " Better color scheme
-Plugin 'preservim/nerdtree'                                 " Better file browser
-Plugin 'preservim/nerdcommenter'                            " Toggle code comment TODO: use Tim Pope's plugin instead?
-Plugin 'vim-scripts/indentpython.vim'                       " Better code indentation for Python
-Plugin 'vim-syntastic/syntastic'                            " Syntax highlighting
-Plugin 'nvie/vim-flake8'
-Plugin 'junegunn/fzf'                                       " Fuzzy finder
-Plugin 'junegunn/fzf.vim'
-Plugin 'valloric/youcompleteme'                             " Autocomplete
-Plugin 'jiangmiao/auto-pairs'                               " Insert or delete brackets, parens, quotes in pair. TODO: Use autoclose instead?
 Plugin 'airblade/vim-gitgutter'                             " Git status in the gutter TODO: use Signify instead?
 Plugin 'editorconfig/editorconfig-vim'                      " Add support for .editorconfig files in projects
+Plugin 'jiangmiao/auto-pairs'                               " Insert or delete brackets, parens, quotes in pair. TODO: Use autoclose instead?
+Plugin 'junegunn/fzf'                                       " Fuzzy finder
+Plugin 'junegunn/fzf.vim'
+Plugin 'kristijanhusak/vim-hybrid-material'                 " Better color scheme
+Plugin 'nvie/vim-flake8'
+Plugin 'preservim/nerdcommenter'                            " Toggle code comment TODO: use Tim Pope's plugin instead?
+Plugin 'preservim/nerdtree'                                 " Better file browser
+Plugin 'valloric/youcompleteme'                             " Autocomplete
 Plugin 'vim-airline/vim-airline'                            " Add a nice statusbar at the bottom of the window
+Plugin 'vim-scripts/indentpython.vim'                       " Better code indentation for Python
+Plugin 'vim-syntastic/syntastic'                            " Syntax highlighting
+Plugin 'vim-test/vim-test'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -33,16 +34,21 @@ filetype plugin indent on    " required
 " Editor Preferences
 " =============================================================================
 
-" Open split windows like iTerm does
-set splitbelow
-set splitright
-
-" Highlight the cursor row
-set cursorline
-
-" Enable code-folding
-set foldmethod=indent
+set backspace=indent,eol,start  " Let backspace work in insert mode
+set cursorline                  " Highlight the cursor row
+set encoding=utf-8              " Default to UTF-8
 set foldlevel=99
+set foldmethod=indent           " Line wrap
+set hlsearch                    " Highlight search results
+set incsearch                   " Incremental search
+set noswapfile                  " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set nu                          " Show line numbers
+set numberwidth=5               " Allow line numbers > 999
+set splitbelow                  " Open horizontal splits on the bottom
+set splitright                  " Open vertical splits on the right
+
+" Change the leader key
+let mapleader = " "
 
 " Enable syntax highlighting
 let python_highlight_all=1
@@ -53,17 +59,11 @@ let g:hybrid_transparent_background = 1
 set background=dark
 colorscheme hybrid_material
 
-" Show line numbers
-set nu
-
 " Show trailing whitespace characters
 set list
 if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 endif
-
-" Default to UTF-8
-set encoding=utf-8
 
 " Highlight whitespace at the end of a line
 autocmd Filetype python match Error /\s\+$/
@@ -74,18 +74,11 @@ let &colorcolumn="120"
 " Open file at the same line number as last close
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-" Let backspace work in insert mode
-set backspace=indent,eol,start
-
 " Adjust colors for GitGutter
 highlight clear SignColumn
 
 let NERDTreeShowHidden=1 " Show hidden files...
-let NERDTreeIgnore=['\.pyc$', '\.idea', '\.git', 'node_modules', '\~$', '.DS_Store', '\.swp' ] " ... but not all of them
-
-" Highlight search results
-set hlsearch
-set is hls " incremental search
+let NERDTreeIgnore=['\.pyc$', '\.idea', '\.git$', 'node_modules', '\~$', '.DS_Store', '\.swp', '__pycache__', '.mypy_cache', '.venv'] " ... but not all of them
 
 
 " Keyboard Shortcuts and key mappings
@@ -102,6 +95,7 @@ nnoremap <C-n> :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 
 " Search
+" Map Ctrl + p to open fuzzy find (FZF)
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <C-f> :Ag<CR>
 
@@ -109,15 +103,17 @@ nnoremap <silent> <C-f> :Ag<CR>
 " autocmd VimEnter * NERDTree
 
 " Enable folding with the spacebar
-nnoremap <space> za
+" nnoremap <space> za
+
+" Switch between the last two files
+nnoremap <Leader><Leader> <C-^>
 
 " Clear search highlights
 nnoremap <esc><esc> :silent! nohls<cr>
 
-" Move a block of code up or down
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
+" vim-test mappings
+nnoremap <silent> <Leader>f :TestFile<CR>
+nnoremap <silent> <Leader>t :TestNearest<CR>
+nnoremap <silent> <Leader>l :TestLast<CR>
+nnoremap <silent> <Leader>a :TestSuite<CR>
+" nnoremap <silent> <leader>gt :TestVisit<CR>
