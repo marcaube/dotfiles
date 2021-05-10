@@ -4,6 +4,7 @@ tap 'homebrew/cask-fonts'       # for Fira Code
 tap 'homebrew/cask-versions'    # for alternate versions of Casks
 tap 'eddieantonio/eddieantonio' # for imgcat
 tap 'remind101/formulae'        # for assume-role
+tap 'homebrew/cask-drivers'     # to flash my Moonlander keyboard firmware
 
 # Install Binaries
 brew 'bat'              # like 'cat', with highlighting, git support and pagination
@@ -83,6 +84,7 @@ cask 'slack'
 cask 'spectacle'        # no better ways to move windows around
 cask 'sublime-text'
 cask 'zoom'
+cask 'zsa-wally'        # to flash my Moonlander keyboard firmware
 
 # Gaming
 cask 'battle-net'
