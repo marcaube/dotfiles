@@ -119,3 +119,4 @@ mas 'Reeder', id: 880001334         # nope, RSS is not dead
 mas 'Soulver', id: 413965349
 mas 'stts', id: 1187772509          # status of cloud services, right in the status bar
 mas 'Tweetbot', id: 557168941       # less and less powerful Twitter client (not their fault though!)
+mas 'Vimari', id: 1480933944        # vim bindings for Safari
