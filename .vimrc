@@ -41,6 +41,7 @@ set foldlevel=99
 set foldmethod=indent           " Line wrap
 set hlsearch                    " Highlight search results
 set incsearch                   " Incremental search
+set nojoinspaces                " Don't insert two spaces when joining lines
 set noswapfile                  " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
 set nu                          " Show line numbers
 set numberwidth=5               " Allow line numbers > 999
@@ -81,6 +82,14 @@ let NERDTreeShowHidden=1 " Show hidden files...
 let NERDTreeIgnore=['\.pyc$', '\.idea', '\.git$', 'node_modules', '\~$', '.DS_Store', '\.swp', '__pycache__', '.mypy_cache', '.venv'] " ... but not all of them
 
 
+" Use clipboard as default register
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed " OSX
+else
+  set clipboard=unnamedplus " Linux
+endif
+
+
 " Keyboard Shortcuts and key mappings
 " =============================================================================
 
@@ -91,7 +100,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Nerdtree hotkeys
-nnoremap <C-n> :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTreeFind<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 
 " Search
@@ -117,3 +126,6 @@ nnoremap <silent> <Leader>t :TestNearest<CR>
 nnoremap <silent> <Leader>l :TestLast<CR>
 nnoremap <silent> <Leader>a :TestSuite<CR>
 " nnoremap <silent> <leader>gt :TestVisit<CR>
+
+" YCM
+nmap <leader>d <plug>(YCMHover)
