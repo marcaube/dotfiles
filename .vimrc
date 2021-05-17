@@ -43,7 +43,7 @@ set hlsearch                    " Highlight search results
 set incsearch                   " Incremental search
 set nojoinspaces                " Don't insert two spaces when joining lines
 set noswapfile                  " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set nu                          " Show line numbers
+set rnu                         " Show line numbers
 set numberwidth=5               " Allow line numbers > 999
 set splitbelow                  " Open horizontal splits on the bottom
 set splitright                  " Open vertical splits on the right
@@ -129,3 +129,9 @@ nnoremap <silent> <Leader>a :TestSuite<CR>
 
 " YCM
 nmap <leader>d <plug>(YCMHover)
+
+" Easier commands
+nnoremap ; :
+nnoremap : ;
+xnoremap : ;
+xnoremap ; :
