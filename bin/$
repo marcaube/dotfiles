@@ -1,0 +1,3 @@
+#!/bin/bash
+# Stolen from Justin Searls' dotfiles: https://github.com/searls/icloud-dotfiles/blob/master/bin/%24
+"$@"

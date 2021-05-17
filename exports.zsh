@@ -12,8 +12,7 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Load custom commands
-# I've disabled this for now because I've got none
-# export PATH="$DOTFILES/bin:$PATH"
+export PATH="$DOTFILES/bin:$PATH"
 
 # Specify default editor. Possible values: vim, nano, ed etc.
 export EDITOR=vim
