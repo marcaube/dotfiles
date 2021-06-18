@@ -130,8 +130,3 @@ nnoremap <silent> <Leader>a :TestSuite<CR>
 " YCM, show/hide definition for token under cusor
 nmap <leader>d <plug>(YCMHover)
 
-" Easier commands
-nnoremap ; :
-nnoremap : ;
-xnoremap : ;
-xnoremap ; :
