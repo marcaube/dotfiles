@@ -127,7 +127,7 @@ nnoremap <silent> <Leader>l :TestLast<CR>
 nnoremap <silent> <Leader>a :TestSuite<CR>
 " nnoremap <silent> <leader>gt :TestVisit<CR>
 
-" YCM
+" YCM, show/hide definition for token under cusor
 nmap <leader>d <plug>(YCMHover)
 
 " Easier commands
