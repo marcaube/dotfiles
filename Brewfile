@@ -1,6 +1,6 @@
 # Taps
 tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'       # for Fira Code
+tap 'homebrew/cask-fonts'       # for Fira Code and a patched font for vim/neovim
 tap 'homebrew/cask-versions'    # for alternate versions of Casks
 tap 'eddieantonio/eddieantonio' # for imgcat
 tap 'remind101/formulae'        # for assume-role
@@ -15,12 +15,17 @@ brew 'docker-compose'   # Docker without the hassle
 brew 'gawk'             # Like awk, but with a g. Not to be confused with the large bird of prey
 brew 'gnu-sed'          # sed, but a better version than what ships with OSX
 brew 'graphviz'         # graph/diagrams generation
+brew 'htop'
 brew 'httpie'           # to test HTTP calls from the CLI
 brew 'imgcat'           # like 'cat', but for images
 brew 'mackup'           # to sync my Mac configs
 brew 'mas'              # to install Mac App Store apps from the CLI
+brew 'neofetch'
+brew 'neovim'
+brew 'ripgrep'
 brew 'telnet'
 brew 'tldr'             # like 'man' but for lazy people with deadlines
+brew 'tmux'
 brew 'tree'             # to display directories tree
 brew 'wget'
 brew 'zsh'              # has to be installed before installing Oh My Zsh
@@ -31,7 +36,6 @@ brew 'bfg'              # for that time the intern added passwords to the repo
 brew 'exercism'         # to submit code solutions to Exercism.io
 brew 'git'              # OSX's version is out of date
 brew 'git-lfs'          # git's large file system
-brew 'node@14'
 
 # Tools for work
 brew 'assume-role'
@@ -43,6 +47,7 @@ brew 'libmagic'
 brew 'libmaxminddb' # for GeoIP
 brew 'libpng'
 brew 'libpq', link: true
+brew 'node@14'
 brew 'python'
 brew 'pipenv'
 brew 'pyenv'
@@ -63,6 +68,7 @@ brew 'zbar'             # barcode /qrcode reading
 cask 'hex-fiend'        # a simple GUI hex editor
 
 # Apps
+cask 'alfred'
 cask 'anki'             # flash cards, for learning and memorization (active recall, spaced repetition, etc)
 cask 'caffeine'         # when I don't want my computer to fall asleep
 cask 'dash'             # offline docs and code snippets FTW!
@@ -72,12 +78,15 @@ cask 'firefox'
 cask 'google-chrome'
 cask 'gpg-suite'
 cask 'grammarly'
+cask 'hiddenbar'        # keep my statusbar tidy
 cask 'imagealpha'       # optimize transparent PNGs
 cask 'imageoptim'       # optimize images
-cask 'insomnia'
+cask 'insomnia'         # a nice API client GUI
 cask 'intellij-idea'
 cask 'iterm2'           # a better terminal
 cask 'keybase'
+cask 'keycastr'         # when pairing remotly, to show all keypresses in vim/neovim
+cask 'kitty'
 cask 'ksdiff'           # CLI launcher for my difftool (Kaleidoscope)
 cask 'ngrok'
 cask 'slack'
@@ -104,6 +113,7 @@ cask 'webpquicklook'    # preview Webp images
 
 # Fonts
 cask 'font-fira-code'
+cask 'font-hack-nerd-font'    # This font adds support for nice icons in NerdTree/NVIMTREE
 
 # Install Mac App Store apps
 mas '1Password', id: 1333542190     # password manager
