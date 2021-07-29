@@ -21,6 +21,7 @@ If you have a working computer, make sure you first go through this checklist be
 sudo softwareupdate -i -a
 
 # 2. Copy your public and private SSH keys to ~/.ssh and make sure they're set to 600
+chmod 600 <name_of_the_key>
 
 # 3. Clone this repo to ~/.dotfiles
 cd ~; git clone git@github.com:marcaube/dotfiles.git .dotfiles
@@ -96,6 +97,7 @@ For example, that's where I define my `GIT_AUTHOR_NAME` and `GIT_AUTHOR_EMAIL`.
 - [`exports.zsh`](./exports.zsh) contains the `PATH` env variable configs
 - extra.zsh is a file ignored by git where you can add your git credentials, custom commands, private aliases, etc.
 - [`install.sh`](./install.sh) is the installation script to make this all work "automagically"
+- [`lv-config.lua`](.lv-config.lua) contains my NeoVim configs
 
 
 ## Inspired by...
