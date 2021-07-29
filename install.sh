@@ -62,7 +62,12 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 if [ ! -f "$HOME/.config/nvim/lv-config.lua" ]; then
     printf "${GREEN}[+] Installing LunarVim...${ENDCOLOR}\n"
     sh -c $(curl -s https://raw.githubusercontent.com/ChristianChiarulli/lunarvim/master/utils/installer/install.sh)
-    ls -s $HOME/.dotfiles/lv-config.lua $HOME/.config/nvim/lv-config
+    ln -s $HOME/.dotfiles/lv-config.lua $HOME/.config/nvim/lv-config
+fi
+
+# Install my kitty.conf
+if [ ! -f "$HOME/.config/kitty/kitty.conf" ]; then
+    ln -s $HOME/.dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
 fi
 
 # Symlink the Mackup config file to the home directory
