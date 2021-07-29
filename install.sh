@@ -58,14 +58,12 @@ printf "${GREEN}[+] Installing dotfiles...${ENDCOLOR}\n"
 rm -rf $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
-# Symlink my .vimrc and install plugins
-printf "${GREEN}[+] Configuring vim...${ENDCOLOR}\n"
-if [ -d $HOME/.vimrc ]; then
-    mv $HOME/.vimrc $HOME/.vimrc.bak
-    ln -s $HOME/.dotfiles/.vimrc $HOME/.vimrc
+# Install LunarVim
+if [ ! -f "$HOME/.config/nvim/lv-config.lua" ]; then
+    printf "${GREEN}[+] Installing LunarVim...${ENDCOLOR}\n"
+    sh -c $(curl -s https://raw.githubusercontent.com/ChristianChiarulli/lunarvim/master/utils/installer/install.sh)
+    ls -s $HOME/.dotfiles/lv-config.lua $HOME/.config/nvim/lv-config
 fi
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim 2> /dev/null || true
-vim +BundleInstall! +qall
 
 # Symlink the Mackup config file to the home directory
 if [ ! -f "$HOME/.mackup.cfg" ]; then
