@@ -1,20 +1,22 @@
-# Edit my zsh configs in Sublime
-alias zshconfig="subl ~/.dotfiles/.zshrc"
+# Edit my zsh configs
+alias zshconfig='$EDITOR ~/.dotfiles/.zshrc'
 
-# Edit my aliases in Sublime
-alias aliases="subl ~/.dotfiles/aliases.zsh"
+# Edit my aliases
+alias aliases='$EDITOR ~/.dotfiles/aliases.zsh'
 
 # Edit my extra configs
-alias extras="subl ~/.dotfiles/extra.zsh"
+alias extras='$EDITOR ~/.dotfiles/extra.zsh'
 
 # Open the Sublime scratchpad
-alias scratchpad='subl ~/Library/Application\ Support/Sublime\ Text\ 3/scratchpad.txt'
+SCRATCHFILE=~/Library/Application\ Support/Sublime\ Text\ 3/scratchpad.txt
+alias scratchpad='echo "\n\n$(date):\n=============================\n" >> $SCRATCHFILE; vim "+normal GzzA" $SCRATCHFILE'
+alias sp='scratchpad'
 
-# Edit my hosts file in Sublime
-alias hosts='sudo subl /etc/hosts'
+# Edit my hosts file
+alias hosts='sudo $EDITOR /etc/hosts'
 
-# Edit my SSH hosts config in Sublime
-alias hostconf='subl ~/.ssh/config'
+# Edit my SSH hosts config
+alias hostconf='$EDITOR ~/.ssh/config'
 
 # Reload my CLI configs
 alias reload="source ~/.zshrc"
@@ -36,6 +38,8 @@ alias www='cd ~/Code;pwd'
 alias cat='bat'
 alias woman=tldr # Grace Hopper approved
 alias chromeopen='/usr/bin/open -a "/Applications/Google Chrome.app"'
+alias vim='nvim'
+alias v=vim
 
 # Show/hide hidden files in Finder
 alias hide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
@@ -93,6 +97,13 @@ alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pa
 
 # Show how much diskspace I got left (shouldn't have bought that puny 128GB MBA...)
 alias diskspace="df -P -kHl"
+
+# Clean-up the temporary/cache files in a Python project
+alias pyclean='find . -name "*.py[co]" -o -name __pycache__ -exec rm -rf {} +'
+
+# Clean-up any dependencies that were installed outside a virtual environment
+alias pipclean="pip list | awk '{if (NR>2) print $1}' | grep -v pip | grep -v setuptools | xargs pip uninstall -y"
+alias pip3clean="pip3 list | awk '{if (NR>2) print $1}' | grep -v pip | grep -v setuptools | xargs pip uninstall -y"
 
 # MISC
 alias holdmybeer=sudo
