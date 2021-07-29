@@ -1,5 +1,6 @@
 [init]
   defaultBranch = main
+
 [alias]
     # View abbreviated SHA, description, and history graph of the latest 20 commits
     l = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
@@ -37,6 +38,22 @@
     # Interactive rebase with the given number of latest commits
     reb = "!r() { git rebase -i HEAD~$1; }; r"
 
+    # Sign commit
+    ci = commit -S
+
+    # Check the last commit and show the signature
+    last = log -1 HEAD --show-signature
+
+    # There's fire everwhere, everything is *not* fine and you have to save your local changes
+    yolo = !git add -A && git commit -m \"$(curl --silent --fail https://whatthecommit.com/index.txt)\"
+
+    # Shortcut to diff staged and unstaged code
+    dt = !git difftool
+    dtc = !git difftool --cached
+
+    # For those times you just have to pat someone on the back
+    fame = python --version -m gitfame
+
 [apply]
     # Detect whitespace errors when applying a patch
     whitespace = fix
@@ -51,9 +68,9 @@
     # [default] trailing-space: looks for spaces at the end of a line
     # [default] space-before-tab: looks for spaces before tabs at the beginning of
     # a line
-    whitespace = tab-in-indent,tabwidth=4,trailing-space
+    whitespace = space-before-tab,trailing-space
 
-    editor = vim
+    editor = nvim
     pager = $(brew --prefix git)/share/git-core/contrib/diff-highlight/diff-highlight | less
     autocrlf = input
 
