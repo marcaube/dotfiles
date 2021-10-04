@@ -118,7 +118,7 @@ cask 'font-hack-nerd-font'    # This font adds support for nice icons in NerdTre
 # Install Mac App Store apps
 mas '1Password', id: 1333542190     # password manager
 mas 'Bear', id: 1091189122          # note taking app
-mas 'Deliveries', id: 924726344     # package tracking
+mas 'Deliveries', id: 290986013     # package tracking
 mas 'Grammarly for Safari', id: 1462114288
 mas 'Kaleidoscope', id: 587512244   # the best difftool ever, fight me
 mas 'Next Meeting', id: 1017470484  # See what meeting is up next, right in the status bar
