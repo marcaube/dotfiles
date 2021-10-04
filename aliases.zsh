@@ -7,9 +7,9 @@ alias aliases='$EDITOR ~/.dotfiles/aliases.zsh'
 # Edit my extra configs
 alias extras='$EDITOR ~/.dotfiles/extra.zsh'
 
-# Open the Sublime scratchpad
-SCRATCHFILE=~/Library/Application\ Support/Sublime\ Text\ 3/scratchpad.txt
-alias scratchpad='echo "\n\n$(date):\n=============================\n" >> $SCRATCHFILE; vim "+normal GzzA" $SCRATCHFILE'
+# Open my local scratchpad
+SCRATCHFILE=~/scratchpad.txt
+alias scratchpad='echo "\n\n$(date):\n=============================\n" >> $SCRATCHFILE; $EDITOR $SCRATCHFILE'
 alias sp='scratchpad'
 
 # Edit my hosts file
