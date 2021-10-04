@@ -117,7 +117,6 @@ cask 'font-hack-nerd-font'    # This font adds support for nice icons in NerdTre
 
 # Install Mac App Store apps
 mas '1Password', id: 1333542190     # password manager
-mas 'Annotate', id: 918207447       # annotate screenshots like a boss
 mas 'Bear', id: 1091189122          # note taking app
 mas 'Deliveries', id: 924726344     # package tracking
 mas 'Grammarly for Safari', id: 1462114288
