@@ -14,6 +14,9 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # Load custom commands
 export PATH="$DOTFILES/bin:$PATH"
 
+# Add Python versions installed with pyenv to the PATH
+eval "$(pyenv init --path)"
+
 # Specify default editor. Possible values: vim, nano, ed etc.
 export EDITOR=nvim
 export VISUAL=nvim
