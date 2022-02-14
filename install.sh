@@ -59,10 +59,10 @@ rm -rf $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
 # Install LunarVim
-if [ ! -f "$HOME/.config/nvim/lv-config.lua" ]; then
+if [ ! -f "$HOME/.config/nvim/config.lua" ]; then
     printf "${GREEN}[+] Installing LunarVim...${ENDCOLOR}\n"
-    sh -c $(curl -s https://raw.githubusercontent.com/ChristianChiarulli/lunarvim/master/utils/installer/install.sh)
-    ln -s $HOME/.dotfiles/lv-config.lua $HOME/.config/nvim/lv-config
+    bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+    ln -s $HOME/.dotfiles/config.lua $HOME/.config/nvim/config
 fi
 
 # Install my kitty.conf
