@@ -70,7 +70,7 @@
     # a line
     whitespace = space-before-tab,trailing-space
 
-    editor = nvim
+    editor = vim
     pager = $(brew --prefix git)/share/git-core/contrib/diff-highlight/diff-highlight | less
     autocrlf = input
 

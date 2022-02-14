@@ -38,8 +38,6 @@ alias www='cd ~/Code;pwd'
 alias cat='bat'
 alias woman=tldr # Grace Hopper approved
 alias chromeopen='/usr/bin/open -a "/Applications/Google Chrome.app"'
-alias vim='nvim'
-alias v=vim
 
 # Show/hide hidden files in Finder
 alias hide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
@@ -156,3 +154,11 @@ function regex() {
 function length() {
     awk '{print length, $0}'
 }
+
+# Git checkout with branch name autocomplete using fzf (from: https://elijahmanor.com/byte/git-recent-branches)
+alias cb='git branch --sort=-committerdate | fzf --header Checkout | xargs git checkout'
+
+# Tmux shortcuts (from: https://github.com/everzet/dotfiles/blob/master/zsh/aliases.zsh)
+alias tn='tmux new -s ${PWD##*/}'
+alias ta='tmux at -t'
+alias tls='tmux list-sessions'

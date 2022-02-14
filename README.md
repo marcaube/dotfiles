@@ -93,7 +93,6 @@ For example, that's where I define my `GIT_AUTHOR_NAME` and `GIT_AUTHOR_EMAIL`.
 - [`.zshrc`](./.zshrc)  contains my Oh My ZSH preferences
 - [`aliases.zsh`](./aliases.zsh) defines a list of useful CLI aliases, shortcuts and functions
 - [`Brewfile`](./Brewfile) contains the list of binaries (homebrew) and apps (cask and mas) that I want installed on my system
-- [`com.googlecode.iterm2.plist`](./com.googlecode.iterm2.plist) is my iTerm2 config
 - [`exports.zsh`](./exports.zsh) contains the `PATH` env variable configs
 - extra.zsh is a file ignored by git where you can add your git credentials, custom commands, private aliases, etc.
 - [`install.sh`](./install.sh) is the installation script to make this all work "automagically"

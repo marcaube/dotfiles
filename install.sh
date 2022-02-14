@@ -70,6 +70,17 @@ if [ ! -f "$HOME/.config/kitty/kitty.conf" ]; then
     ln -s $HOME/.dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
 fi
 
+# Install my tmux.conf and plugins
+if [ ! -f "$HOME/.tmux.conf" ]; then
+    ln -s $HOME/.dotfiles/.tmux.conf $HOME/.tmux.conf
+
+    # Install tpm to manage tmux plugins (check keybindings: https://github.com/tmux-plugins/tpm#key-bindings)
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+    # Reload the tmux config in the current shell
+    tmux source $HOME/.tmux.conf
+fi
+
 # Symlink the Mackup config file to the home directory
 if [ ! -f "$HOME/.mackup.cfg" ]; then
     ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
