@@ -94,5 +94,10 @@ SAVEHIST=$HISTSIZE
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+# kitty: jumping words using option + arrows
+# https://github.com/kovidgoyal/kitty/issues/838#issuecomment-770328902
+bindkey "\e[1;3D" backward-word # ⌥←
+bindkey "\e[1;3C" forward-word  # ⌥→
+
 autoload -U promptinit; promptinit
 prompt pure
