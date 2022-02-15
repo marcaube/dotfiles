@@ -55,20 +55,22 @@ fi
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
 printf "${GREEN}[+] Installing dotfiles...${ENDCOLOR}\n"
-rm -rf $HOME/.zshrc
+rm -f $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
+source $HOME/.zshrc
 
 
 # Install zsh plugins
 printf "${GREEN}[+] Installing zsh plugins...${ENDCOLOR}\n"
-git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions 2> /dev/null
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 2> /dev/null
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting 2> /dev/null
 
 # Install LunarVim
 if [ ! -f "$HOME/.config/nvim/config.lua" ]; then
     printf "${GREEN}[+] Installing LunarVim...${ENDCOLOR}\n"
-    bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+    sh -c "$(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)"
+    rm -f $HOME/.config/lvim/config.lua
     ln -s $HOME/.dotfiles/config.lua $HOME/.config/lvim/config.lua
 fi
 
@@ -79,6 +81,7 @@ fi
 
 # Install my tmux.conf and plugins
 if [ ! -f "$HOME/.tmux.conf" ]; then
+    rm -f $HOME/.tmux.conf
     ln -s $HOME/.dotfiles/.tmux.conf $HOME/.tmux.conf
 
     # Install tpm to manage tmux plugins (check keybindings: https://github.com/tmux-plugins/tpm#key-bindings)

@@ -24,6 +24,7 @@ brew 'mackup'           # to sync my Mac configs
 brew 'mas'              # to install Mac App Store apps from the CLI
 brew 'neofetch'
 brew 'neovim'
+brew 'pure'             # a minimalist CLI prompt
 brew 'ripgrep'
 brew 'telnet'
 brew 'tldr'             # like 'man' but for lazy people with deadlines
