@@ -58,6 +58,13 @@ printf "${GREEN}[+] Installing dotfiles...${ENDCOLOR}\n"
 rm -rf $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
+
+# Install zsh plugins
+printf "${GREEN}[+] Installing zsh plugins...${ENDCOLOR}\n"
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
 # Install LunarVim
 if [ ! -f "$HOME/.config/nvim/config.lua" ]; then
     printf "${GREEN}[+] Installing LunarVim...${ENDCOLOR}\n"

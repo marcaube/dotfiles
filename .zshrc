@@ -74,9 +74,9 @@ plugins=(
   docker-compose
   macos
   # zsh-history
-  # zsh-autosuggestions
-  # zsh-syntax-highlighting
-  # zsh-completions
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  zsh-completions
 )
 
 # Activate Oh-My-Zsh
