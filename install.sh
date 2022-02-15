@@ -57,8 +57,6 @@ fi
 printf "${GREEN}[+] Installing dotfiles...${ENDCOLOR}\n"
 rm -f $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
-source $HOME/.zshrc
-
 
 # Install zsh plugins
 printf "${GREEN}[+] Installing zsh plugins...${ENDCOLOR}\n"
@@ -67,7 +65,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting 2> /dev/null
 
 # Install LunarVim
-if [ ! -f "$HOME/.config/nvim/config.lua" ]; then
+if [ ! -f "$HOME/.config/lvim/config.lua" ]; then
     printf "${GREEN}[+] Installing LunarVim...${ENDCOLOR}\n"
     sh -c "$(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)"
     rm -f $HOME/.config/lvim/config.lua
@@ -94,12 +92,6 @@ fi
 # Symlink the Mackup config file to the home directory
 if [ ! -f "$HOME/.mackup.cfg" ]; then
     ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
-fi
-
-# Symlink my custom Mackup configs for unsupported applications
-# See: https://github.com/lra/mackup/tree/master/doc#add-support-for-an-application-or-any-file-or-directory
-if [ ! -d "$HOME/.mackup" ]; then
-    ln -s $HOME/.dotfiles/.mackup $HOME/.mackup
 fi
 
 # Set my global git configs
