@@ -14,6 +14,7 @@ vim.opt.tabstop = 4
 -- Key mappings
 -- ---------------------------------------------------------------------------
 lvim.leader = "space"
+lvim.keys.normal_mode[";"] = ":"
 
 -- Save file using C-s
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"

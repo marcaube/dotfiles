@@ -62,7 +62,7 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 if [ ! -f "$HOME/.config/nvim/config.lua" ]; then
     printf "${GREEN}[+] Installing LunarVim...${ENDCOLOR}\n"
     bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
-    ln -s $HOME/.dotfiles/config.lua $HOME/.config/nvim/config
+    ln -s $HOME/.dotfiles/config.lua $HOME/.config/lvim/config.lua
 fi
 
 # Install my kitty.conf
