@@ -94,6 +94,19 @@ if [ ! -f "$HOME/.mackup.cfg" ]; then
     ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 fi
 
+# If gh is installed, install my extensions
+if ! command_does_not_exist gh; then
+    printf "${GREEN}[+] Installing GH CLI plugins...${ENDCOLOR}\n"
+    # PRs dashboard
+    gh extension install dlvhdr/gh-prs
+
+    # Branch switcher using fzf
+    gh extension install mislav/gh-branch
+
+    # Search through my GH stars using fzf
+    gh extension install korosuke613/gh-user-stars
+fi
+
 # Set my global git configs
 printf "${GREEN}[+] Configuring git...${ENDCOLOR}\n"
 rm $HOME/.gitconfig

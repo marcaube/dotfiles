@@ -20,6 +20,7 @@ brew 'graphviz'         # graph/diagrams generation
 brew 'htop'
 brew 'httpie'           # to test HTTP calls from the CLI
 brew 'imgcat'           # like 'cat', but for images
+brew 'jq'               # When you want to manipulate JSON piped from httpie
 brew 'mackup'           # to sync my Mac configs
 brew 'mas'              # to install Mac App Store apps from the CLI
 brew 'neofetch'
@@ -31,12 +32,11 @@ brew 'tldr'             # like 'man' but for lazy people with deadlines
 brew 'tmux'
 brew 'tree'             # to display directories tree
 brew 'wget'
-brew 'zsh'              # has to be installed before installing Oh My Zsh
-brew 'zsh-completions'  # more auto-completions for Zsh
 
 # Development
 brew 'bfg'              # for that time the intern added passwords to the repo
 brew 'exercism'         # to submit code solutions to Exercism.io
+brew 'gh'               # GitHub on the CLI
 brew 'git'              # OSX's version is out of date
 brew 'git-lfs'          # git's large file system
 
@@ -44,7 +44,6 @@ brew 'git-lfs'          # git's large file system
 brew 'assume-role'
 brew 'awscli'
 brew 'gettext'      # to compile messages, don't forget to link!
-brew 'jq'
 brew 'libjpeg'
 brew 'libmagic'
 brew 'libmaxminddb' # for GeoIP
@@ -86,7 +85,6 @@ cask 'imagealpha'       # optimize transparent PNGs
 cask 'imageoptim'       # optimize images
 cask 'insomnia'         # a nice API client GUI
 cask 'intellij-idea'
-cask 'iterm2'           # a better terminal
 cask 'keybase'
 cask 'keycastr'         # when pairing remotly, to show all keypresses in vim/neovim
 cask 'kitty'
