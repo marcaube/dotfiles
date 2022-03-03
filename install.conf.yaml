@@ -1,0 +1,87 @@
+- defaults:
+    link:
+        relink: true
+    shell:
+        quiet: true
+
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+
+    - description: Installing XCode Command Line Tools
+      command: "[ -x \"$(which xcodebuild)\" ] || xcode-select --install"
+
+- clean: ['~']
+
+- link:
+    # Git
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore_global: git/gitignore_global
+
+    # Kitty shell
+    ~/.config/kitty/kitty.conf: kitty/kitty.conf
+
+    # Mackup
+    ~/.mackup.cfg: macos/mackup.cfg
+
+    # Tmux
+    ~/.tmux.conf: tmux/tmux.conf
+
+    # Lunarvim
+    ~/.config/lvim/config.lua: vim/config.lua
+
+    # Zsh / Oh-my-zsh
+    ~/.zshrc: zsh/zshrc
+
+- create:
+    - ~/Code
+    - ~/.tmux/plugins
+
+- shell:
+    - description: Installing Homebrew
+      command: "[ -x \"$(which brew)\" ] || /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\""
+
+    - description: Updating Homebrew
+      command: "brew update"
+
+    - description: Installing brew bundler
+      command: "brew tap homebrew/bundle"
+
+    - description: Installing Brewfile bundle
+      command: "brew bundle --file=macos/Brewfile"
+      stdout: true
+      stderr: true
+
+    # Hide "last login" line when starting a new terminal session
+    - description: Hushing login
+      command: "[ -f ~/.hushlogin ] || touch ~/.hushlogin"
+
+    - description: Installing Oh My ZSH
+      command: "[ -d ~/.oh-my-zsh ] || sh -c \"$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\" && compaudit | xargs chmod g-w,o-w"
+
+    - description: Adding ZSH to list of acceptable shells
+      command: "[[ \"$(ag $(which zsh) /etc/shells)\" ]] || sudo sh -c \"echo $(which zsh) >> /etc/shells\""
+
+    - description: Making ZSH the default shell
+      command: "sudo chsh -s $(which zsh)"
+
+    - description: Installing ZSH autocompletions
+      command: "git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions 2> /dev/null || exit 0"
+
+    - description: Installing ZSH autosuggestions
+      command: "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 2> /dev/null || exit 0"
+
+    - description: Installing ZSH syntax highlighting
+      command: "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting 2> /dev/null || exit 0"
+
+    - description: Installing Lunarvim
+      command: "[ -x \"$(which lvim)\" ] || sh -c \"$(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)\""
+
+    - description: Installing tmux plugins
+      command: "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || exit 0"
+
+# Install `gh` extensions
+- ghe:
+    - dlvhdr/gh-prs
+    - mislav/gh-branch
+    - korosuke613/gh-user-star
