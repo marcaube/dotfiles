@@ -4,7 +4,7 @@ lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "nord"
 
-vim.opt.colorcolumn = "120,160"     -- rulers at 120 and 160 chars
+vim.opt.colorcolumn = "80,120,160"  -- rulers at 120 and 160 chars
 vim.opt.showmode = true             -- show the current editor mode in the statusline
 vim.opt.relativenumber = true       -- makes jumping around a lot easier
 vim.opt.shiftwidth = 4
