@@ -45,6 +45,51 @@ lvim.keys.normal_mode["<C-h>"] = ":TmuxNavigateLeft<cr>"
 lvim.keys.normal_mode["<C-l>"] = ":TmuxNavigateRight<cr>"
 
 
+-- Colemak remaps (you'll probably want to remove those if you're on QWERTY)
+-- ---------------------------------------------------------------------------
+
+-- Cursor movement (mnei instead of hjkl)
+lvim.keys.normal_mode["m"] = "h"
+lvim.keys.normal_mode["n"] = "j"
+lvim.keys.normal_mode["e"] = "k"
+lvim.keys.normal_mode["i"] = "l"
+
+lvim.keys.visual_mode["m"] = "h"
+lvim.keys.visual_mode["n"] = "j"
+-- lvim.keys.visual_mode["N"] = "J" -- TODO: does not work...
+lvim.keys.visual_mode["e"] = "k"
+-- lvim.keys.visual_mode["E"] = "K" -- TODO: does not work...
+lvim.keys.visual_mode["i"] = "l"
+
+-- Faster Up/Down navigation
+lvim.keys.normal_mode["N"] = "5j"
+lvim.keys.normal_mode["E"] = "5k"
+
+-- Faster word movement
+lvim.keys.normal_mode["W"] = "5w"
+lvim.keys.normal_mode["B"] = "5b"
+
+-- Goto start/end of line faster than with 0 and $
+lvim.keys.normal_mode["M"] = "^"
+lvim.keys.normal_mode["I"] = "$"
+
+-- Insert key
+lvim.keys.normal_mode["k"] = "i"
+lvim.lsp.buffer_mappings.normal_mode["K"] = "<Nop>"  -- Unmap the K key used by lsp (https://github.com/LunarVim/LunarVim/pull/1687)
+lvim.keys.normal_mode["K"] = "I"
+
+-- Remap J to "end of word", has a nice symetry with B
+lvim.keys.normal_mode["j"] = "e"
+lvim.keys.normal_mode["J"] = "5e"
+
+-- Move selected line / block of text in visual mode
+lvim.keys.visual_block_mode["N"] = ":move '>+1<CR>gv-gv"
+lvim.keys.visual_block_mode["E"] = ":move '<-2<CR>gv-gv"
+
+-- ---------------------------------------------------------------------------
+
+
+
 -- Additional Leader bindings for WhichKey
 -- ---------------------------------------------------------------------------
 lvim.builtin.which_key.mappings["Q"] = { "<cmd>qa!<CR>", "Quit all" }
@@ -78,21 +123,17 @@ lvim.plugins = {
 -- MISC (telescope, treesitter, LSP, linters, etc)
 -- ---------------------------------------------------------------------------
 
--- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
--- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
 local _, actions = pcall(require, "telescope.actions")
 lvim.builtin.telescope.defaults.mappings = {
   -- for input mode
   i = {
-    ["<C-j>"] = actions.move_selection_next,
-    ["<C-k>"] = actions.move_selection_previous,
-    ["<C-n>"] = actions.cycle_history_next,
-    ["<C-p>"] = actions.cycle_history_prev,
+    ["<C-n>"] = actions.move_selection_next,
+    ["<C-e>"] = actions.move_selection_previous,
   },
   -- for normal mode
   n = {
-    ["<C-j>"] = actions.move_selection_next,
-    ["<C-k>"] = actions.move_selection_previous,
+    ["<C-n>"] = actions.move_selection_next,
+    ["<C-e>"] = actions.move_selection_previous,
   },
 }
 
