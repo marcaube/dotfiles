@@ -4,7 +4,7 @@ lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "iceberg"
 
-vim.opt.colorcolumn = "80,120,160"  -- rulers at 120 and 160 chars
+vim.opt.colorcolumn = "80,120,160"  -- rulers at 80, 120 and 160 chars
 vim.opt.showmode = true             -- show the current editor mode in the statusline
 vim.opt.relativenumber = true       -- makes jumping around a lot easier
 vim.opt.shiftwidth = 4
@@ -53,6 +53,7 @@ lvim.builtin.which_key.mappings["F"] = { "<cmd>:Telescope find_files hidden=true
 -- Quickly toggle between files with leader-leader
 lvim.builtin.which_key.mappings["<leader>"] = { "<C-^>", "Previous Buffer" }
 
+-- Shortcuts for tests
 lvim.builtin.which_key.mappings["t"] = {
     name = "+Custom Leader Keys",
     f = { "<cmd>:TestFile<cr>", "Test file"},
@@ -61,6 +62,9 @@ lvim.builtin.which_key.mappings["t"] = {
     s = { "<cmd>:TestSuite<cr>", "Test suite"},
     v = { "<cmd>:TestVisit<cr>", "Visit last test file"},
 }
+
+-- Zen Mode 🧘
+lvim.builtin.which_key.mappings["Z"] = { "<cmd>:ZenMode<cr>", "Zen Mode" }
 
 
 -- Additional Plugins
@@ -72,7 +76,33 @@ lvim.plugins = {
     {"tpope/vim-surround"},
     {"tpope/vim-repeat"},
     {"christoomey/vim-tmux-navigator"},
+    {"folke/zen-mode.nvim"},
 }
+
+
+-- Dashboard
+-- ---------------------------------------------------------------------------
+lvim.builtin.dashboard.custom_header = {
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+    '████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+    '██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+    '██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+    '██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+    '╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+}
+lvim.builtin.dashboard.disable_at_vim_enter = 1
+
+-- https://www.lunarvim.org/configuration/06-statusline.html#style
+lvim.builtin.lualine.style = "default"
+
+-- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
+lvim.builtin.lualine.options.theme = "iceberg"
 
 
 -- MISC (telescope, treesitter, LSP, linters, etc)
