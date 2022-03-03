@@ -80,6 +80,9 @@
     - description: Installing tmux plugins
       command: "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || exit 0"
 
+    - description: Clear sudo credential cache
+      command: "sudo --reset-timestamp"
+
 # Install `gh` extensions
 - ghe:
     - dlvhdr/gh-prs
