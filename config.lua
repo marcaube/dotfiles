@@ -32,6 +32,13 @@ vim.cmd("inoremap . .<c-g>u")
 vim.cmd("inoremap ! !<c-g>u")
 vim.cmd("inoremap ? ?<c-g>u")
 
+-- Make Y copy till the end of the line
+lvim.keys.normal_mode["Y"] = "y$"
+
+-- Quick indentation
+lvim.keys.normal_mode[">"] = ">>"
+lvim.keys.normal_mode["<"] = "<<"
+
 -- This shouldn't be needed, but my tmux navigator keybindings must be conflicting...
 -- TODO: find and fix the issue instead of the patch
 lvim.keys.normal_mode["<C-h>"] = ":TmuxNavigateLeft<cr>"
