@@ -13,7 +13,16 @@
 
 - clean: ['~']
 
+- create:
+    - ~/Code
+    - ~/.tmux/plugins
+    - ~/bin
+
 - link:
+    # Binaries
+    ~/bin/epoch: bin/epoch
+    ~/bin/$: bin/$
+
     # Git
     ~/.gitconfig: git/gitconfig
     ~/.gitignore_global: git/gitignore_global
@@ -32,10 +41,6 @@
 
     # Zsh / Oh-my-zsh
     ~/.zshrc: zsh/zshrc
-
-- create:
-    - ~/Code
-    - ~/.tmux/plugins
 
 - shell:
     - description: Installing Homebrew

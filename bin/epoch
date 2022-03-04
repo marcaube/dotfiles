@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+import os
+from datetime import datetime, timedelta
+from sys import argv
+
+ONE_MINUTE = 60
+ONE_HOUR = ONE_MINUTE * 60
+ONE_DAY = ONE_HOUR * 24
+ONE_WEEK = ONE_DAY * 7
+ONE_MONTH = ONE_DAY * 30
+
+if __name__ == "__main__":
+    if len(argv) < 2:
+        exit(f"Usage: {os.path.basename(__file__)} <epoch>")
+
+    input = datetime.fromtimestamp(int(argv[1]))
+
+    # In ISO format
+    print(f"ISO: {input.isoformat()}\n")
+
+    # Relative to now
+    now = datetime.now()
+    delta = (now - input).total_seconds()
+
+    if delta < 0:
+        print(f"Relative: in {- int(delta // 60)} minutes.")
+    else:
+        if delta < ONE_HOUR:
+            print(f"Relative: {- int(delta // ONE_MINUTE)} minutes ago.")
+        elif delta < ONE_DAY:
+            print(f"Relative: {int(delta // ONE_HOUR)} hours ago.")
+        elif delta < ONE_WEEK:
+            print(f"Relative: {round(delta / ONE_DAY)} days ago.")
+        elif delta < ONE_MONTH:
+            print(f"Relative: {round(delta / ONE_WEEK)} weeks ago.")
+        else:
+            print(f"Relative: {round(delta / ONE_MONTH)} months ago.")
