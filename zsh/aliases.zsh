@@ -159,6 +159,7 @@ function length() {
 alias cb='git branch --sort=-committerdate | fzf --header Checkout | xargs git checkout'
 
 # Tmux shortcuts (from: https://github.com/everzet/dotfiles/blob/master/zsh/aliases.zsh)
-alias tn='tmux new -s ${PWD##*/}'
-alias ta='tmux at -t'
+alias tn='tmux new-session -s ${PWD##*/}'
+alias ta='tmux attach -t'
 alias tls='tmux list-sessions'
+alias tks='tmux kill-session -t'
