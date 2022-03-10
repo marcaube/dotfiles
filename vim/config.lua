@@ -2,7 +2,7 @@
 -- ---------------------------------------------------------------------------
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "iceberg"
+lvim.colorscheme = "carbon"
 
 vim.opt.colorcolumn = "80,120,160"  -- rulers at 80, 120 and 160 chars
 vim.opt.showmode = true             -- show the current editor mode in the statusline
@@ -73,8 +73,12 @@ lvim.builtin.which_key.mappings["Z"] = { "<cmd>:ZenMode<cr>", "Zen Mode" }
 -- Additional Plugins
 -- ---------------------------------------------------------------------------
 lvim.plugins = {
+    -- Color schemes
     {"arcticicestudio/nord-vim"},
     {"cocopon/iceberg.vim"},
+    {'michaeldyrynda/carbon'},
+
+    -- Plugins
     {"vim-test/vim-test"},
     {"tpope/vim-surround"},
     {"tpope/vim-repeat"},

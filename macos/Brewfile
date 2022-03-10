@@ -86,7 +86,7 @@ cask 'imageoptim'       # optimize images
 cask 'insomnia'         # a nice API client GUI
 cask 'intellij-idea'
 cask 'keybase'
-cask 'keycastr'         # when pairing remotly, to show all keypresses in vim/neovim
+cask 'keycastr'         # when pairing remotely, to show all keypresses in vim/neovim
 cask 'kitty'
 cask 'ksdiff'           # CLI launcher for my difftool (Kaleidoscope)
 cask 'ngrok'
