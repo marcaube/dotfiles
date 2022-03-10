@@ -45,6 +45,7 @@ lvim.keys.normal_mode["<C-h>"] = ":TmuxNavigateLeft<cr>"
 lvim.keys.normal_mode["<C-l>"] = ":TmuxNavigateRight<cr>"
 
 -- Add a trailing-comma and come back
+vim.cmd('nmap ,, mxA,<esc>`x')
 vim.cmd('imap ,, <esc>mxA,<esc>`xa')
 
 
