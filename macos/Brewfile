@@ -40,6 +40,11 @@ brew 'gh'               # GitHub on the CLI
 brew 'git'              # OSX's version is out of date
 brew 'git-lfs'          # git's large file system
 
+# Productivity and automation (see: https://tighten.com/blog/how-to-train-your-keyboard/)
+cask 'karabiner-elements'   # Remap keys and shortcuts at the kernel level
+cask 'hammerspoon'          # Take Karabiner's shortcuts and make the magic happen
+brew 'yqrashawn/goku/goku'  # Manage Karabiner configs with ease
+
 # Tools for work
 brew 'assume-role'
 brew 'awscli'
