@@ -30,6 +30,10 @@
     # Kitty shell
     ~/.config/kitty/kitty.conf: kitty/kitty.conf
 
+    # Karabiner, Hammerspoon and Goku
+    ~/.config/karabiner.edn: karabiner/karabiner.edn
+    ~/.hammerspoon: hammerspoon
+
     # Mackup
     ~/.mackup.cfg: macos/mackup.cfg
 

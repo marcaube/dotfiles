@@ -1,0 +1,31 @@
+{
+    :templates {
+        :launch "open -a %s"
+        :hs "open -g hammerspoon://%s"
+    }
+
+    :devices {
+        :moonlander [{:product_id 6505 :vendor_id 12951}]
+        :apple-wireless [{:product_id 598 :vendor_id 1452}]
+        :macbook-pro [{:product_id 832 :vendor_id 1452}]
+    }
+
+    :layers {
+        :launch {:key :caps_lock :alone {:key :escape}}
+    }
+
+    :main [
+        {
+            :des "Launch layer"
+            :rules [:launch
+                [:s [:launch "Slack.app"]]
+                [:d [:launch "Discord.app"]]
+                [:b [:launch "Safari.app"]]
+                [:k [:launch "kitty.app"]]
+                [:m [:launch "Mail.app"]]
+                [:c [:launch "Calendar.app"]]
+                [:f [:launch "Fellow.app"]]
+            ]
+        }
+    ]
+}
