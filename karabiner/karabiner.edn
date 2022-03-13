@@ -8,6 +8,7 @@
         :moonlander [{:product_id 6505 :vendor_id 12951}]
         :apple-wireless [{:product_id 598 :vendor_id 1452}]
         :macbook-pro [{:product_id 832 :vendor_id 1452}]
+        :macbook [{:product_id 633 :vendor_id 1452}]
     }
 
     :layers {

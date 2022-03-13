@@ -30,7 +30,7 @@
     ~/.gitignore_global: git/gitignore_global
 
     # Kitty shell
-    ~/.config/kitty/kitty.conf: kitty/kitty.conf
+    ~/.config/kitty: kitty
 
     # Karabiner, Hammerspoon and Goku
     ~/.config/karabiner.edn: karabiner/karabiner.edn

@@ -2,7 +2,7 @@
 -- ---------------------------------------------------------------------------
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "carbon"
+lvim.colorscheme = "iceberg"
 
 vim.opt.colorcolumn = "80,120,160"  -- rulers at 80, 120 and 160 chars
 vim.opt.showmode = true             -- show the current editor mode in the statusline
