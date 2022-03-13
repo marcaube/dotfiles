@@ -6,6 +6,7 @@ tap 'eddieantonio/eddieantonio' # for imgcat
 tap 'remind101/formulae'        # for assume-role
 tap 'homebrew/cask-drivers'     # to flash my Moonlander keyboard firmware
 tap 'wpscanteam/tap'            # for wpscan
+tap 'yqrashawn/goku'            # For Goku
 
 # Install Binaries
 brew 'bat'              # like 'cat', with highlighting, git support and pagination
@@ -24,12 +25,12 @@ brew 'jq'               # When you want to manipulate JSON piped from httpie
 brew 'mackup'           # to sync my Mac configs
 brew 'mas'              # to install Mac App Store apps from the CLI
 brew 'neofetch'
-brew 'neovim'
 brew 'pure'             # a minimalist CLI prompt
 brew 'ripgrep'
 brew 'telnet'
 brew 'tldr'             # like 'man' but for lazy people with deadlines
 brew 'tmux'
+brew 'tmuxinator'
 brew 'tree'             # to display directories tree
 brew 'wget'
 

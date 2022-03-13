@@ -17,6 +17,8 @@
     - ~/Code
     - ~/.tmux/plugins
     - ~/bin
+    - ~/.config/lvim
+    - ~/.config/karabiner/karabiner.json
 
 - link:
     # Binaries
