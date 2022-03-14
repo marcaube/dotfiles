@@ -6,7 +6,8 @@ tap 'eddieantonio/eddieantonio' # for imgcat
 tap 'remind101/formulae'        # for assume-role
 tap 'homebrew/cask-drivers'     # to flash my Moonlander keyboard firmware
 tap 'wpscanteam/tap'            # for wpscan
-tap 'yqrashawn/goku'            # For Goku
+tap 'yqrashawn/goku'            # for Goku
+tap 'koekeishiya/formulae'      # for yabai
 
 # Install Binaries
 brew 'bat'              # like 'cat', with highlighting, git support and pagination
@@ -33,6 +34,7 @@ brew 'tmux'
 brew 'tmuxinator'
 brew 'tree'             # to display directories tree
 brew 'wget'
+brew 'yabai'
 
 # Development
 brew 'bfg'              # for that time the intern added passwords to the repo
@@ -97,7 +99,6 @@ cask 'kitty'
 cask 'ksdiff'           # CLI launcher for my difftool (Kaleidoscope)
 cask 'ngrok'
 cask 'slack'
-cask 'spectacle'        # no better ways to move windows around
 cask 'sublime-text'
 cask 'zoom'
 cask 'zsa-wally'        # to flash my Moonlander keyboard firmware

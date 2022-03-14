@@ -2,6 +2,7 @@
     :templates {
         :launch "open -a %s"
         :hs "open -g hammerspoon://hyper?action=%s\\&target=%s"
+        :yabai "/usr/local/bin/yabai -m %s"
     }
 
     :devices {
