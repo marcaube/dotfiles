@@ -12,12 +12,12 @@
     }
 
     :layers {
-        :launch {:key :caps_lock :alone {:key :escape}}
+        :launch {:key :caps_lock :alone {:key :escape} :condi :!moonlander}
     }
 
     :main [
         {
-            :des "Launch layer"
+            :des "Default Launch layer"
             :rules [:launch
                 [:s [:launch "Slack.app"]]
                 [:d [:launch "Discord.app"]]
@@ -30,9 +30,31 @@
             ]
         }
         {
-            :des "System-wide Shortcuts"
+            :des "Moonlander Launch layer"
+            :rules [
+                [:condi :moonlander]
+                [:!!s [:launch "Slack.app"]]
+                [:!!d [:launch "Discord.app"]]
+                [:!!b [:launch "Safari.app"]]
+                [:!!k [:launch "kitty.app"]]
+                [:!!m [:launch "Mail.app"]]
+                [:!!c [:launch "Calendar.app"]]
+                [:!!f [:launch "Fellow.app"]]
+                [:!!z [:launch "zoom.us.app"]]
+
+            ]
+        }
+        {
+            :des "Default command palette"
             :rules [:launch
                 [:p [:hs "open" "default"]]
+            ]
+        }
+        {
+            :des "Moonlander command palette"
+            :rules [
+                [:condi :moonlander]
+                [:!!o [:hs "open" "default"]]
             ]
         }
     ]
