@@ -13,10 +13,12 @@ hs.notify.new({title = 'Hammerspoon', informativeText = 'Config loaded'}):send()
 hs.loadSpoon('Hyper')
 hs.loadSpoon('Helpers')
 
+-- Use `osascript -e 'id of app "Slack"'` to find the ID of an app
 slack = 'com.tinyspeck.slackmacgap'
 discord = 'com.hnc.Discord'
 bear = 'net.shinyfrog.bear'
 intellij = 'com.jetbrains.intellij'
+fellow = 'com.electron.fellow'
 
 hyper:app(slack)
     :action('open', {
@@ -36,6 +38,11 @@ hyper:app(bear)
 hyper:app(intellij)
     :action('open', {
         default = combo({'cmd', 'option'}, 'o')
+    })
+
+hyper:app(fellow)
+    :action('open', {
+        default = combo({'cmd'}, 'k')
     })
 
 hyper:app('fallback')
