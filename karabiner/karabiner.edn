@@ -28,6 +28,7 @@
                 [:f [:launch "Fellow.app"]]
                 [:z [:launch "zoom.us.app"]]
                 [:r [:launch "Bear.app"]]
+                [:t [:launch "Tweetbot.app"]]
             ]
         }
         {
@@ -43,7 +44,7 @@
                 [:!!f [:launch "Fellow.app"]]
                 [:!!z [:launch "zoom.us.app"]]
                 [:!!r [:launch "Bear.app"]]
-
+                [:!!t [:launch "Tweetbot.app"]]
             ]
         }
         {
