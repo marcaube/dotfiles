@@ -32,8 +32,11 @@ vim.cmd("inoremap . .<c-g>u")
 vim.cmd("inoremap ! !<c-g>u")
 vim.cmd("inoremap ? ?<c-g>u")
 
--- Make Y copy till the end of the line
+-- Make Y copy till the end of the line, to behave more like C and D
 lvim.keys.normal_mode["Y"] = "y$"
+
+-- Go to the first caracter on the line with 00, since ^ is hard to type on my kb
+lvim.keys.normal_mode["00"] = "^"
 
 -- Quick indentation
 lvim.keys.normal_mode[">"] = ">>"
