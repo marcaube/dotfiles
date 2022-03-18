@@ -24,6 +24,7 @@
     # Binaries
     ~/bin/epoch: bin/epoch
     ~/bin/$: bin/$
+    ~/bin/xkcd: bin/xkcd
 
     # Git
     ~/.gitconfig: git/gitconfig
