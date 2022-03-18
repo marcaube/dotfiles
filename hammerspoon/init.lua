@@ -49,3 +49,9 @@ hyper:app('fallback')
     :action('open', {
         default = combo({'cmd'}, 'p'),
     })
+
+-- Quick 👋 reaction in Slack
+hyper:app(slack)
+    :action('slack-rw-wave', {
+        default = chain({keys('+:wave:'), key('return')})
+    })

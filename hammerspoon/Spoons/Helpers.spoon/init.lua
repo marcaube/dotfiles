@@ -9,6 +9,12 @@ function combo(modifiers, key)
     end
 end
 
+function key(key)
+    return function()
+        hs.eventtap.keyStroke({}, key)
+    end
+end
+
 function keys(keys)
     return function()
         hs.eventtap.keyStrokes(keys)

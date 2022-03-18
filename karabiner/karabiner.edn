@@ -48,16 +48,18 @@
             ]
         }
         {
-            :des "Default command palette"
+            :des "Default Hammerspoon"
             :rules [:launch
-                [:p [:hs "open" "default"]]
+                [:o [:hs "open" "default"]]
+                [:w [:hs "slack-rw-wave" "default"]]
             ]
         }
         {
-            :des "Moonlander command palette"
+            :des "Moonlander Hammerspoon"
             :rules [
                 [:condi :moonlander]
                 [:!!o [:hs "open" "default"]]
+                [:!!w [:hs "slack-rw-wave" "default"]]
             ]
         }
     ]
