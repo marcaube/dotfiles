@@ -25,6 +25,7 @@
     ~/bin/epoch: bin/epoch
     ~/bin/$: bin/$
     ~/bin/xkcd: bin/xkcd
+    ~/bin/unzlib: bin/unzlib
 
     # Git
     ~/.gitconfig: git/gitconfig
