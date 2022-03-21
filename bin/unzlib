@@ -8,7 +8,7 @@ if __name__ == "__main__":
     """
 
     if len(argv) < 2:
-            data = stdin.buffer.read()
+        data = stdin.buffer.read()
     else:
         with open(argv[1], "rb") as file:
             data = file.read()
@@ -16,6 +16,6 @@ if __name__ == "__main__":
     try:
         content = zlib.decompress(data).decode("utf-8")
     except UnicodeDecodeError:
-        exit('Error: unable to decode file or stream!')
+        exit("Error: unable to decode file or stream!")
 
     print(content)
