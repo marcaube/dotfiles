@@ -55,7 +55,7 @@ vim.cmd('imap ,, <esc>mxA,<esc>`xa')
 -- Additional Leader bindings for WhichKey
 -- ---------------------------------------------------------------------------
 lvim.builtin.which_key.mappings["Q"] = { "<cmd>qa!<CR>", "Quit all" }
-lvim.builtin.which_key.mappings["F"] = { "<cmd>:Telescope find_files hidden=true<cr>", "Find file" }
+lvim.builtin.which_key.mappings["F"] = { "<cmd>:Telescope find_files hidden=true no_ignore=true<cr>", "Find file" }
 
 -- Quickly toggle between files with leader-leader
 lvim.builtin.which_key.mappings["<leader>"] = { "<C-^>", "Previous Buffer" }
