@@ -14,8 +14,9 @@ if __name__ == "__main__":
             data = file.read()
 
     try:
-        content = zlib.decompress(data).decode("utf-8")
+        content = zlib.decompress(data).decode("latin-1")
     except UnicodeDecodeError:
         exit("Error: unable to decode file or stream!")
 
-    print(content)
+    for l in content.split("\0"):
+        print(l)
