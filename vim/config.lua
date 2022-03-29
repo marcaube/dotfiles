@@ -2,13 +2,14 @@
 -- ---------------------------------------------------------------------------
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "iceberg"
+lvim.colorscheme = "nord"
 
 vim.opt.colorcolumn = "80,120,160"  -- rulers at 80, 120 and 160 chars
 vim.opt.showmode = true             -- show the current editor mode in the statusline
 vim.opt.relativenumber = true       -- makes jumping around a lot easier
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4              -- Size of an indent
+vim.opt.tabstop = 4                 -- Number of spaces tabs count for
+vim.opt.scrolloff = 10              -- Keep more context at edge of screen
 
 
 -- Key mappings
@@ -91,29 +92,14 @@ lvim.plugins = {
 }
 
 
--- Dashboard
+-- Lualine
 -- ---------------------------------------------------------------------------
-lvim.builtin.dashboard.custom_header = {
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
-    '████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
-    '██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
-    '██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
-    '██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
-    '╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
-}
-lvim.builtin.dashboard.disable_at_vim_enter = 1
 
 -- https://www.lunarvim.org/configuration/06-statusline.html#style
 lvim.builtin.lualine.style = "default"
 
 -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
-lvim.builtin.lualine.options.theme = "iceberg"
+lvim.builtin.lualine.options.theme = "nord"
 
 
 -- MISC (telescope, treesitter, LSP, linters, etc)
@@ -139,7 +125,6 @@ lvim.builtin.telescope.defaults.mappings = {
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.dashboard.active = true
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
