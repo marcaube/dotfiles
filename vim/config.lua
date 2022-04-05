@@ -10,12 +10,13 @@ vim.opt.relativenumber = true       -- makes jumping around a lot easier
 vim.opt.shiftwidth = 4              -- Size of an indent
 vim.opt.tabstop = 4                 -- Number of spaces tabs count for
 vim.opt.scrolloff = 10              -- Keep more context at edge of screen
+vim.opt.tw = 120                    -- Set the default texwidth to 120 chars for automatic formatting
 
 
 -- Key mappings
 -- ---------------------------------------------------------------------------
 lvim.leader = "space"
-lvim.keys.normal_mode[";"] = ":"
+lvim.keys.normal_mode[";"] = ":"    -- One less key to go into command-mode
 
 -- Save file using C-s
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
@@ -39,6 +40,9 @@ lvim.keys.normal_mode["Y"] = "y$"
 -- Go to the first caracter on the line with 00, since ^ is hard to type on my kb
 lvim.keys.normal_mode["00"] = "^"
 
+lvim.keys.normal_mode["E"] = "$"
+lvim.keys.normal_mode["B"] = "0"
+
 -- Quick indentation
 lvim.keys.normal_mode[">"] = ">>"
 lvim.keys.normal_mode["<"] = "<<"
@@ -51,6 +55,11 @@ lvim.keys.normal_mode["<C-l>"] = ":TmuxNavigateRight<cr>"
 -- Add a trailing-comma and come back
 vim.cmd('nmap ,, mxA,<esc>`x')
 vim.cmd('imap ,, <esc>mxA,<esc>`xa')
+
+-- Add a trailing semi-colon and come back (Rust, PHP)
+vim.cmd('nmap ;; mxA;<esc>`x')
+vim.cmd('imap ; ;') -- There was a clash with an existing mapping
+vim.cmd('imap ;; <esc>mxA;<esc>`xa')
 
 
 -- Additional Leader bindings for WhichKey
@@ -100,6 +109,11 @@ lvim.builtin.lualine.style = "default"
 
 -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
 lvim.builtin.lualine.options.theme = "nord"
+
+
+-- Vim-test
+-- ---------------------------------------------------------------------------
+vim.g['test#strategy'] = 'neovim' -- Pop a temporary split to run tests
 
 
 -- MISC (telescope, treesitter, LSP, linters, etc)
