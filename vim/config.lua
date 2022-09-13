@@ -43,6 +43,12 @@ lvim.keys.normal_mode["00"] = "^"
 lvim.keys.normal_mode["E"] = "$"
 lvim.keys.normal_mode["B"] = "0"
 
+-- Keep screen centered when doing half/full-page scrolling
+lvim.keys.normal_mode["<C-d>"] = "<C-d>zz"
+lvim.keys.normal_mode["<C-d>"] = "<C-d>zz"
+lvim.keys.normal_mode["<C-f>"] = "<C-f>zz"
+lvim.keys.normal_mode["<C-b>"] = "<C-b>zz"
+
 -- Quick indentation
 lvim.keys.normal_mode[">"] = ">>"
 lvim.keys.normal_mode["<"] = "<<"
