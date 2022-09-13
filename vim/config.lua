@@ -99,6 +99,10 @@ lvim.plugins = {
     {"tpope/vim-repeat"},
     {"christoomey/vim-tmux-navigator"},
     {"folke/zen-mode.nvim"},
+
+    -- Supercharge visual selection mode (https://vimtricks.com/p/vimtrick-region-expanding/)
+    {"terryma/vim-expand-region"},
+    {"jeetsukumaran/vim-pythonsense"},
 }
 
 
@@ -115,6 +119,24 @@ lvim.builtin.lualine.options.theme = "nord"
 -- Vim-test
 -- ---------------------------------------------------------------------------
 vim.g['test#strategy'] = 'neovim' -- Pop a temporary split to run tests
+
+
+-- Expand region
+-- ---------------------------------------------------------------------------
+vim.g['expand_region_text_objects_python'] = {
+    ['i"'] = 1, -- inside double-quotes
+    ['i\''] = 1, -- inside quotes
+    ['i]'] = 1, -- inside square brackets
+    ['ib'] = 1, -- inside parens
+    ['iB'] = 1, -- inside curly-braces
+    ['if'] = 1, -- inside function
+    ['af'] = 1, -- around function
+    ['ic'] = 1, -- inside class
+    ['ac'] = 1, -- around class
+}
+
+-- lvim.keys.visual_mode["v"] = "<Plug>(expand_region_expand)"
+-- lvim.keys.visual_mode["<C-v>"] = "<Plug>(expand_region_shrink)"
 
 
 -- MISC (telescope, treesitter, LSP, linters, etc)
