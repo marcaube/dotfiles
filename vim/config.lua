@@ -2,7 +2,7 @@
 -- ---------------------------------------------------------------------------
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "nord"
+lvim.colorscheme = "catppuccin"
 
 vim.opt.colorcolumn = "80,120,160"  -- rulers at 80, 120 and 160 chars
 vim.opt.showmode = true             -- show the current editor mode in the statusline
@@ -91,6 +91,7 @@ lvim.plugins = {
     {"arcticicestudio/nord-vim"},
     {"cocopon/iceberg.vim"},
     {'michaeldyrynda/carbon'},
+    { "catppuccin/nvim", as = "catppuccin" },
 
     -- Plugins
     {"vim-test/vim-test"},
@@ -162,3 +163,8 @@ lvim.builtin.treesitter.ensure_installed = {
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+
+
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+require("catppuccin").setup()
+vim.cmd [[colorscheme catppuccin]]
