@@ -77,6 +77,7 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   zsh-completions
+  git-trim
 )
 
 # Activate Oh-My-Zsh

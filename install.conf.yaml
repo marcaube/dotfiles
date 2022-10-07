@@ -87,6 +87,9 @@
     - description: Installing ZSH syntax highlighting
       command: "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting 2> /dev/null || exit 0"
 
+    - description: Installing git-trim
+      command: "git clone https://github.com/jasonmccreary/git-trim.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/git-trim 2> /dev/null || exit 0"
+
     - description: Installing Lunarvim
       command: "[ -x \"$(which lvim)\" ] || sh -c \"$(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)\""
 
