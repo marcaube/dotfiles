@@ -78,6 +78,7 @@ plugins=(
   zsh-syntax-highlighting
   zsh-completions
   git-trim
+  fzf
 )
 
 # Activate Oh-My-Zsh
