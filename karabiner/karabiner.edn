@@ -29,6 +29,7 @@
                 [:z [:launch "zoom.us.app"]]
                 [:r [:launch "Bear.app"]]
                 [:t [:launch "Tweetbot.app"]]
+                [:i [:launch "IntelliJ\ IDEA.app"]]
             ]
         }
         {
@@ -45,6 +46,7 @@
                 [:!!z [:launch "zoom.us.app"]]
                 [:!!r [:launch "Bear.app"]]
                 [:!!t [:launch "Tweetbot.app"]]
+                [:!!i [:launch "IntelliJ\ IDEA.app"]]
             ]
         }
         {
