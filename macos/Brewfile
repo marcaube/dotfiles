@@ -16,6 +16,7 @@ brew 'curl'
 brew 'docker-compose'   # Docker without the hassle
 brew 'fzf'              # Fuzzy search
 brew 'gawk'             # Like awk, but with a g. Not to be confused with the large bird of prey
+brew 'git-delta'        # Provides much better diffs highlighting in the terminal
 brew 'gnu-sed'          # sed, but a better version than what ships with OSX
 brew 'graphviz'         # graph/diagrams generation
 brew 'htop'

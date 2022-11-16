@@ -11,7 +11,7 @@
     s = status -s
 
     # Show the diff between the latest commit and the current state
-    d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+    d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
 
     # `git di $number` shows the diff between the state `$number` revisions ago and the current state
     di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
@@ -76,8 +76,11 @@
     whitespace = space-before-tab,trailing-space
 
     editor = vim
-    pager = $(brew --prefix git)/share/git-core/contrib/diff-highlight/diff-highlight | less
+    pager = delta
     autocrlf = input
+
+[interactive]
+    diffFilter = delta --color-only
 
 [color]
     # Use colors in Git commands that are capable of colored output when
@@ -105,6 +108,7 @@
     log = true
     tool = Kaleidoscope
     ff = false
+    conflictstyle = diff3
 
 # URL shorthands
 [url "git@github.com:"]
@@ -145,6 +149,12 @@
 
 [diff]
     tool = Kaleidoscope
+    colorMoved = default
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    side-by-side = true
 
 [pull]
     rebase = true
