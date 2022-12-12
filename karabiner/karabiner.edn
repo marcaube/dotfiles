@@ -9,7 +9,7 @@
         :apple-wireless [{:product_id 598 :vendor_id 1452}]
         :macbook-pro [{:product_id 832 :vendor_id 1452}]
         :macbook [{:product_id 633 :vendor_id 1452}]
-        :corne-ish-zen [{:product_id 24926 :vendor_id 7504}]
+        :corne-ish-zen [{:product_id 0 :vendor_id 0}]
     }
 
     :layers {
