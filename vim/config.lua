@@ -1,7 +1,7 @@
 -- General
 -- ---------------------------------------------------------------------------
 lvim.log.level = "warn"
-lvim.format_on_save = true
+lvim.format_on_save.enabled = false
 lvim.colorscheme = "catppuccin"
 
 vim.opt.colorcolumn = "80,120,160"  -- rulers at 80, 120 and 160 chars
