@@ -89,17 +89,11 @@ lvim.builtin.which_key.mappings["t"] = {
     v = { "<cmd>:TestVisit<cr>", "Visit last test file" },
 }
 
--- Zen Mode 🧘
-lvim.builtin.which_key.mappings["Z"] = { "<cmd>:ZenMode<cr>", "Zen Mode" }
-
 
 -- Additional Plugins
 -- ---------------------------------------------------------------------------
 lvim.plugins = {
     -- Color schemes
-    {"arcticicestudio/nord-vim"},
-    {"cocopon/iceberg.vim"},
-    {'michaeldyrynda/carbon'},
     { "catppuccin/nvim", as = "catppuccin" },
 
     -- Plugins
