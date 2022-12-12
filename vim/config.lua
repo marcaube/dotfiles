@@ -19,7 +19,7 @@ lvim.leader = "space"
 lvim.keys.normal_mode[";"] = ":"    -- One less key to go into command-mode
 
 -- Save file using C-s
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.normal_mode["<C-s>"] = ":update"
 
 -- Select All using C-a
 lvim.keys.normal_mode["<C-a>"] = "ggVG"
