@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+import re
+import os
+from sys import argv
+
+
+# https://www.pythontutorial.net/python-string-methods/python-titlecase/
+def titlecase(text: str) -> str:
+    return re.sub(
+        r"[A-Za-z]+('[A-Za-z]+)?",
+        lambda word: word.group(0).capitalize(),
+        text
+    )
+
+
+if __name__ == "__main__":
+    if len(argv) < 2:
+        exit(f"Usage: {os.path.basename(__file__)} <text>")
+
+    input = str(argv[1])
+
+    print(titlecase(input), end='')
