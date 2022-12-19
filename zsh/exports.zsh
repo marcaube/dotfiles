@@ -18,8 +18,8 @@ export PATH="$DOTFILES/bin:$PATH"
 eval "$(pyenv init --path)"
 
 # Specify default editor. Possible values: vim, nano, ed etc.
-export EDITOR=lvim
-export VISUAL=lvim
+export EDITOR=nvim
+export VISUAL=nvim
 
 # Specify my language environment, you can check your configs with `locale`
 export LANG=en_CA.UTF-8

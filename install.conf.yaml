@@ -17,7 +17,6 @@
     - ~/Code
     - ~/.tmux/plugins
     - ~/bin
-    - ~/.config/lvim
     - ~/.config/karabiner/karabiner.json
 
 - link:
@@ -44,8 +43,8 @@
     # Tmux
     ~/.tmux.conf: tmux/tmux.conf
 
-    # Lunarvim
-    ~/.config/lvim/config.lua: vim/config.lua
+    # Nvim
+    ~/.config/nvim: vim
 
     # Zsh / Oh-my-zsh
     ~/.zshrc: zsh/zshrc
@@ -89,9 +88,6 @@
 
     - description: Installing git-trim
       command: "git clone https://github.com/jasonmccreary/git-trim.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/git-trim 2> /dev/null || exit 0"
-
-    - description: Installing Lunarvim
-      command: "[ -x \"$(which lvim)\" ] || sh -c \"$(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)\""
 
     - description: Installing tmux plugins
       command: "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || exit 0"
