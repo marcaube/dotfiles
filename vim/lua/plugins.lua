@@ -59,9 +59,10 @@ require('packer').startup(function(use)
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
 
-  -- File explorer
+  -- Navigation
   use 'nvim-tree/nvim-tree.lua'
   use 'nvim-tree/nvim-web-devicons'
+  use 'ggandor/leap.nvim'
 
   use 'folke/which-key.nvim'
 
@@ -69,6 +70,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-surround' -- https://github.com/tpope/vim-surround
   use 'tpope/vim-repeat' -- https://github.com/tpope/vim-repeat
 
+  -- Testing
   use 'vim-test/vim-test'
 
   -- Fuzzy Finder (files, lsp, etc)
