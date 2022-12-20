@@ -106,6 +106,12 @@ vim.keymap.set('n', 'G', 'Gzz')
 vim.keymap.set('n', '>', '>>')
 vim.keymap.set('n', '<', '<<')
 
+-- Move between splits
+vim.keymap.set('n', '<C-h>', '<C-w><Left>')
+vim.keymap.set('n', '<C-k>', '<C-w><Up>')
+vim.keymap.set('n', '<C-l>', '<C-w><Right>')
+vim.keymap.set('n', '<C-j>', '<C-w><Down>')
+
 -- Add a trailing-comma and come back
 -- TODO: fix
 -- vim.cmd('nmap ,, mxA,<esc>`x')
