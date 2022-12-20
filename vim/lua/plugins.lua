@@ -63,6 +63,7 @@ require('packer').startup(function(use)
   use 'nvim-tree/nvim-tree.lua'
   use 'nvim-tree/nvim-web-devicons'
   use 'ggandor/leap.nvim'
+  use 'christoomey/vim-tmux-navigator'
 
   use 'folke/which-key.nvim'
 
