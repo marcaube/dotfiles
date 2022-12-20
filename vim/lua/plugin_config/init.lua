@@ -1,3 +1,4 @@
+require('plugin_config.autopairs')
 require('plugin_config.catppuccin')
 require('plugin_config.comment')
 require('plugin_config.gitsigns')

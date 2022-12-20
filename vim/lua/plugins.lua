@@ -69,6 +69,7 @@ require('packer').startup(function(use)
   -- Text manipulation
   use 'tpope/vim-surround' -- https://github.com/tpope/vim-surround
   use 'tpope/vim-repeat' -- https://github.com/tpope/vim-repeat
+  use 'windwp/nvim-autopairs'
 
   -- Testing
   use 'vim-test/vim-test'
