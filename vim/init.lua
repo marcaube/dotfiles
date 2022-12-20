@@ -127,6 +127,9 @@ require('lspconfig').sumneko_lua.setup {
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
+-- Load snippets
+require("luasnip.loaders.from_vscode").lazy_load()
+
 cmp.setup {
   snippet = {
     expand = function(args)
