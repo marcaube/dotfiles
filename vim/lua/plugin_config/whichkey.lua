@@ -40,6 +40,7 @@ wk.register({
       name = "Git",
       b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
       l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+      L = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Live Blame toggle" },
       o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
       c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
       C = {
