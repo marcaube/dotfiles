@@ -29,6 +29,7 @@ wk.register({
   ['<leader>Q'] = { '<cmd>qa!<cr>', 'Quit All' },
   ['<leader>e'] = { '<cmd>NvimTreeToggle<cr>', 'Open File Explorer' },
   ['<leader>/'] = { '<Plug>(comment_toggle_linewise_current)', 'Comment toggle current line' },
+  ['<leader>r'] = { '<cmd>source  ~/.config/nvim/init.lua<cr>', 'Reload config'},
 })
 
 -- Categories
