@@ -2,7 +2,7 @@
 vim.opt.timeoutlen = 250
 
 require('which-key').setup {
-  -- ignore_missing = true,
+  ignore_missing = true,
   window = {
     border = 'single', -- none, single, double, shadow
     position = 'bottom', -- bottom, top
@@ -24,10 +24,11 @@ local wk = require('which-key')
 wk.register({
   ['<leader>h'] = { '<cmd>nohlsearch<CR>', 'No Highlight' },
   ['<leader>w'] = { '<cmd>w!<cr>', 'Save' },
-  ['<leader>c'] = { '<cmd>BufferKill<CR>', 'Close buffer' },
+  ['<leader>c'] = { '<cmd>bd<CR>', 'Close buffer' },
   ['<leader>q'] = { '<cmd>q<cr>', 'Quit' },
   ['<leader>Q'] = { '<cmd>qa!<cr>', 'Quit All' },
   ['<leader>e'] = { '<cmd>NvimTreeToggle<cr>', 'Open File Explorer' },
+  ['<leader>/'] = { '<Plug>(comment_toggle_linewise_current)', 'Comment toggle current line' },
 })
 
 -- Categories
@@ -38,6 +39,17 @@ wk.register({
     g = {
       name = "Git",
       b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+      l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+      o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+      c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+      C = {
+        "<cmd>Telescope git_bcommits<cr>",
+        "Checkout commit(for current file)",
+      },
+      d = {
+        "<cmd>Gitsigns diffthis HEAD<cr>",
+        "Git Diff",
+      },
     },
 
     -- Search and Navigation
