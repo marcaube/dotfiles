@@ -1,6 +1,7 @@
 -- https://github.com/vim-test/vim-test
 
 -- Shortcuts for tests
+-- TODO: move to whichkey config
 vim.keymap.set('n', '<leader>tf', '<cmd>:TestFile<cr>', { desc = '[T]est [F]ile'})
 vim.keymap.set('n', '<leader>tn', '<cmd>:TestNearest<cr>', { desc = '[T]est [N]earest'})
 vim.keymap.set('n', '<leader>tl', '<cmd>:TestLast<cr>', { desc = '[T]est [L]ast'})

@@ -24,6 +24,7 @@ pcall(require('telescope').load_extension, 'fzf')
 local builtin = require('telescope.builtin')
 
 -- See `:help telescope.builtin`
+-- TODO: move to whickey config
 vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
@@ -33,6 +34,7 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
+-- TODO: move to whichkey config
 vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[S]earch open buffers' })
 vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sF', '<cmd>:Telescope find_files hidden=true no_ignore=true<cr>', { desc = '[S]earch all [F]iles' })
