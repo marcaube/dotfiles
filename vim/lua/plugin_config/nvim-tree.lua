@@ -6,7 +6,5 @@ vim.g.loaded_netrwPlugin = 1
 -- https://github.com/nvim-tree/nvim-tree.lua
 require('nvim-tree').setup()
 
--- TODO: move to whichkey config
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>', { desc = 'Open File [E]xplorer' })
 vim.keymap.set('n', '<C-n>', ':NvimTreeFindFileToggle<cr>', { desc = 'Find File in Explorer' })
 

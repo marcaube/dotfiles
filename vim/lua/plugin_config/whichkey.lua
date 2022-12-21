@@ -27,36 +27,60 @@ wk.register({
   ['<leader>c'] = { '<cmd>BufferKill<CR>', 'Close buffer' },
   ['<leader>q'] = { '<cmd>q<cr>', 'Quit' },
   ['<leader>Q'] = { '<cmd>qa!<cr>', 'Quit All' },
+  ['<leader>e'] = { '<cmd>NvimTreeToggle<cr>', 'Open File Explorer' },
 })
 
 -- Categories
 wk.register({
   ["<leader>"] = {
 
+    -- Git
+    g = {
+      name = "Git",
+      b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+    },
+
     -- Search and Navigation
     s = {
       name = "Search",
-      -- TODO: add a binding to search buffers
-      b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+      b = { "<cmd>Telescope buffers<cr>", "Open buffers" },
       c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
       f = { "<cmd>Telescope find_files<cr>", "Find File" },
+      F = { "<cmd>:Telescope find_files hidden=true no_ignore=true<cr>", "Find all File" },
       h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
       H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
       M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
       r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
       R = { "<cmd>Telescope registers<cr>", "Registers" },
-      t = { "<cmd>Telescope live_grep<cr>", "Text" },
+      t = { "<cmd>Telescope live_grep<cr>", "Grep Text" },
       k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
       C = { "<cmd>Telescope commands<cr>", "Commands" },
       p = {
         "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
         "Colorscheme with Preview",
       },
+      w = { "<cmd>Telescope grep_string<cr>", "Search current Word" },
+      ["/"] = {
+        function()
+          local builtin = require('telescope.builtin')
+          builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+            winblend = 10,
+            previewer = false,
+          })
+        end,
+        "[/] Fuzzily search in current buffer"
+      },
     },
 
     -- Testing
+    -- https://github.com/vim-test/vim-test
     t = {
       name = "Test",
+      f = { "<cmd>:TestFile<cr>", "Test File" },
+      n = { "<cmd>:TestNearest<cr>", "Test Nearest" },
+      l = { "<cmd>:TestLast<cr>", "Test Last" },
+      s = { "<cmd>:TestSuite<cr>", "Test Suite"},
+      v = { "<cmd>:TestVisit<cr>", "Visit last test file"},
     },
 
     -- Debugging
