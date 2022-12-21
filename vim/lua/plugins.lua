@@ -78,6 +78,13 @@ require('packer').startup(function(use)
   -- Testing
   use 'vim-test/vim-test'
 
+  -- Debugging
+  use 'mfussenegger/nvim-dap' -- https://github.com/mfussenegger/nvim-dap
+  use 'mfussenegger/nvim-dap-python' -- https://github.com/mfussenegger/nvim-dap-python
+  use 'rcarriga/nvim-dap-ui' -- https://github.com/rcarriga/nvim-dap-ui
+  use 'theHamsta/nvim-dap-virtual-text' -- https://github.com/theHamsta/nvim-dap-virtual-text
+  use 'nvim-telescope/telescope-dap.nvim' -- https://github.com/nvim-telescope/telescope-dap.nvim
+
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
 

@@ -1,6 +1,7 @@
 require('plugin_config.autopairs')
 require('plugin_config.catppuccin')
 require('plugin_config.comment')
+require('plugin_config.dap')
 require('plugin_config.gitsigns')
 require('plugin_config.indent_blankline')
 require('plugin_config.leap')
