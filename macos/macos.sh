@@ -748,13 +748,6 @@ defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
 
 ###############################################################################
-# Tweetbot.app                                                                #
-###############################################################################
-
-# Bypass the annoyingly slow t.co URL shortener
-defaults write com.tapbots.TweetbotMac OpenURLsDirectly -bool true
-
-###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
@@ -773,7 +766,6 @@ for app in "Activity Monitor" \
     "Spectacle" \
     "SystemUIServer" \
     "Terminal" \
-    "Tweetbot" \
     "iCal"; do
     killall "${app}" &> /dev/null
 done

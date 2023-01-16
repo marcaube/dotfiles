@@ -29,7 +29,6 @@
                 [:f [:launch "Fellow.app"]]
                 [:z [:launch "zoom.us.app"]]
                 [:r [:launch "Obsidian.app"]]
-                [:t [:launch "Tweetbot.app"]]
                 [:i [:launch "IntelliJ\\ IDEA.app"]]
             ]
         }
@@ -46,7 +45,6 @@
                 [:!!f [:launch "Fellow.app"]]
                 [:!!z [:launch "zoom.us.app"]]
                 [:!!r [:launch "Obsidian.app"]]
-                [:!!t [:launch "Tweetbot.app"]]
                 [:!!i [:launch "IntelliJ\\ IDEA.app"]]
             ]
         }
