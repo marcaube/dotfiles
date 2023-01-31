@@ -6,23 +6,28 @@ local actions = require('telescope.actions')
 
 require('telescope').setup {
   defaults = {
-    -- Change Telescope navigation to use j and k for navigation
-    -- and n and p for history in both input and normal mode.
+    -- Change Telescope navigation to use n and e for navigation
+    -- and m and i for history in both input and normal mode.
     mappings = {
       -- Input mode
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
-        ['<C-j>'] = actions.move_selection_next,
-        ['<C-k>'] = actions.move_selection_previous,
+        ['<C-n>'] = actions.move_selection_next,
+        ['<C-e>'] = actions.move_selection_previous,
         ['<C-q>'] = actions.smart_send_to_qflist + actions.open_qflist,
-        ['<C-n>'] = actions.cycle_history_next,
-        ['<C-p>'] = actions.cycle_history_prev,
+        ['<C-i>'] = actions.cycle_history_next,
+        ['<C-m>'] = actions.cycle_history_prev,
+        ['<CR>'] = actions.select_default,
+
+        -- Splits and tabs
+        ["<C-h>"] = actions.select_horizontal,
+        ["<C-v>"] = actions.select_vertical,
       },
       -- Normal mode
       n = {
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-n>"] = actions.move_selection_next,
+        ["<C-e>"] = actions.move_selection_previous,
       },
     },
   },

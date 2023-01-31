@@ -29,7 +29,7 @@ wk.register({
   ['<leader>Q'] = { '<cmd>qa!<cr>', 'Quit All' },
   ['<leader>e'] = { '<cmd>NvimTreeToggle<cr>', 'Open File Explorer' },
   ['<leader>/'] = { '<Plug>(comment_toggle_linewise_current)', 'Comment toggle current line' },
-  ['<leader>r'] = { '<cmd>source  ~/.config/nvim/init.lua<cr>', 'Reload config'},
+  ['<leader>r'] = { '<cmd>source ~/.config/nvim/init.lua<cr>', 'Reload config'},
 })
 
 -- Categories
@@ -63,6 +63,7 @@ wk.register({
       F = { "<cmd>:Telescope find_files hidden=true no_ignore=true<cr>", "Find all File" },
       h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
       H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
+      m = { "<cmd>Telescope marks<cr>", "Marks" },
       M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
       r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
       R = { "<cmd>Telescope registers<cr>", "Registers" },

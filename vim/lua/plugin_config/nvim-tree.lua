@@ -4,9 +4,21 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Enable NvimTree
 -- https://github.com/nvim-tree/nvim-tree.lua
-require('nvim-tree').setup()
+require('nvim-tree').setup {
+  view = {
+    mappings = {
+      custom_only = false,
+      list = {
+        -- Custom mappings/overrides go here
+        { key = "e", action = "", action_cb = "" },
+        { key = "E", action = "", action_cb = "" },
+        { key = "<C-i>", action = "", action_cb = "" },
+      },
+    },
+  },
+}
 
-vim.keymap.set('n', '<C-n>', ':NvimTreeFindFileToggle<cr>', { desc = 'Find File in Explorer' })
+-- vim.keymap.set('n', '<C-n>', ':NvimTreeFindFileToggle<cr>', { desc = 'Find File in Explorer' })
 
 -- `I` to show hidden/ignored folders
 -- `H` to show dotfiles

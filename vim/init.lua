@@ -1,6 +1,7 @@
 require('keymaps')
 require('plugins')
 require('plugin_config')
+require('options')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
