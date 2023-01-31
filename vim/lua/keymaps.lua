@@ -50,8 +50,7 @@ map('v', 'N', ":move '>+1<CR>gv-gv", { desc = 'Move selected line(s) down one li
 map('', '<C-m>', '<C-w><Left>', { desc = 'Move to the split on the left' })
 map('', '<C-n>', '<C-w><Down>', { desc = 'Move to the split below' })
 map('', '<C-e>', '<C-w><Up>', { desc = 'Move to the split above' })
-map('', '<C-i>', '<C-w><Right>', { desc = 'Move to the split on the right' })  -- TODO: this one does not work...
-map('', '<C-l>', '<C-w><Right>', { desc = 'Move to the split on the right' })
+map('', '<C-i>', '<C-w><Right>', { desc = 'Move to the split on the right' })
 
 -- Remap to deal with word wrap, treats it as multiple lines when going up/down
 map('n', 'e', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -68,9 +67,6 @@ map('n', '<C-s>', ':update<cr>', { desc = 'Save/Update current buffer' })
 
 -- Select All using C-a
 map('n', '<C-a>', 'ggVG', { desc = 'Select all the buffer content' })
-
--- Use tab to navigate to matching parens and brackets
-map({ 'n', 'v' }, '<tab>', '%', { desc = 'Goto to matching paren or bracket' })
 
 -- Add undo breakpoints after certain characters
 map('i', ',', ',<C-g>u')
