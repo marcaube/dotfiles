@@ -67,6 +67,7 @@ require('packer').startup(function(use)
   use 'nvim-tree/nvim-web-devicons'
   use 'ggandor/leap.nvim'
   use 'christoomey/vim-tmux-navigator'
+  use { 'ThePrimeagen/harpoon', requires = { 'nvim-lua/plenary.nvim' } }
 
   use 'folke/which-key.nvim'
 

@@ -86,6 +86,18 @@ wk.register({
       },
     },
 
+    n = {
+      name = "Harpoon",
+      n = { function () require("harpoon.ui").toggle_quick_menu() end, "Toggle Harpoon quick menu"},
+      m = { function () require("harpoon.mark").add_file() end, "Add mark"},
+
+      -- Move to files 1 to 4 using hjkl
+      h = { function () require("harpoon.ui").nav_file(1) end, "Goto mark 1"},
+      j = { function () require("harpoon.ui").nav_file(2) end, "Goto mark 2"},
+      k = { function () require("harpoon.ui").nav_file(3) end, "Goto mark 3"},
+      l = { function () require("harpoon.ui").nav_file(4) end, "Goto mark 4"},
+    },
+
     -- Testing
     -- https://github.com/vim-test/vim-test
     t = {
