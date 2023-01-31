@@ -47,10 +47,10 @@ map('v', 'E', ":move '<-2<CR>gv-gv", { desc = 'Move selected line(s) up one line
 map('v', 'N', ":move '>+1<CR>gv-gv", { desc = 'Move selected line(s) down one line'})
 
 -- Move between splits
-map('', '<C-m>', '<C-w><Left>', { desc = 'Move to the split on the left' })
-map('', '<C-n>', '<C-w><Down>', { desc = 'Move to the split below' })
-map('', '<C-e>', '<C-w><Up>', { desc = 'Move to the split above' })
-map('', '<C-i>', '<C-w><Right>', { desc = 'Move to the split on the right' })
+map('n', '<leader>wm', '<C-w><Left>', { desc = 'Move to the split on the left' })
+map('n', '<leader>wn', '<C-w><Down>', { desc = 'Move to the split below' })
+map('n', '<leader>we', '<C-w><Up>', { desc = 'Move to the split above' })
+map('n', '<leader>wi', '<C-w><Right>', { desc = 'Move to the split on the right' })
 
 -- Remap to deal with word wrap, treats it as multiple lines when going up/down
 map('n', 'e', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
