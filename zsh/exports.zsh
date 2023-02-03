@@ -1,5 +1,5 @@
 # Load Node global installed binaries
-export PATH="/usr/local/opt/node@14/bin:$PATH"
+export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
 export PATH="$HOME/.node/bin:$PATH"
 
 # Use project specific binaries before global ones
