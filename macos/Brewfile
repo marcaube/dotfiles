@@ -81,9 +81,11 @@ cask 'hex-fiend'        # a simple GUI hex editor
 cask 'alfred'
 cask 'anki'             # flash cards, for learning and memorization (active recall, spaced repetition, etc)
 cask 'caffeine'         # when I don't want my computer to fall asleep
+cask 'cleanshot'		# Gorgeous, expansive (and expensive!) screeshot app
 cask 'dash'             # offline docs and code snippets FTW!
 cask 'deckset'          # slide decks for conference talks
 cask 'docker'
+cask 'fellow'			# To track my work meetings
 cask 'firefox'
 cask 'google-chrome'
 cask 'gpg-suite'
@@ -98,6 +100,7 @@ cask 'keycastr'         # when pairing remotely, to show all keypresses in vim/n
 cask 'kitty'
 cask 'ksdiff'           # CLI launcher for my difftool (Kaleidoscope)
 cask 'ngrok'
+cask 'obsidian'
 cask 'slack'
 cask 'spectacle'        # no better ways to move windows around
 cask 'sublime-text'
@@ -110,7 +113,6 @@ cask 'discord'
 
 # Quicklook
 cask 'betterzip'        # preview zip archives
-cask 'epubquicklook'    # preview zip archives
 cask 'qlimagesize'      # display image size and resolution
 cask 'qlmarkdown'       # preview Markdown files
 cask 'qlprettypatch'    # preview diff patches
