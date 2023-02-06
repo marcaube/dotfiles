@@ -117,7 +117,6 @@ cask 'qlimagesize'      # display image size and resolution
 cask 'qlmarkdown'       # preview Markdown files
 cask 'qlprettypatch'    # preview diff patches
 cask 'quicklook-csv'    # preview CSV files
-cask 'qlstephen'        # preview plain text files without or with unknown file extension
 
 # Fonts
 cask 'font-fira-code'
