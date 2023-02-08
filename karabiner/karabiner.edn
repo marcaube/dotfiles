@@ -10,10 +10,11 @@
         :macbook-pro [{:product_id 832 :vendor_id 1452}]
         :macbook [{:product_id 633 :vendor_id 1452}]
         :corne-ish-zen [{:product_id 0 :vendor_id 0}]
+        :corne-ish-zen-usb [{:product_id 24926 :vendor_id 7504}]
     }
 
     :layers {
-        :launch {:key :caps_lock :alone {:key :escape} :condi [:!moonlander :!corne-ish-zen]}
+        :launch {:key :caps_lock :alone {:key :escape} :condi [:!moonlander :!corne-ish-zen :!corne-ish-zen-usb]}
     }
 
     :main [
@@ -35,7 +36,7 @@
         {
             :des "Split KB Launch layer"
             :rules [
-                [:condi :moonlander :corne-ish-zen]
+                [:condi :moonlander :corne-ish-zen :corne-ish-zen-usb]
                 [:!!s [:launch "Slack.app"]]
                 [:!!d [:launch "Discord.app"]]
                 [:!!b [:launch "Safari.app"]]
@@ -58,7 +59,7 @@
         {
             :des "Split KB Hammerspoon"
             :rules [
-                [:condi :moonlander :corne-ish-zen]
+                [:condi :moonlander :corne-ish-zen :corne-ish-zen-usb]
                 [:!!o [:hs "open" "default"]]
                 [:!!w [:hs "slack-rw-wave" "default"]]
             ]
