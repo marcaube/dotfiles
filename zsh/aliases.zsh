@@ -39,8 +39,10 @@ alias cat='bat'
 alias woman=tldr # Grace Hopper approved
 alias chromeopen='/usr/bin/open -a "/Applications/Google Chrome.app"'
 
-# Prompt for confirmation before overwriting a file when moving
+# Prompt for confirmation before overwriting or deleting a file when copying/moving
 alias mv='mv -i'
+alias cp='cp -i'
+alias rm='rm -i'
 
 # Show/hide hidden files in Finder
 alias hide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
