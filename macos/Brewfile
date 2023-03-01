@@ -95,6 +95,7 @@ cask 'imagealpha'       # optimize transparent PNGs
 cask 'imageoptim'       # optimize images
 cask 'insomnia'         # a nice API client GUI
 cask 'intellij-idea'
+cask 'kaleidoscope2'
 cask 'keybase'
 cask 'keycastr'         # when pairing remotely, to show all keypresses in vim/neovim
 cask 'kitty'
@@ -126,7 +127,6 @@ cask 'font-hack-nerd-font'    # This font adds support for nice icons in NerdTre
 mas '1Password', id: 1333542190     # password manager
 mas 'Bear', id: 1091189122          # note taking app
 mas 'Grammarly for Safari', id: 1462114288
-mas 'Kaleidoscope', id: 587512244   # the best difftool ever, fight me
-mas 'Pixelmator', id: 407963104
+mas 'Pixelmator Pro', id: 1289583905
 mas 'stts', id: 1187772509          # status of cloud services, right in the status bar
 mas 'Vimari', id: 1480933944        # vim bindings for Safari
