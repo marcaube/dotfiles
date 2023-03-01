@@ -10,7 +10,6 @@ tap 'yqrashawn/goku'            # For Goku
 
 # Install Binaries
 brew 'bat'              # like 'cat', with highlighting, git support and pagination
-brew 'cloc'             # to quickly count lines of code
 brew 'coreutils'        # Those that come with macOS are outdated
 brew 'curl'
 brew 'docker-compose'   # Docker without the hassle
@@ -32,6 +31,7 @@ brew 'telnet'
 brew 'tldr'             # like 'man' but for lazy people with deadlines
 brew 'tmux'
 brew 'tmuxinator'
+brew 'tokei'            # to quickly count lines of code, like cloc, but faster
 brew 'tree'             # to display directories tree
 brew 'wget'
 
