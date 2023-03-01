@@ -49,6 +49,8 @@ map('n', 'B', '0')
 map('n', 'E', '$')
 
 -- Keep screen centered when moving around
+map('n', '<C-d>', '<C-d>zz', { desc = 'Move 1/2 screen down' })
+map('n', '<C-u>', '<C-u>zz', { desc = 'Move 1/2 screen up' })
 map('n', '<C-f>', '<C-f>zz', { desc = 'Move one screen forward' })
 map('n', '<C-b>', '<C-b>zz', { desc = 'Move one screen backwards' })
 map('n', 'n', 'nzzzv', { desc = 'Next search result' })
