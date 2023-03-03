@@ -101,6 +101,4 @@ SAVEHIST=$HISTSIZE
 bindkey "\e[1;3D" backward-word # ⌥←
 bindkey "\e[1;3C" forward-word  # ⌥→
 
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
-autoload -U promptinit; promptinit
-prompt pure
+eval "$(starship init zsh)"

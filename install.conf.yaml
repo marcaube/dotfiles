@@ -92,6 +92,9 @@
     - description: Installing tmux plugins
       command: "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || exit 0"
 
+    - description: Install Starship's "Pure" prompt preset
+      command: "starship preset pure-preset > ~/.config/starship.toml || exit 0"
+
     - description: Clear sudo credential cache
       command: "sudo --reset-timestamp"
 
