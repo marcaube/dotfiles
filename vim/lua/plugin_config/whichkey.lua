@@ -91,7 +91,7 @@ wk.register({
       h = { function () require("harpoon.ui").toggle_quick_menu() end, "Toggle Harpoon quick menu"},
       m = { function () require("harpoon.mark").add_file() end, "Add mark"},
 
-      -- Move to files 1 to 4 using hjkl
+      -- Move to files 1 to 4 using neio
       n = { function () require("harpoon.ui").nav_file(1) end, "Goto mark 1"},
       e = { function () require("harpoon.ui").nav_file(2) end, "Goto mark 2"},
       i = { function () require("harpoon.ui").nav_file(3) end, "Goto mark 3"},
