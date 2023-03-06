@@ -12,10 +12,6 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 map({ 'n', 'v' }, '<Space>', '<Nop>')
 
--- Remap to deal with word wrap, treats it as multiple lines when going up/down
-map('n', 'e', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map('n', 'n', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
 -- One less keypress to go into command-mode
 map('n', ';', ':', { desc = 'Command mode' })
 
