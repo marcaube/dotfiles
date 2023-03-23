@@ -78,6 +78,7 @@ brew 'zbar'             # barcode /qrcode reading
 cask 'hex-fiend'        # a simple GUI hex editor
 
 # Apps
+cask '1password'
 cask 'alfred'
 cask 'anki'             # flash cards, for learning and memorization (active recall, spaced repetition, etc)
 cask 'caffeine'         # when I don't want my computer to fall asleep
@@ -124,7 +125,6 @@ cask 'font-fira-code'
 cask 'font-hack-nerd-font'    # This font adds support for nice icons in NerdTree/NVIMTREE
 
 # Install Mac App Store apps
-mas '1Password', id: 1333542190     # password manager
 mas 'Bear', id: 1091189122          # note taking app
 mas 'Grammarly for Safari', id: 1462114288
 mas 'Pixelmator Pro', id: 1289583905
