@@ -52,6 +52,8 @@ wk.register({
         "<cmd>Gitsigns diffthis HEAD<cr>",
         "Git Diff",
       },
+      s = { "<cmd>Gitsigns stage_hunk<cr>", "Stage hunk" },
+      S = { "<cmd>Gitsigns stage_buffer<cr>", "Stage buffer" },
     },
 
     -- Search and Navigation

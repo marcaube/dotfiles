@@ -17,3 +17,5 @@ require('gitsigns').setup {
   },
 }
 
+
+vim.keymap.set({'o', 'x'}, 'ih', '<cmd>Gitsigns select_hunk<cr>', { noremap = true, silent = true })
