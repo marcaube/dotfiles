@@ -25,8 +25,8 @@ map('n', '<C-s>', ':update<cr>', { desc = 'Save/Update current buffer' })
 map('n', '<C-a>', 'ggVG', { desc = 'Select all the buffer content' })
 
 -- Use tab to navigate to matching parens and brackets
-map('n', '<tab>', '%')
-map('v', '<tab>', '%')
+-- map('n', '<tab>', '%')
+-- map('v', '<tab>', '%')
 
 -- Add undo breakpoints after certain characters
 map('i', ',', ',<C-g>u')

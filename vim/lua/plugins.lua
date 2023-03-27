@@ -86,6 +86,9 @@ require('packer').startup(function(use)
   use 'theHamsta/nvim-dap-virtual-text' -- https://github.com/theHamsta/nvim-dap-virtual-text
   use 'nvim-telescope/telescope-dap.nvim' -- https://github.com/nvim-telescope/telescope-dap.nvim
 
+  -- Copilot
+  use 'github/copilot.vim' -- https://github.com/features/copilot
+
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
 
