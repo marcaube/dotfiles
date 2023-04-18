@@ -6,7 +6,7 @@ vim.g.loaded_netrwPlugin = 1
 -- https://github.com/nvim-tree/nvim-tree.lua
 require('nvim-tree').setup()
 
-vim.keymap.set('n', '<C-n>', ':NvimTreeFindFileToggle<cr>', { desc = 'Find File in Explorer' })
+vim.keymap.set('n', '<C-n>', ':NvimTreeFindFile<cr>:NvimTreeFocus<cr>', { desc = 'Find File in Explorer' })
 
 -- `I` to show hidden/ignored folders
 -- `H` to show dotfiles
