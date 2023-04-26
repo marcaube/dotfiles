@@ -21,6 +21,7 @@
         {
             :des "Default Launch layer"
             :rules [:launch
+                [:a [:launch "Activity\\ Monitor.app"]]
                 [:s [:launch "Slack.app"]]
                 [:d [:launch "Discord.app"]]
                 [:b [:launch "Safari.app"]]
@@ -38,6 +39,7 @@
             :des "Split KB Launch layer"
             :rules [
                 [:condi :moonlander :corne-ish-zen :corne-ish-zen-usb]
+                [:!!a [:launch "Activity\\ Monitor.app"]]
                 [:!!s [:launch "Slack.app"]]
                 [:!!d [:launch "Discord.app"]]
                 [:!!b [:launch "Safari.app"]]
