@@ -100,7 +100,7 @@ cask 'kaleidoscope2'
 cask 'keybase'
 cask 'keycastr'         # when pairing remotely, to show all keypresses in vim/neovim
 cask 'kitty'
-cask 'ksdiff'           # CLI launcher for my difftool (Kaleidoscope)
+cask 'ksdiff2'          # CLI launcher for my difftool (Kaleidoscope)
 cask 'ngrok'
 cask 'obsidian'
 cask 'slack'
