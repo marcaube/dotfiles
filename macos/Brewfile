@@ -88,7 +88,6 @@ cask 'cleanshot'		# Gorgeous, expansive (and expensive!) screeshot app
 cask 'dash'             # offline docs and code snippets FTW!
 cask 'deckset'          # slide decks for conference talks
 cask 'docker'
-cask 'fellow'			# To track my work meetings
 cask 'firefox'
 cask 'google-chrome'
 cask 'gpg-suite'
@@ -129,6 +128,7 @@ cask 'font-hack-nerd-font'    # This font adds support for nice icons in NerdTre
 # Install Mac App Store apps
 mas 'Bear', id: 1091189122          # note taking app
 mas 'Grammarly for Safari', id: 1462114288
+mas 'Next Meeting', id: 1017470484  # See what meeting is up next, right in the status bar
 mas 'Pixelmator Pro', id: 1289583905
 mas 'stts', id: 1187772509          # status of cloud services, right in the status bar
 mas 'Vimari', id: 1480933944        # vim bindings for Safari
