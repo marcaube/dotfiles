@@ -61,6 +61,8 @@ brew 'node@14'
 brew 'python'
 brew 'pipenv'
 brew 'pyenv'
+brew 'rbenv'
+brew 'ruby-build'
 
 # Pentesting / CTF / Forensics
 brew 'binwalk'          # search for files hidden via steganography
