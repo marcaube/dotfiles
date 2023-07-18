@@ -162,6 +162,7 @@ function length() {
 
 # Git checkout with branch name autocomplete using fzf (from: https://elijahmanor.com/byte/git-recent-branches)
 alias cb='git branch --sort=-committerdate | fzf --header Checkout | xargs git checkout'
+alias gits='git s'
 
 # Tmux shortcuts (from: https://github.com/everzet/dotfiles/blob/master/zsh/aliases.zsh)
 alias tn='tmux new-session -s ${PWD##*/}'
