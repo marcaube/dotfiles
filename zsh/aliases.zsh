@@ -1,11 +1,11 @@
 # Edit my zsh configs
-alias zshconfig='$EDITOR ~/.dotfiles/.zshrc'
+alias zshconfig='$EDITOR ~/.dotfiles/zsh/zshrc'
 
 # Edit my aliases
-alias aliases='$EDITOR ~/.dotfiles/aliases.zsh'
+alias aliases='$EDITOR ~/.dotfiles/zsh/aliases.zsh'
 
 # Edit my extra configs
-alias extras='$EDITOR ~/.dotfiles/extra.zsh'
+alias extras='$EDITOR ~/.dotfiles/zsh/extra.zsh'
 
 # Open my local scratchpad
 SCRATCHFILE=~/scratchpad.txt
