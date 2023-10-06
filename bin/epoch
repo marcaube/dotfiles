@@ -8,6 +8,7 @@ ONE_HOUR = ONE_MINUTE * 60
 ONE_DAY = ONE_HOUR * 24
 ONE_WEEK = ONE_DAY * 7
 ONE_MONTH = ONE_DAY * 30
+ONE_YEAR = ONE_MONTH * 12
 
 if __name__ == "__main__":
     if len(argv) < 2:
@@ -36,5 +37,7 @@ if __name__ == "__main__":
             print(f"Relative: {round(delta / ONE_DAY)} days ago.")
         elif delta < ONE_MONTH:
             print(f"Relative: {round(delta / ONE_WEEK)} weeks ago.")
-        else:
+        elif delta < ONE_YEAR:
             print(f"Relative: {round(delta / ONE_MONTH)} months ago.")
+        else:
+            print(f"Relative: {round(delta / ONE_YEAR)} years ago ({round(delta / ONE_MONTH)} months).")
