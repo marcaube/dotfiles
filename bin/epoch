@@ -13,7 +13,10 @@ if __name__ == "__main__":
     if len(argv) < 2:
         exit(f"Usage: {os.path.basename(__file__)} <epoch>")
 
-    input = datetime.fromtimestamp(int(argv[1]))
+    try:
+        input = datetime.fromtimestamp(int(argv[1]))
+    except ValueError:
+        input = datetime.fromtimestamp(int(argv[1]) // 1000)  # Milliseconds, most likely
 
     # In ISO format
     print(f"ISO: {input.isoformat()}\n")
