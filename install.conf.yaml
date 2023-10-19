@@ -23,6 +23,10 @@
     # Binaries
     ~/bin/epoch: bin/epoch
     ~/bin/$: bin/$
+    ~/bin/capitalize: bin/capitalize
+    ~/bin/upper: bin/upper
+    ~/bin/lower: bin/lower
+    ~/bin/title: bin/title
     ~/bin/xkcd: bin/xkcd
     ~/bin/unzlib: bin/unzlib
 
