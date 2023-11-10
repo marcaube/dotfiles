@@ -50,6 +50,7 @@ brew 'yqrashawn/goku/goku'  # Manage Karabiner configs with ease
 # Tools for work
 brew 'assume-role'
 brew 'awscli'
+cask 'aws-vpn-client'
 cask 'session-manager-plugin'
 brew 'gettext'      # to compile messages, don't forget to link!
 brew 'libjpeg'
