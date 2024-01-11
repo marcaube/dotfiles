@@ -94,6 +94,7 @@ cask 'google-chrome'
 cask 'gpg-suite'
 cask 'grammarly'
 cask 'hiddenbar'        # keep my statusbar tidy
+cask 'heynote'          # a nice scratchpad app
 cask 'imagealpha'       # optimize transparent PNGs
 cask 'imageoptim'       # optimize images
 cask 'insomnia'         # a nice API client GUI
