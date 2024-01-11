@@ -1,5 +1,4 @@
 # Taps
-tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'       # for Fira Code and a patched font for vim/neovim
 tap 'homebrew/cask-versions'    # for alternate versions of Casks
 tap 'eddieantonio/eddieantonio' # for imgcat
@@ -13,6 +12,9 @@ brew 'bat'              # like 'cat', with highlighting, git support and paginat
 brew 'coreutils'        # Those that come with macOS are outdated
 brew 'curl'
 brew 'docker-compose'   # Docker without the hassle
+brew 'erdtree'          # like `tree` but with nicer options
+brew 'exa'              # like `ls`
+brew 'fd'               # a nicer 'find'
 brew 'fzf'              # Fuzzy search
 brew 'gawk'             # Like awk, but with a g. Not to be confused with the large bird of prey
 brew 'git-delta'        # Provides much better diffs highlighting in the terminal
@@ -20,12 +22,13 @@ brew 'gnu-sed'          # sed, but a better version than what ships with OSX
 brew 'graphviz'         # graph/diagrams generation
 brew 'htop'
 brew 'httpie'           # to test HTTP calls from the CLI
+brew 'hyperfine'        # a benchmarking tool
 brew 'imgcat'           # like 'cat', but for images
 brew 'jq'               # When you want to manipulate JSON piped from httpie
 brew 'mackup'           # to sync my Mac configs
 brew 'mas'              # to install Mac App Store apps from the CLI
 brew 'neofetch'
-brew 'ripgrep'
+brew 'ripgrep'          # like grep, but faster
 brew 'starship'         # a minimalist CLI prompt
 brew 'telnet'
 brew 'tldr'             # like 'man' but for lazy people with deadlines
