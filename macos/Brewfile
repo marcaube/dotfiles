@@ -37,6 +37,7 @@ brew 'tmuxinator'
 brew 'tokei'            # to quickly count lines of code, like cloc, but faster
 brew 'tree'             # to display directories tree
 brew 'wget'
+brew 'zoxide'           # a faster way to navigate your filesystem
 
 # Development
 brew 'bfg'              # for that time the intern added passwords to the repo
