@@ -52,6 +52,8 @@ map('n', '<C-b>', '<C-b>zz', { desc = 'Move one screen backwards' })
 map('n', 'n', 'nzzzv', { desc = 'Next search result' })
 map('n', 'N', 'Nzzzv', { desc = 'Previous search result' })
 map('n', 'G', 'Gzz', { desc = 'Goto to end of file' })
+map('n', '}', '}zz', { desc = 'Move one block down' })
+map('n', '{', '{zz', { desc = 'Move one block up' })
 
 -- Quick indentation
 map('n', '>', '>>', { desc = 'Indent line' })
