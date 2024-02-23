@@ -8,6 +8,7 @@ tap 'wpscanteam/tap'            # for wpscan
 tap 'yqrashawn/goku'            # For Goku
 
 # Install Binaries
+brew 'atuin'            # shell history on steroids
 brew 'bat'              # like 'cat', with highlighting, git support and pagination
 brew 'coreutils'        # Those that come with macOS are outdated
 brew 'curl'
