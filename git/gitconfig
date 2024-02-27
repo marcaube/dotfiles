@@ -184,3 +184,6 @@
 
 [tag]
     gpgsign = true
+
+[gpg "ssh"]
+    allowedSignersFile = ~/.git_allowed_signers

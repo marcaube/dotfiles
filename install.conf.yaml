@@ -33,6 +33,7 @@
     # Git
     ~/.gitconfig: git/gitconfig
     ~/.gitignore_global: git/gitignore_global
+    ~/.git_allowed_signers: git/git_allowed_signers
 
     # Kitty shell
     ~/.config/kitty: kitty
