@@ -160,6 +160,18 @@ function length() {
     awk '{print length, $0}'
 }
 
+# Run a given command in a loop for a number of iterations, e.g. loop 5 "echo test"
+function loop() {
+    local iterations="$1"
+    local command="$2"
+
+    for ((i=1; i <= iterations; i++)); do
+        echo "### Iteration #$i ###\n"
+        eval "$command" || break
+        echo "\n"
+    done
+}
+
 # Git checkout with branch name autocomplete using fzf (from: https://elijahmanor.com/byte/git-recent-branches)
 alias cb='git branch --sort=-committerdate | fzf --header Checkout | xargs git checkout'
 alias gits='git s'
