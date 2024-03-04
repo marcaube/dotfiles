@@ -6,7 +6,7 @@ export PATH="$HOME/.node/bin:$PATH"
 export PATH="node_modules/.bin:vendor/bin:$PATH"
 
 # Make sure coreutils are loaded before system commands
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 # Local bin directories before anything else
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
