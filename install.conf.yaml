@@ -51,7 +51,7 @@
     # Nvim
     ~/.config/nvim: vim
 
-    # Zsh / Oh-my-zsh
+    # Zsh
     ~/.zshrc: zsh/zshrc
 
 - shell:
@@ -73,9 +73,6 @@
     - description: Hushing login
       command: "[ -f ~/.hushlogin ] || touch ~/.hushlogin"
 
-    - description: Installing Oh My ZSH
-      command: "[ -d ~/.oh-my-zsh ] || sh -c \"$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\" && compaudit | xargs chmod g-w,o-w"
-
     - description: Adding ZSH to list of acceptable shells
       command: "[[ \"$(ag $(which zsh) /etc/shells)\" ]] || sudo sh -c \"echo $(which zsh) >> /etc/shells\""
 
@@ -83,16 +80,16 @@
       command: "sudo chsh -s $(which zsh)"
 
     - description: Installing ZSH autocompletions
-      command: "git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions 2> /dev/null || exit 0"
+      command: "git clone https://github.com/zsh-users/zsh-completions ${DOTFILES}/zsh/plugins/zsh-completions 2> /dev/null || exit 0"
 
     - description: Installing ZSH autosuggestions
-      command: "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 2> /dev/null || exit 0"
+      command: "git clone https://github.com/zsh-users/zsh-autosuggestions ${DOTFILES}/zsh/plugins/zsh-autosuggestions 2> /dev/null || exit 0"
 
     - description: Installing ZSH syntax highlighting
-      command: "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting 2> /dev/null || exit 0"
+      command: "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${DOTFILES}/zsh/plugins/zsh-syntax-highlighting 2> /dev/null || exit 0"
 
     - description: Installing git-trim
-      command: "git clone https://github.com/jasonmccreary/git-trim.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/git-trim 2> /dev/null || exit 0"
+      command: "git clone https://github.com/jasonmccreary/git-trim.git ${DOTFILES}/zsh/plugins/git-trim 2> /dev/null || exit 0"
 
     - description: Installing tmux plugins
       command: "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || exit 0"

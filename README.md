@@ -87,7 +87,7 @@ For example, that's where you could define your `GIT_AUTHOR_NAME` and
     - an `update` alias to update macOS, mac app store apps, Homebrew binaries and Cask apps
     - a `weather` function to get weather reports from [wttr.in](https://github.com/chubin/wttr.in)
     - and much more...
-- a [`.zshrc`](./zsh/zshrc) file to tweak my Oh My Zsh setup, see the [docs](https://github.com/robbyrussell/oh-my-zsh/wiki/Customization) for more
+- a [`.zshrc`](./zsh/zshrc) file to tweak my Z shell config
 - most app settings synced with iCloud via [Mackup](https://github.com/lra/mackup)
 
 
