@@ -23,3 +23,4 @@ bindkey "\e[1;3C" forward-word  # ⌥→
 eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
+eval "$(pyenv init --path --no-rehash)"

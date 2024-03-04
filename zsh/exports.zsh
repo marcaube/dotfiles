@@ -1,21 +1,8 @@
-# Load Node global installed binaries
-export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
-export PATH="$HOME/.node/bin:$PATH"
-
-# Use project specific binaries before global ones
-export PATH="node_modules/.bin:vendor/bin:$PATH"
-
 # Make sure coreutils are loaded before system commands
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 # Local bin directories before anything else
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-
-# Load custom commands
-export PATH="$DOTFILES/bin:$PATH"
-
-# Add Python versions installed with pyenv to the PATH
-eval "$(pyenv init --path --no-rehash)"
+export PATH="/$DOTFILES/bin:usr/local/bin:/usr/local/sbin:$PATH"
 
 # Specify default editor. Possible values: vim, nano, ed etc.
 export EDITOR=nvim
@@ -38,4 +25,5 @@ export HOMEBREW_CASK_OPTS=--require-sha
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
 
+# For OpenSSL and LLVM
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
