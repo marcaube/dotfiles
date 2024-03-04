@@ -17,9 +17,6 @@ export PATH="$DOTFILES/bin:$PATH"
 # Add Python versions installed with pyenv to the PATH
 eval "$(pyenv init --path --no-rehash)"
 
-# Same for ruby
-eval "$(rbenv init - zsh)"
-
 # Specify default editor. Possible values: vim, nano, ed etc.
 export EDITOR=nvim
 export VISUAL=nvim
