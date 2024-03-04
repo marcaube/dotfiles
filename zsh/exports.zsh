@@ -15,7 +15,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="$DOTFILES/bin:$PATH"
 
 # Add Python versions installed with pyenv to the PATH
-eval "$(pyenv init --path)"
+eval "$(pyenv init --path --no-rehash)"
 
 # Same for ruby
 eval "$(rbenv init - zsh)"
