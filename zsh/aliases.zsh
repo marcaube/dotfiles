@@ -39,6 +39,13 @@ alias cat='bat'
 alias woman=tldr # Grace Hopper approved
 alias chromeopen='/usr/bin/open -a "/Applications/Google Chrome.app"'
 
+# Some aliases I used from oh-my-zsh
+# see: https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/common-aliases/common-aliases.plugin.zsh
+alias la='ls -lAFh'
+alias ll='ls -l'
+alias ldot='ls -ld .*'
+alias grep='grep --color'
+
 # Prompt for confirmation before overwriting or deleting a file when copying/moving
 alias mv='mv -i'
 alias cp='cp -i'
