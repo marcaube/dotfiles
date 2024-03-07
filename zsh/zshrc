@@ -15,22 +15,13 @@ source $DOTFILES/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $DOTFILES/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh
 source $DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Use emacs key bindings
-bindkey -e
-
-# kitty: jumping words using option + arrows
-# https://github.com/kovidgoyal/kitty/issues/838#issuecomment-770328902
-bindkey "\e[1;3D" backward-word # ⌥←
-bindkey "\e[1;3C" forward-word  # ⌥→
-
-# [Option-Delete] - delete whole forward-word
-# see: https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/key-bindings.zsh
-bindkey "\e[3;3~" kill-word # ⌥⌦
-bindkey "\e[3~" delete-char # ⌦
 
 eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
+
+# Has to be sourced *after* atuin
+source $DOTFILES/zsh/key-bindings.zsh
 
 if [ -f /opt/homebrew/bin/mise ]; then
   eval "$(/opt/homebrew/bin/mise activate zsh)"
