@@ -47,3 +47,8 @@ vim.opt.tw = 120 -- Set the default texwidth to 120 chars for automatic formatti
 -- Sensible splits
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+-- Code folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99
