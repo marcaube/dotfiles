@@ -127,9 +127,6 @@
 [url "git://gist.github.com/"]
     insteadOf = "gist:"
 
-[push]
-    default = matching
-
 [help]
     autocorrect = 5
 
