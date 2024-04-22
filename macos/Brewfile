@@ -28,7 +28,6 @@ brew 'imgcat'           # like 'cat', but for images
 brew 'jq'               # When you want to manipulate JSON piped from httpie
 brew 'mackup'           # to sync my Mac configs
 brew 'mas'              # to install Mac App Store apps from the CLI
-brew 'mise'             # an alternative to `asdf`, a version manager for all dev envs (replaces `pyenv`, `rbenv`, etc)
 brew 'neofetch'
 brew 'ripgrep'          # like grep, but faster
 brew 'rm-improved'      # a better rm, with trash support
@@ -65,6 +64,10 @@ brew 'libmagic'
 brew 'libmaxminddb' # for GeoIP
 brew 'libpng'
 brew 'libpq', link: true
+brew 'node'
+brew 'python'
+brew 'pipenv'
+brew 'pyenv'
 
 # Pentesting / CTF / Forensics
 brew 'binwalk'          # search for files hidden via steganography

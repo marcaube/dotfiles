@@ -22,6 +22,4 @@ eval "$(atuin init zsh --disable-up-arrow)"
 # Has to be sourced *after* atuin
 source $DOTFILES/zsh/key-bindings.zsh
 
-if [ -f /opt/homebrew/bin/mise ]; then
-  eval "$(/opt/homebrew/bin/mise activate zsh)"
-fi
+eval "$(pyenv init --path --no-rehash)"
