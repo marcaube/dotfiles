@@ -1,5 +1,4 @@
 # Taps
-tap 'homebrew/cask-fonts'       # for Fira Code and a patched font for vim/neovim
 tap 'homebrew/cask-versions'    # for alternate versions of Casks
 tap 'eddieantonio/eddieantonio' # for imgcat
 tap 'remind101/formulae'        # for assume-role
