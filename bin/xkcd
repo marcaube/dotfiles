@@ -9,6 +9,11 @@ then
 	URL=https://c.xkcd.com/random/comic
 fi
 
+if [ $# -gt 0 ]  && [ $1 = "-n" ]
+then
+	URL=https://xkcd.com/$2
+fi
+
 img=$(curl -s -L $URL | 
 grep 'href= "https://imgs.xkcd.com/comics.*' | 
 cut -d'>' -f2 | 
