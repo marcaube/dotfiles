@@ -59,6 +59,12 @@
     # For those times you just have to pat someone on the back
     fame = python --version -m gitfame
 
+    # Taken from here: https://aaronbonner.io/post/80766268890/git-alias-to-simplify-setting-upstream-branch
+    sup = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`"
+
+    rh = reset HEAD
+    rhh = reset --hard HEAD
+
 [apply]
     # Detect whitespace errors when applying a patch
     whitespace = fix
