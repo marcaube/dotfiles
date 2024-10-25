@@ -180,7 +180,9 @@ function loop() {
 }
 
 # Git checkout with branch name autocomplete using fzf (from: https://elijahmanor.com/byte/git-recent-branches)
-alias cb='git branch --sort=-committerdate | fzf --header Checkout | xargs git checkout'
+alias cb='git branch --sort=-committerdate | fzf --header "Checkout branch" | xargs git checkout'
+# Git checkout from my list of open PRs
+alias cpr='gh pr list --author "@me" | fzf --header "Checkout PR" | awk '\''{print $(NF-2)}'\'' | xargs git checkout'
 alias gits='git s'
 
 # Tmux shortcuts (from: https://github.com/everzet/dotfiles/blob/master/zsh/aliases.zsh)
