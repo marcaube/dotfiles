@@ -102,7 +102,7 @@ cask 'heynote'          # a nice scratchpad app
 cask 'imagealpha'       # optimize transparent PNGs
 cask 'imageoptim'       # optimize images
 cask 'insomnia'         # a nice API client GUI
-cask 'intellij-idea'
+cask 'pycharm'
 cask 'kaleidoscope2'
 cask 'keybase'
 cask 'keycastr'         # when pairing remotely, to show all keypresses in vim/neovim

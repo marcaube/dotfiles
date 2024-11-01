@@ -32,7 +32,7 @@
                 [:z [:launch "zoom.us.app"]]
                 [:r [:launch "Obsidian.app"]]
                 [:t [:launch "Ivory.app"]]
-                [:i [:launch "IntelliJ\\ IDEA.app"]]
+                [:i [:launch "PyCharm.app"]]
             ]
         }
         {
@@ -50,7 +50,7 @@
                 [:!!z [:launch "zoom.us.app"]]
                 [:!!r [:launch "Obsidian.app"]]
                 [:!!t [:launch "Ivory.app"]]
-                [:!!i [:launch "IntelliJ\\ IDEA.app"]]
+                [:!!i [:launch "PyCharm.app"]]
             ]
         }
         {
