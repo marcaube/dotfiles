@@ -100,6 +100,9 @@
     - description: Clear sudo credential cache
       command: "sudo --reset-timestamp"
 
+    - description: Installing bat's theme
+      command: "mkdir -p \"$(bat --config-dir)/themes\" && wget -P \"$(bat --config-dir)/themes\" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme && bat cache --build || exit 0"
+
 # Install `gh` extensions
 - ghe:
     - dlvhdr/gh-prs
