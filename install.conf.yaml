@@ -34,6 +34,7 @@
     ~/.gitconfig: git/gitconfig
     ~/.gitignore_global: git/gitignore_global
     ~/.git_allowed_signers: git/git_allowed_signers
+    ~/.config/catppuccin.gitconfig: git/catppuccin.gitconfig
 
     # Kitty shell
     ~/.config/kitty: kitty
