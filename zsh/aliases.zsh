@@ -181,9 +181,15 @@ function loop() {
 
 # Git checkout with branch name autocomplete using fzf (from: https://elijahmanor.com/byte/git-recent-branches)
 alias cb='git branch --sort=-committerdate | fzf --header "Checkout branch" | xargs git checkout'
-# Git checkout from my list of open PRs
-alias cpr='gh pr list --author "@me" | fzf --header "Checkout PR" | awk '\''{print $(NF-2)}'\'' | xargs git checkout'
+# Git checkout from the list of open PRs
+alias cpr='gh pr list | fzf --header "Checkout PR" | awk '\''{print $(NF-2)}'\'' | xargs git checkout'
 alias gits='git s'
+# A couple of aliases inspired from Thorsen's dotfiles (https://github.com/mrnugget/dotfiles/blob/c4624ed521d539856bcf764f04a295bb19093566/zshrc#L153-L179)
+alias gap='git add -p'
+alias gc='git commit -S'
+alias gd='git diff'
+alias gdc='git diff --cached'
+
 
 # Tmux shortcuts (from: https://github.com/everzet/dotfiles/blob/master/zsh/aliases.zsh)
 alias tn='tmux new-session -s ${PWD##*/}'
