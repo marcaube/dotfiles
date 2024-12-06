@@ -48,3 +48,5 @@ vim.opt.splitbelow = true
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 99
+
+vim.g.have_nerd_font = true
