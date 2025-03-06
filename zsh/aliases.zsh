@@ -72,6 +72,12 @@ alias chromekill='ps ux | grep '\''[C]hrome Helper --type=renderer'\'' | grep -v
 # Kill a runaway docker run command, when your test suite just don't want to finish...
 alias dockerrunkill='ps | grep '\''docker run'\'' | grep -v grep | awk '\''{print $1}'\'' | xargs kill -9'
 
+# Start a shell in a running Docker container
+alias de='docker exec -it $(docker ps --format "{{.Names}}" | fzf --prompt="Choose docker container: ") bash'
+
+# Kill a running process
+alias kp='ps -a | fzf --prompt="Choose process to kill: " | cut -d " " -f 1 | xargs kill -9'
+
 # For those times when you just don't look busy enough
 alias busy='export GREP_COLOR='\''1;32'\''; cat /dev/urandom | hexdump -C | grep --color=auto "ca fe"'
 
