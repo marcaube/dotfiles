@@ -106,6 +106,5 @@
 
 # Install `gh` extensions
 - ghe:
-    - dlvhdr/gh-prs
-    - mislav/gh-branch
-    - korosuke613/gh-user-star
+    - dlvhdr/gh-dash
+    - korosuke613/gh-user-stars
