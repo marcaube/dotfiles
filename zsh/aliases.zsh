@@ -195,7 +195,7 @@ alias cpr='gh pr list | fzf --header "Checkout PR" --preview="echo {} | cut -f 1
 alias gsp='git stash list | fzf --prompt="Choose a stash to pop: " --preview="echo {} | cut -d \":\" -f 1 | xargs git stash show --color=always" --bind "pgup:preview-page-up,pgdn:preview-page-down" | cut -d ":" -f 1 | xargs git stash pop'
 
 # Git: drop one or multiple stashes using fzf (with preview and multi-select)
-alias gsd='git stash list | fzf --multi --header "Drop stashes" --preview="echo {} | cut -d \":\" -f 1 | xargs git stash show --color=always" --bind "pgup:preview-page-up,pgdn:preview-page-down" | cut -d ":" -f 1 | xargs git stash drop'
+alias gsd='git stash list | fzf --multi --header "Drop stashes" --preview="echo {} | cut -d \":\" -f 1 | xargs git stash show --color=always" --bind "pgup:preview-page-up,pgdn:preview-page-down" | cut -d ":" -f 1 | xargs -n1 git stash drop'
 
 # Git: delete local branch(es) using fzf (with preview and multi-select)
 alias gdb='git branch --sort=-committerdate | fzf --multi --header "Delete branches" --preview="echo {} | tr -d '\'' '\'' | xargs git log --color=always" --bind "pgup:preview-page-up,pgdn:preview-page-down" | xargs git branch -d'
