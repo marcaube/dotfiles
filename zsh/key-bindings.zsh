@@ -15,3 +15,8 @@ bindkey "\e[3~" delete-char # ⌦
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
+# [Ctrl-X][Ctrl-E] - Edit the current command line in $EDITOR
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/key-bindings.zsh#L120-L123
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line

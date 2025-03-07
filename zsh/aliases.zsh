@@ -72,6 +72,12 @@ alias chromekill='ps ux | grep '\''[C]hrome Helper --type=renderer'\'' | grep -v
 # Kill a runaway docker run command, when your test suite just don't want to finish...
 alias dockerrunkill='ps | grep '\''docker run'\'' | grep -v grep | awk '\''{print $1}'\'' | xargs kill -9'
 
+# Start a shell in a running Docker container
+alias de='docker exec -it $(docker ps --format "{{.Names}}" | fzf --prompt="Choose docker container: ") bash'
+
+# Kill a running process
+alias kp='ps -a | fzf --prompt="Choose process to kill: " | cut -d " " -f 1 | xargs kill -9'
+
 # For those times when you just don't look busy enough
 alias busy='export GREP_COLOR='\''1;32'\''; cat /dev/urandom | hexdump -C | grep --color=auto "ca fe"'
 
@@ -179,11 +185,20 @@ function loop() {
     done
 }
 
-# Git checkout with branch name autocomplete using fzf (from: https://elijahmanor.com/byte/git-recent-branches)
-alias cb='git branch --sort=-committerdate | fzf --header "Checkout branch" | xargs git checkout'
-# Git checkout from the list of open PRs
-alias cpr='gh pr list | fzf --header "Checkout PR" | awk '\''{print $(NF-2)}'\'' | xargs git checkout'
+# Git: checkout with branch name autocomplete using fzf (from: https://elijahmanor.com/byte/git-recent-branches, with a few tweaks)
+alias cb='git branch --sort=-committerdate | fzf --header "Checkout branch" --preview="echo {} | tr -d '\'' '\'' | xargs git log --color=always" --bind "pgup:preview-page-up,pgdn:preview-page-down" | xargs git checkout'
+
+# Git: checkout from the list of open PRs (with markdown preview)
+alias cpr='gh pr list | fzf --header "Checkout PR" --preview="echo {} | cut -f 1 | xargs gh pr view | bat --color=always -p -l markdown" --bind "pgup:preview-page-up,pgdn:preview-page-down" | awk '\''{print $(NF-2)}'\'' | xargs git checkout'
+
+# Git: pop a stash from the list of stashes (with preview)
+alias gsp='git stash list | fzf --prompt="Choose a stash to pop: " --preview="echo {} | cut -d \":\" -f 1 | xargs git stash show --color=always" --bind "pgup:preview-page-up,pgdn:preview-page-down" | cut -d ":" -f 1 | xargs git stash pop'
+
+# Git: delete local branch(es) using fzf (with preview and multi-select)
+alias gdb='git branch --sort=-committerdate | fzf --multi --header "Delete branches" --preview="echo {} | tr -d '\'' '\'' | xargs git log --color=always" --bind "pgup:preview-page-up,pgdn:preview-page-down" | xargs git branch -d'
+
 alias gits='git s'
+
 # A couple of aliases inspired from Thorsen's dotfiles (https://github.com/mrnugget/dotfiles/blob/c4624ed521d539856bcf764f04a295bb19093566/zshrc#L153-L179)
 alias gap='git add -p'
 alias gc='git commit -S'

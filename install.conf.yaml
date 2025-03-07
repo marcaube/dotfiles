@@ -27,6 +27,7 @@
     ~/bin/upper: bin/upper
     ~/bin/lower: bin/lower
     ~/bin/title: bin/title
+    ~/bin/uuid: bin/uuid
     ~/bin/xkcd: bin/xkcd
     ~/bin/unzlib: bin/unzlib
 
@@ -106,6 +107,5 @@
 
 # Install `gh` extensions
 - ghe:
-    - dlvhdr/gh-prs
-    - mislav/gh-branch
-    - korosuke613/gh-user-star
+    - dlvhdr/gh-dash
+    - korosuke613/gh-user-stars

@@ -45,7 +45,7 @@ require('mason').setup()
 
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-local servers = { 'rust_analyzer', 'pylsp', 'ruff_lsp', 'lua_ls' }
+local servers = { 'rust_analyzer', 'pylsp', 'ruff', 'lua_ls' }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
@@ -98,18 +98,16 @@ require('lspconfig').lua_ls.setup {
 }
 
 
--- Configure `ruff-lsp`.
--- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ruff_lsp
+-- Configure `ruff`.
+-- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ruff
 -- For the default config, along with instructions on how to customize the settings
-require('lspconfig').ruff_lsp.setup {
-  on_attach = on_attach,
+require('lspconfig').ruff.setup({
   init_options = {
     settings = {
-      -- Any extra CLI arguments for `ruff` go here.
-      args = {},
+      -- Server settings should go here
     }
   }
-}
+})
 
 -- Configure `python-lsp-server`
 -- Make sure pylsp is installd: `pip install python-lsp-server`

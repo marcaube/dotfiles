@@ -1,175 +1,104 @@
 -- https://github.com/folke/which-key.nvim
 vim.opt.timeoutlen = 250
 
-require('which-key').setup {
-  ignore_missing = true,
-  window = {
-    border = 'single', -- none, single, double, shadow
-    position = 'bottom', -- bottom, top
-    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-    padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-    winblend = 0,
-  },
-  layout = {
-    height = { min = 4, max = 25 }, -- min and max height of the columns
-    width = { min = 20, max = 50 }, -- min and max width of the columns
-    spacing = 10, -- spacing between columns
-    align = 'center', -- align columns left, center or right
-  },
-}
-
 local wk = require('which-key')
 
 -- Top level Items
-wk.register({
-  ['<leader>h'] = { '<cmd>nohlsearch<CR>', 'No Highlight' },
-  ['<leader>w'] = { '<cmd>w!<cr>', 'Save' },
-  ['<leader>c'] = { '<cmd>bd<CR>', 'Close buffer' },
-  ['<leader>q'] = { '<cmd>q<cr>', 'Quit' },
-  ['<leader>Q'] = { '<cmd>qa!<cr>', 'Quit All' },
-  ['<leader>e'] = { '<cmd>NvimTreeToggle<cr>', 'Open File Explorer' },
-  ['<leader>/'] = { '<Plug>(comment_toggle_linewise_current)', 'Comment toggle current line' },
-  ['<leader>r'] = { '<cmd>source  ~/.config/nvim/init.lua<cr>', 'Reload config'},
+wk.add({
+  { "<leader>h", "<cmd>nohlsearch<cr>", desc = "No Highlight" },
+  { "<leader>w", "<cmd>w!<cr>", desc = "Save" },
+  { "<leader>c", "<cmd>bd<cr>", desc = "Close buffer" },
+  { "<leader>q", "<cmd>q<cr>", desc = "Quit" },
+  { "<leader>Q", "<cmd>qa!<cr>", desc = "Quit All" },
+  { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Open File Explorer" },
+  { "<leader>/", "<Plug>(comment_toggle_linewise_current)", desc = "Comment toggle current line" },
+  { "<leader>r", "<cmd>source ~/.config/nvim/init.lua<cr>", desc = "Reload config" },
 })
 
--- Categories
-wk.register({
-  ["<leader>"] = {
+-- Keybinding categories
+wk.add({
+  -- Git Commands
+  { "<leader>g", group = "Git" },
+  { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout Branch" },
+  { "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", desc = "Blame" },
+  { "<leader>gL", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Live Blame toggle" },
+  { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file" },
+  { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
+  { "<leader>gC", "<cmd>Telescope git_bcommits<cr>", desc = "Checkout commit (buffer)" },
+  { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Git Diff" },
+  { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage hunk" },
+  { "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>", desc = "Stage buffer" },
 
-    -- Git
-    g = {
-      name = "Git",
-      b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-      l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-      L = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Live Blame toggle" },
-      o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-      c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-      C = {
-        "<cmd>Telescope git_bcommits<cr>",
-        "Checkout commit(for current file)",
-      },
-      d = {
-        "<cmd>Gitsigns diffthis HEAD<cr>",
-        "Git Diff",
-      },
-      s = { "<cmd>Gitsigns stage_hunk<cr>", "Stage hunk" },
-      S = { "<cmd>Gitsigns stage_buffer<cr>", "Stage buffer" },
-    },
+  -- Search and Navigation
+  { "<leader>s", group = "Search" },
+  { "<leader>sb", "<cmd>Telescope buffers<cr>", desc = "Open buffers" },
+  { "<leader>sc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
+  { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "Find File" },
+  { "<leader>sF", "<cmd>:Telescope find_files hidden=true no_ignore=true<cr>", desc = "Find all File" },
+  { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Find Help" },
+  { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Find highlight groups" },
+  { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Marks" },
+  { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
+  { "<leader>sq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix" },
+  { "<leader>sQ", "<cmd>Telescope quickfixhistory<cr>", desc = "Quickfix history" },
+  { "<leader>sr", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent File" },
+  { "<leader>sR", "<cmd>Telescope registers<cr>", desc = "Registers" },
+  { "<leader>st", "<cmd>Telescope live_grep<cr>", desc = "Grep Text" },
+  { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+  { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
+  {
+    "<leader>sp",
+    "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
+    desc = "Colorscheme with Preview",
+  },
+  { "<leader>sw", "<cmd>Telescope grep_string<cr>", desc = "Search current Word" },
+  {
+    "<leader>s/",
+    function()
+      local builtin = require('telescope.builtin')
+      builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+        winblend = 15,
+        previewer = false,
+      })
+    end,
+    desc = "[/] Fuzzily search in current buffer",
+  },
 
-    -- Search and Navigation
-    s = {
-      name = "Search",
-      b = { "<cmd>Telescope buffers<cr>", "Open buffers" },
-      c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-      f = { "<cmd>Telescope find_files<cr>", "Find File" },
-      F = { "<cmd>:Telescope find_files hidden=true no_ignore=true<cr>", "Find all File" },
-      h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-      H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
-      m = { "<cmd>Telescope marks<cr>", "Marks" },
-      M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-      q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
-      Q = { "<cmd>Telescope quickfixhistory<cr>", "Quickfix history" },
-      r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-      R = { "<cmd>Telescope registers<cr>", "Registers" },
-      t = { "<cmd>Telescope live_grep<cr>", "Grep Text" },
-      k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-      C = { "<cmd>Telescope commands<cr>", "Commands" },
-      p = {
-        "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
-        "Colorscheme with Preview",
-      },
-      w = { "<cmd>Telescope grep_string<cr>", "Search current Word" },
-      ["/"] = {
-        function()
-          local builtin = require('telescope.builtin')
-          builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-            winblend = 10,
-            previewer = false,
-          })
-        end,
-        "[/] Fuzzily search in current buffer"
-      },
-    },
+  -- Harpoon
+  { "<leader>n", group = "Harpoon" },
+  { "<leader>nh", function () require("harpoon.ui").toggle_quick_menu() end, desc = "Toggle Harpoon quick menu" },
+  { "<leader>nm", function () require("harpoon.mark").add_file() end, desc = "Add mark" },
+  -- Move to files 1 to 4 using neio
+  { "<leader>nn", function () require("harpoon.ui").nav_file(1) end, desc = "Goto mark 1" },
+  { "<leader>ne", function () require("harpoon.ui").nav_file(2) end, desc = "Goto mark 2" },
+  { "<leader>ni", function () require("harpoon.ui").nav_file(3) end, desc = "Goto mark 3" },
+  { "<leader>no", function () require("harpoon.ui").nav_file(4) end, desc = "Goto mark 4" },
 
-    n = {
-      name = "Harpoon",
-      h = { function () require("harpoon.ui").toggle_quick_menu() end, "Toggle Harpoon quick menu"},
-      m = { function () require("harpoon.mark").add_file() end, "Add mark"},
+  -- Testing
+  -- https://github.com/vim-test/vim-test
+  { "<leader>t", group = "Testing" },
+  { "<leader>tf", "<cmd>:TestFile<cr>", desc = "Test File" },
+  { "<leader>tn", "<cmd>:TestNearest<cr>", desc = "Test Nearest" },
+  { "<leader>tl", "<cmd>:TestLast<cr>", desc = "Test Last" },
+  { "<leader>ts", "<cmd>:TestSuite<cr>", desc = "Test Suite" },
+  { "<leader>tv", "<cmd>:TestVisit<cr>", desc = "Visit last test file" },
 
-      -- Move to files 1 to 4 using neio
-      n = { function () require("harpoon.ui").nav_file(1) end, "Goto mark 1"},
-      e = { function () require("harpoon.ui").nav_file(2) end, "Goto mark 2"},
-      i = { function () require("harpoon.ui").nav_file(3) end, "Goto mark 3"},
-      o = { function () require("harpoon.ui").nav_file(4) end, "Goto mark 4"},
-    },
+  -- Debugging (dap)
+  -- TODO: https://github.com/marcaube/dotfiles/blob/master/vim/lua/plugin_config/whichkey.lua#L118-L134
 
-    -- Testing
-    -- https://github.com/vim-test/vim-test
-    t = {
-      name = "Test",
-      f = { "<cmd>:TestFile<cr>", "Test File" },
-      n = { "<cmd>:TestNearest<cr>", "Test Nearest" },
-      l = { "<cmd>:TestLast<cr>", "Test Last" },
-      s = { "<cmd>:TestSuite<cr>", "Test Suite"},
-      v = { "<cmd>:TestVisit<cr>", "Visit last test file"},
-    },
+  -- LSP
+  -- TODO: https://github.com/marcaube/dotfiles/blob/master/vim/lua/plugin_config/whichkey.lua#L137-L162
+  { "<leader>l", group = "LSP" },
+  { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Actions" },
+  { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
+  { "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Workspace Symbols" },
 
-    -- Debugging
-    d = {
-      name = "Debug",
-      t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
-      b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
-      c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-      C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
-      d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
-      g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
-      i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
-      o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
-      u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
-      p = { "<cmd>lua require'dap'.pause()<cr>", "Pause" },
-      r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
-      s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
-      q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
-      U = { "<cmd>lua require'dapui'.toggle({reset = true})<cr>", "Toggle UI" },
-    },
-
-    -- LSP
-    l = {
-      name = "LSP",
-      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-      d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
-      w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
-      -- f = { require("lvim.lsp.utils").format, "Format" },
-      i = { "<cmd>LspInfo<cr>", "Info" },
-      I = { "<cmd>Mason<cr>", "Mason Info" },
-      j = {
-        vim.diagnostic.goto_next,
-        "Next Diagnostic",
-      },
-      k = {
-        vim.diagnostic.goto_prev,
-        "Prev Diagnostic",
-      },
-      l = { vim.lsp.codelens.run, "CodeLens Action" },
-      q = { vim.diagnostic.setloclist, "Quickfix" },
-      r = { vim.lsp.buf.rename, "Rename" },
-      s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-      S = {
-        "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-        "Workspace Symbols",
-      },
-      e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
-    },
-
-    -- Package Management
-    p = {
-      name = "Packer",
-      c = { "<cmd>PackerCompile<cr>", "Compile" },
-      i = { "<cmd>PackerInstall<cr>", "Install" },
-      r = { "<cmd>lua require('lvim.plugin-loader').recompile()<cr>", "Re-compile" },
-      s = { "<cmd>PackerSync<cr>", "Sync" },
-      S = { "<cmd>PackerStatus<cr>", "Status" },
-      u = { "<cmd>PackerUpdate<cr>", "Update" },
-    },
-  }
+  -- Package Management
+  { "<leader>p", group = "Lazy.nvim" },
+  { "<leader>pc", "<cmd>Lazy check<cr>", desc = "Check for updates and show the log" },
+  { "<leader>pC", "<cmd>Lazy clean<cr>", desc = "Clean plugins that are no longer needed" },
+  { "<leader>ph", "<cmd>Lazy health<cr>", desc = "Health Check" },
+  { "<leader>pi", "<cmd>Lazy install<cr>", desc = "Install missing plugins" },
+  { "<leader>ps", "<cmd>Lazy sync<cr>", desc = "Sync (Run install, clean and update)" },
+  { "<leader>pu", "<cmd>Lazy update<cr>", desc = "Update" },
 })

@@ -17,7 +17,7 @@ hs.loadSpoon('Helpers')
 slack = 'com.tinyspeck.slackmacgap'
 discord = 'com.hnc.Discord'
 bear = 'net.shinyfrog.bear'
-intellij = 'com.jetbrains.intellij'
+pycharm = 'com.jetbrains.pycharm'
 fellow = 'com.electron.fellow'
 
 hyper:app(slack)
@@ -35,7 +35,7 @@ hyper:app(bear)
         default = alfredWorkflow('com.drgrib.bear', 'search bear'),
     })
 
-hyper:app(intellij)
+hyper:app(pycharm)
     :action('open', {
         default = combo({ 'cmd', 'option' }, 'o')
     })
