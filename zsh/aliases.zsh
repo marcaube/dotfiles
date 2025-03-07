@@ -194,6 +194,9 @@ alias cpr='gh pr list | fzf --header "Checkout PR" --preview="echo {} | cut -f 1
 # Git: pop a stash from the list of stashes (with preview)
 alias gsp='git stash list | fzf --prompt="Choose a stash to pop: " --preview="echo {} | cut -d \":\" -f 1 | xargs git stash show --color=always" --bind "pgup:preview-page-up,pgdn:preview-page-down" | cut -d ":" -f 1 | xargs git stash pop'
 
+# Git: delete local branch(es) using fzf (with preview and multi-select)
+alias gdb='git branch --sort=-committerdate | fzf --multi --header "Delete branches" --preview="echo {} | tr -d '\'' '\'' | xargs git log --color=always" --bind "pgup:preview-page-up,pgdn:preview-page-down" | xargs git branch -d'
+
 alias gits='git s'
 
 # A couple of aliases inspired from Thorsen's dotfiles (https://github.com/mrnugget/dotfiles/blob/c4624ed521d539856bcf764f04a295bb19093566/zshrc#L153-L179)
