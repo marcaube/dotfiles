@@ -192,7 +192,7 @@ alias cb='git branch --sort=-committerdate | fzf --header "Checkout branch" --pr
 alias cpr='gh pr list | fzf --header "Checkout PR" --preview="echo {} | cut -f 1 | xargs gh pr view | bat --color=always -p -l markdown" --bind "pgup:preview-page-up,pgdn:preview-page-down" | awk '\''{print $(NF-2)}'\'' | xargs git checkout'
 
 # Git: pop a stash from the list of stashes (with preview)
-alias gsp='git stash list | fzf --prompt="Choose a stash to pop: " --preview="echo {} | cut -d \":\" -f 1 | xargs git stash show --color=always" --bind "pgup:preview-page-up,pgdn:preview-page-down" | xargs git stash pop'
+alias gsp='git stash list | fzf --prompt="Choose a stash to pop: " --preview="echo {} | cut -d \":\" -f 1 | xargs git stash show --color=always" --bind "pgup:preview-page-up,pgdn:preview-page-down" | cut -d ":" -f 1 | xargs git stash pop'
 
 alias gits='git s'
 
