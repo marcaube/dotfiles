@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+import os
+import urllib.parse
+from sys import argv
+
+
+if __name__ == "__main__":
+    if len(argv) < 2:
+        exit(f"Usage: {os.path.basename(__file__)} <text>")
+
+    input = str(argv[1])
+
+    print(urllib.parse.quote(input), end='')

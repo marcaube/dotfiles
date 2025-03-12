@@ -27,6 +27,7 @@
     ~/bin/upper: bin/upper
     ~/bin/lower: bin/lower
     ~/bin/title: bin/title
+    ~/bin/urlencode: bin/urlencode
     ~/bin/uuid: bin/uuid
     ~/bin/xkcd: bin/xkcd
     ~/bin/unzlib: bin/unzlib
