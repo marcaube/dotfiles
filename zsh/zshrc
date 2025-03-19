@@ -22,6 +22,9 @@ eval "$(atuin init zsh --disable-up-arrow)"
 # Has to be sourced *after* atuin
 source $DOTFILES/zsh/key-bindings.zsh
 
+# Include the zsh-completions plugin directory in the $fpath
+fpath=($DOTFILES/zsh/plugins/zsh-completions/src $fpath)
+
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path --no-rehash)"
 fi

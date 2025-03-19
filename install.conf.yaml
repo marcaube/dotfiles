@@ -85,6 +85,9 @@
     - description: Installing ZSH autocompletions
       command: "git clone https://github.com/zsh-users/zsh-completions ${DOTFILES}/zsh/plugins/zsh-completions 2> /dev/null || exit 0"
 
+    - description: (Re)build the ZSH completion cache
+      command: "rm -f ~/.zcompdump* && autoload -U compinit && compinit"
+
     - description: Installing ZSH autosuggestions
       command: "git clone https://github.com/zsh-users/zsh-autosuggestions ${DOTFILES}/zsh/plugins/zsh-autosuggestions 2> /dev/null || exit 0"
 
