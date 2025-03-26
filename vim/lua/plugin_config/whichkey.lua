@@ -7,7 +7,7 @@ local wk = require('which-key')
 wk.add({
   { "<leader>h", "<cmd>nohlsearch<cr>", desc = "No Highlight" },
   { "<leader>w", "<cmd>w!<cr>", desc = "Save" },
-  { "<leader>c", "<cmd>bd<cr>", desc = "Close buffer" },
+  { "<leader>x", "<cmd>bd<cr>", desc = "Close buffer" },
   { "<leader>q", "<cmd>q<cr>", desc = "Quit" },
   { "<leader>Q", "<cmd>qa!<cr>", desc = "Quit All" },
   { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Open File Explorer" },
@@ -101,4 +101,18 @@ wk.add({
   { "<leader>pi", "<cmd>Lazy install<cr>", desc = "Install missing plugins" },
   { "<leader>ps", "<cmd>Lazy sync<cr>", desc = "Sync (Run install, clean and update)" },
   { "<leader>pu", "<cmd>Lazy update<cr>", desc = "Update" },
+
+  -- Configs
+  { "<leader>c", group = "Editor Configs"},
+  { "<leader>cl", "<cmd>set relativenumber!<cr>", desc = "Toggle relative line numbers" },
+  { "<leader>cc", function()
+    if vim.wo.colorcolumn == "" then
+      vim.wo.colorcolumn = "80,120,160"
+    else
+      vim.wo.colorcolumn = ""
+    end
+  end, desc = "Toggle color columns" },
+  { "<leader>cs", "<cmd>set spell!<cr>", desc = "Toggle spell check" },
+  { "<leader>cw", "<cmd>set wrap!<cr>", desc = "Toggle wrap" },
+  { "<leader>cz", "<cmd>set foldcolumn=0<cr>", desc = "Toggle fold column" },
 })
