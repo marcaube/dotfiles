@@ -1,8 +1,6 @@
 # Taps
-tap 'homebrew/cask-versions'    # for alternate versions of Casks
 tap 'eddieantonio/eddieantonio' # for imgcat
 tap 'remind101/formulae'        # for assume-role
-tap 'homebrew/cask-drivers'     # to flash my Moonlander keyboard firmware
 tap 'wpscanteam/tap'            # for wpscan
 tap 'yqrashawn/goku'            # For Goku
 
