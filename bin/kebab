@@ -5,7 +5,19 @@ from sys import argv
 
 
 def kebab_case(text: str) -> str:
-    return re.sub(r"\s+", "-", text.lower())
+    # Convert text to kebab-case
+    kebab = re.sub(r"\s+", "-", text.lower())
+
+    # Remove any non-alphanumeric characters except for hyphens
+    kebab = re.sub(r"[^a-z0-9-]", "", kebab)
+
+    # Remove multiple consecutive hyphens
+    kebab = re.sub(r"-{2,}", "-", kebab)
+
+    # Remove leading and trailing hyphens
+    kebab = kebab.strip("-")
+
+    return kebab
 
 
 if __name__ == "__main__":
