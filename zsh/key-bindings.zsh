@@ -1,6 +1,10 @@
 # Use emacs key bindings
 bindkey -e
 
+# Make ⌥+⌫ developer friendly by treating /, =, and . as *not* part of a word
+# https://lgug2z.com/articles/sensible-wordchars-for-most-developers/
+WORDCHARS='*?_-[]~&;!#$%^(){}<>'
+
 # kitty: jumping words using option + arrows
 # https://github.com/kovidgoyal/kitty/issues/838#issuecomment-770328902
 bindkey "\e[1;3D" backward-word # ⌥←
