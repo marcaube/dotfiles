@@ -71,7 +71,7 @@
 
 [core]
     # Use custom `.gitignore` and `.gitattributes`
-    excludesfile = ~/.dotfiles/.gitignore_global
+    excludesfile = ~/.gitignore_global
     attributesfile = ~/.gitattributes
 
     # Treat spaces before tabs, lines that are indented with 8 or more spaces, and
