@@ -10,6 +10,7 @@ brew 'atuin'            # shell history on steroids
 brew 'bat'              # like 'cat', with highlighting, git support and pagination
 brew 'coreutils'        # Those that come with macOS are outdated
 brew 'curl'
+brew 'direnv'           # Load/unload environment variables based on $PWD
 brew 'docker-compose'   # Docker without the hassle
 brew 'erdtree'          # like `tree` but with nicer options
 brew 'exa'              # like `ls`

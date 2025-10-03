@@ -38,3 +38,6 @@ Thumbs.db
 # Ignore version management files
 .mise.toml
 .python-version
+
+# Direnv configs
+.envrc
