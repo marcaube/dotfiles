@@ -21,16 +21,17 @@
 
 - link:
     # Binaries
-    ~/bin/epoch: bin/epoch
     ~/bin/$: bin/$
     ~/bin/capitalize: bin/capitalize
-    ~/bin/upper: bin/upper
+    ~/bin/epoch: bin/epoch
+    ~/bin/kebab: bin/kebab
     ~/bin/lower: bin/lower
     ~/bin/title: bin/title
+    ~/bin/unzlib: bin/unzlib
+    ~/bin/upper: bin/upper
     ~/bin/urlencode: bin/urlencode
     ~/bin/uuid: bin/uuid
     ~/bin/xkcd: bin/xkcd
-    ~/bin/unzlib: bin/unzlib
 
     # Git
     ~/.gitconfig: git/gitconfig

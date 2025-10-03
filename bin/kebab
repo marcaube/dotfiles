@@ -8,6 +8,9 @@ def kebab_case(text: str) -> str:
     # Convert text to kebab-case
     kebab = re.sub(r"\s+", "-", text.lower())
 
+    # Convert underscores to hyphens
+    kebab = kebab.replace("_", "-")
+
     # Remove any non-alphanumeric characters except for hyphens
     kebab = re.sub(r"[^a-z0-9-]", "", kebab)
 
