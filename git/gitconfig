@@ -181,7 +181,7 @@
 [user]
     name = marcaube
     email = marcaube@users.noreply.github.com
-    signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPXyy4XtHI14Em5yQ4DRcqf9Rpehze8Nt1N9zQYznqls maaube
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPXyy4XtHI14Em5yQ4DRcqf9Rpehze8Nt1N9zQYznqls
 
 [gpg]
     format = ssh
@@ -191,6 +191,7 @@
 
 [gpg "ssh"]
     allowedSignersFile = ~/.git_allowed_signers
+    program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 
 [include]
     path = ~/.config/catppuccin.gitconfig
