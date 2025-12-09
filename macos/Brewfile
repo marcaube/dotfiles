@@ -93,7 +93,6 @@ cask 'deckset'          # slide decks for conference talks
 cask 'docker'
 cask 'firefox'
 cask 'google-chrome'
-cask 'gpg-suite'
 cask 'hiddenbar'        # keep my statusbar tidy
 cask 'heynote'          # a nice scratchpad app
 cask 'imagealpha'       # optimize transparent PNGs
