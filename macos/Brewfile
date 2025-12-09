@@ -1,5 +1,4 @@
 # Taps
-tap 'eddieantonio/eddieantonio' # for imgcat
 tap 'remind101/formulae'        # for assume-role
 tap 'wpscanteam/tap'            # for wpscan
 tap 'yqrashawn/goku'            # For Goku
@@ -22,7 +21,6 @@ brew 'graphviz'         # graph/diagrams generation
 brew 'htop'
 brew 'httpie'           # to test HTTP calls from the CLI
 brew 'hyperfine'        # a benchmarking tool
-brew 'imgcat'           # like 'cat', but for images
 brew 'jq'               # When you want to manipulate JSON piped from httpie
 brew 'mackup'           # to sync my Mac configs
 brew 'mas'              # to install Mac App Store apps from the CLI
