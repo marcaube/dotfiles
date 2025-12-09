@@ -51,20 +51,20 @@ cask 'hammerspoon'          # Take Karabiner's shortcuts and make the magic happ
 brew 'yqrashawn/goku/goku'  # Manage Karabiner configs with ease
 
 # Tools for work
-brew 'assume-role'
-brew 'awscli'
-cask 'aws-vpn-client'
-cask 'session-manager-plugin'
-brew 'gettext'      # to compile messages, don't forget to link!
-brew 'libjpeg'
-brew 'libmagic'
-brew 'libmaxminddb' # for GeoIP
-brew 'libpng'
-brew 'libpq', link: true
-brew 'node'
-brew 'python'
-brew 'pipenv'
-brew 'pyenv'
+# brew 'assume-role'
+# brew 'awscli'
+# cask 'aws-vpn-client'
+# cask 'session-manager-plugin'
+# brew 'gettext'      # to compile messages, don't forget to link!
+# brew 'libjpeg'
+# brew 'libmagic'
+# brew 'libmaxminddb' # for GeoIP
+# brew 'libpng'
+# brew 'libpq', link: true
+# brew 'node'
+# brew 'python'
+# brew 'pipenv'
+# brew 'pyenv'
 
 # Pentesting / CTF / Forensics
 brew 'binwalk'          # search for files hidden via steganography
