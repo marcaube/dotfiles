@@ -92,7 +92,6 @@ cask 'dash'             # offline docs and code snippets FTW!
 cask 'deckset'          # slide decks for conference talks
 cask 'docker'
 cask 'firefox'
-cask 'google-chrome'
 cask 'hiddenbar'        # keep my statusbar tidy
 cask 'heynote'          # a nice scratchpad app
 cask 'imagealpha'       # optimize transparent PNGs
