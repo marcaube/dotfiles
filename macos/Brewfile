@@ -108,7 +108,6 @@ cask 'rectangle'        # no better ways to move windows around
 cask 'slack'
 cask 'sublime-text'
 cask 'zoom'
-cask 'zsa-wally'        # to flash my Moonlander keyboard firmware
 
 # Gaming
 cask 'battle-net'
