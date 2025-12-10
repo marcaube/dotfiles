@@ -208,6 +208,15 @@ alias gc='git commit -S'
 alias gd='git diff'
 alias gdc='git diff --cached'
 
+function push() {
+    extras=${1}
+    git rev-parse --abbrev-ref HEAD | xargs git push -u origin $extras
+}
+
+function co() {
+    branch=${1}
+    git branch | (grep $branch || echo 'branch-not-found') | xargs git checkout > /dev/null 2>&1 || git branches | grep $branch | sed -e 's/remotes/origin///' | xargs git checkout
+}
 
 # Tmux shortcuts (from: https://github.com/everzet/dotfiles/blob/master/zsh/aliases.zsh)
 alias tn='tmux new-session -s ${PWD##*/}'
