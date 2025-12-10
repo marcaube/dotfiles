@@ -762,8 +762,8 @@ for app in "Activity Monitor" \
     "Mail" \
     "Messages" \
     "Photos" \
+    "Rectangle" \
     "Safari" \
-    "Spectacle" \
     "SystemUIServer" \
     "Terminal" \
     "iCal"; do

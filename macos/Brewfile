@@ -105,8 +105,8 @@ cask 'kitty'
 cask 'ksdiff2'          # CLI launcher for my difftool (Kaleidoscope)
 cask 'ngrok'
 cask 'obsidian'
+cask 'rectangle'        # no better ways to move windows around
 cask 'slack'
-cask 'spectacle'        # no better ways to move windows around
 cask 'sublime-text'
 cask 'zoom'
 cask 'zsa-wally'        # to flash my Moonlander keyboard firmware
