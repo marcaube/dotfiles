@@ -98,11 +98,10 @@ cask 'imagealpha'       # optimize transparent PNGs
 cask 'imageoptim'       # optimize images
 cask 'insomnia'         # a nice API client GUI
 cask 'pycharm'
-cask 'kaleidoscope2'
+cask 'kaleidoscope@2'
 cask 'keybase'
 cask 'keycastr'         # when pairing remotely, to show all keypresses in vim/neovim
 cask 'kitty'
-cask 'ksdiff2'          # CLI launcher for my difftool (Kaleidoscope)
 cask 'ngrok'
 cask 'obsidian'
 cask 'rectangle'        # no better ways to move windows around
