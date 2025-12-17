@@ -21,6 +21,7 @@ brew 'graphviz'         # graph/diagrams generation
 brew 'htop'
 brew 'httpie'           # to test HTTP calls from the CLI
 brew 'hyperfine'        # a benchmarking tool
+brew 'jc'               # To convert the output of commands to json, pairs nicely with jq
 brew 'jq'               # When you want to manipulate JSON piped from httpie
 brew 'mackup'           # to sync my Mac configs
 brew 'mas'              # to install Mac App Store apps from the CLI
