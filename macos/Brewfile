@@ -129,5 +129,6 @@ mas 'Bear', id: 1091189122          # note taking app
 mas 'Ivory', id: 6444602274         # Mastodon/Fediverse client
 mas 'Next Meeting', id: 1017470484  # See what meeting is up next, right in the status bar
 mas 'Pixelmator Pro', id: 1289583905
+mas 'Reeder', id: 1529448980        # RSS reader
 mas 'stts', id: 1187772509          # status of cloud services, right in the status bar
 mas 'Vimari', id: 1480933944        # vim bindings for Safari
