@@ -225,6 +225,7 @@ alias tls='tmux list-sessions'
 alias tks='tmux kill-session -t'
 alias mux='tmuxinator'
 
+alias v='nvim'
 
 # Hashes
 alias md5='python -c "import hashlib;import uuid; print(hashlib.md5(str(uuid.uuid4()).encode()).hexdigest())" | tee /dev/tty | pbcopy | echo "=> md5 hash copied to pasteboard."'
