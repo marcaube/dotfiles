@@ -229,5 +229,7 @@ alias v='nvim'
 
 alias venv="python3 -m venv .venv && . .venv/bin/activate && python3 -m pip install -q --upgrade pip"
 
+alias orun="organize run"
+
 # Hashes
 alias md5='python -c "import hashlib;import uuid; print(hashlib.md5(str(uuid.uuid4()).encode()).hexdigest())" | tee /dev/tty | pbcopy | echo "=> md5 hash copied to pasteboard."'

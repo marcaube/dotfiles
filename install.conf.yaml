@@ -49,6 +49,9 @@
     # Mackup
     ~/.mackup.cfg: macos/mackup.cfg
 
+    # Organize
+    ~/Library/Application Support/organize/config.yaml: macos/organize.yaml
+
     # Tmux
     ~/.tmux.conf: tmux/tmux.conf
 

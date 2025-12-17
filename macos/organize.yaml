@@ -1,0 +1,56 @@
+# organize configuration file
+# https://organize.readthedocs.io
+
+rules:
+
+  # Move incomplete downloads older > 7 days into the trash
+  - name: "Clean incomplete downloads"
+    locations:
+      - ~/Downloads
+    subfolders: true
+    filters:
+      - extension:
+          - download
+          - crdownload
+          - part
+      - lastmodified:
+          days: 7
+          mode: older
+    actions:
+      - trash
+
+  # Delete empty files from downloads and desktop
+  - name: "Remove empty files"
+    locations:
+      - ~/Downloads
+      - ~/Desktop
+    filters:
+      - size: 0
+    actions:
+      - trash
+
+  # Move downloaded ebooks to my iCloud folder
+  - name: "Save eBooks to iCloud"
+    locations: ~/Downloads
+    filters:
+      - extension:
+          - epub
+    actions:
+      - move:
+          dest: ~/Library/Mobile Documents/com~apple~CloudDocs/eBooks/
+          on_conflict: trash
+
+  # Move all screenshots in a Desktop folder after 7 days
+  - name: "Archive screenshots"
+    locations: ~/Desktop
+    filters:
+      - name:
+          startswith:
+            - "Capture"
+            - "Screenshot"
+      - extension: png
+      - lastmodified:
+          days: 7
+          mode: older
+    actions:
+      - move: ~/Desktop/Screenshots/
