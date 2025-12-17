@@ -26,6 +26,7 @@ brew 'jq'               # When you want to manipulate JSON piped from httpie
 brew 'mackup'           # to sync my Mac configs
 brew 'mas'              # to install Mac App Store apps from the CLI
 brew 'neofetch'
+brew 'organize-tool'    # file management automation tool
 brew 'ripgrep'          # like grep, but faster
 brew 'rm-improved'      # a better rm, with trash support
 brew 'starship'         # a minimalist CLI prompt
