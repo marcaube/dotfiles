@@ -36,6 +36,7 @@ brew 'tmux'
 brew 'tmuxinator'
 brew 'tokei'            # to quickly count lines of code, like cloc, but faster
 brew 'tree'             # to display directories tree
+brew 'yt-dlp'           # when you want to archive a video locally
 brew 'wget'
 brew 'zoxide'           # a faster way to navigate your filesystem
 
