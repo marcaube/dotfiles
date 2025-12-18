@@ -93,7 +93,7 @@ cask 'caffeine'         # when I don't want my computer to fall asleep
 cask 'cleanshot'		# Gorgeous, expansive (and expensive!) screeshot app
 cask 'dash'             # offline docs and code snippets FTW!
 cask 'deckset'          # slide decks for conference talks
-cask 'docker'
+cask 'docker-desktop'
 cask 'firefox'
 cask 'hiddenbar'        # keep my statusbar tidy
 cask 'heynote'          # a nice scratchpad app
