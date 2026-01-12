@@ -15,6 +15,10 @@ source $DOTFILES/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $DOTFILES/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh
 source $DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Keep sensitive info out of history
+setopt HIST_IGNORE_SPACE
+export HISTORY_IGNORE="(export *)"
+
 eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
