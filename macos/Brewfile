@@ -53,6 +53,7 @@ brew 'git-who'          # git blame for file trees
 # Productivity and automation (see: https://tighten.com/blog/how-to-train-your-keyboard/)
 cask 'karabiner-elements'   # Remap keys and shortcuts at the kernel level
 cask 'hammerspoon'          # Take Karabiner's shortcuts and make the magic happen
+cask 'handy'                # Offline speech-to-text for dictating text and commands
 brew 'yqrashawn/goku/goku'  # Manage Karabiner configs with ease
 
 # Tools for work
