@@ -218,6 +218,13 @@ function co() {
     git branch | (grep $branch || echo 'branch-not-found') | xargs git checkout > /dev/null 2>&1 || git branches | grep $branch | sed -e 's/remotes/origin///' | xargs git checkout
 }
 
+# Change to a git worktree directory using fzf
+function cw() {
+  local dir
+  dir=$(git worktree list | fzf | awk '{print $1}') || return
+  [ -n "$dir" ] && cd "$dir"
+}
+
 # Tmux shortcuts (from: https://github.com/everzet/dotfiles/blob/master/zsh/aliases.zsh)
 alias tn='tmux new-session -s ${PWD##*/}'
 alias ta='tmux attach -t'
