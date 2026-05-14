@@ -9,26 +9,50 @@ if [ -f $DOTFILES/zsh/extra.zsh ]; then
 fi
 
 # Plugins
-source $DOTFILES/zsh/plugins/fzf.plugin.zsh
-source $DOTFILES/zsh/plugins/git-trim/git-trim.plugin.zsh
+# source $DOTFILES/zsh/plugins/git-trim/git-trim.plugin.zsh
 source $DOTFILES/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $DOTFILES/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh
 source $DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# fzf — direct paths instead of the detection plugin
+source /opt/homebrew/opt/fzf/shell/completion.zsh
+source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 
 # Keep sensitive info out of history
 setopt HIST_IGNORE_SPACE
 export HISTORY_IGNORE="(export *)"
 
-eval "$(starship init zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-eval "$(atuin init zsh --disable-up-arrow)"
-eval "$(direnv hook zsh)"
+# Cache eval output; only regenerate when the binary itself changes
+_eval_cached() {
+  local name="$1"; shift
+  local cache="$HOME/.cache/zsh/${name}.zsh"
+  if [[ ! -f "$cache" || "$(whence -p $1)" -nt "$cache" ]]; then
+    mkdir -p "${cache:h}"
+    "$@" > "$cache"
+  fi
+  source "$cache"
+}
+
+_eval_cached starship starship init zsh
+_eval_cached zoxide  zoxide  init --cmd cd zsh
+_eval_cached atuin   atuin   init zsh --disable-up-arrow
+_eval_cached direnv  direnv  hook zsh
+
+unfunction _eval_cached
 
 # Has to be sourced *after* atuin
 source $DOTFILES/zsh/key-bindings.zsh
 
 # Include the zsh-completions plugin directory in the $fpath
 fpath=($DOTFILES/zsh/plugins/zsh-completions/src $fpath)
+
+# Cache compinit — skip full init when dump is less than 24h old
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path --no-rehash)"
