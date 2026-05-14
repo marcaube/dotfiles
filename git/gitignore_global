@@ -41,3 +41,6 @@ Thumbs.db
 
 # Direnv configs
 .envrc
+
+# Project-specific neovim configs
+.nvim.lua

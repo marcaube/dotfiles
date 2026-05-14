@@ -55,6 +55,9 @@ vim.opt.foldlevel = 99
 
 vim.g.have_nerd_font = true
 
+-- Load project-local .nvim.lua files (Neovim will prompt to trust on first encounter)
+vim.o.exrc = true
+
 -- Diagnostics (virtual_text was disabled by default in 0.11)
 vim.diagnostic.config({
   virtual_text = true,

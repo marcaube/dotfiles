@@ -100,6 +100,8 @@ wk.add({
   { "<leader>ds", function() require("dap").continue() end, desc = "Start" },
   { "<leader>dq", function() require("dap").close() end, desc = "Quit" },
   { "<leader>dU", function() require("dapui").toggle() end, desc = "Toggle UI" },
+  { "<leader>dT", function() require("dap-python").test_method() end, desc = "Debug Test Method" },
+  { "<leader>dK", function() require("dap-python").test_class() end, desc = "Debug Test Class" },
 
   -- LSP
   { "<leader>l", group = "LSP" },

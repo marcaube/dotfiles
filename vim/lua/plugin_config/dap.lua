@@ -6,7 +6,30 @@ local dap_vtext = require('nvim-dap-virtual-text')
 dap_vtext.setup({ commented = true })
 
 -- Auto open/close UI with debug session
-dapui.setup()
+dapui.setup({
+  layouts = {
+    {
+      -- Sidebar: scopes get the most space since that's where local vars live
+      position = 'left',
+      size = 75,
+      elements = {
+        { id = 'scopes',      size = 0.55 },
+        { id = 'watches',     size = 0.20 },
+        { id = 'stacks',      size = 0.15 },
+        { id = 'breakpoints', size = 0.10 },
+      },
+    },
+    {
+      -- Bottom tray: console large for logs, repl accessible for inspection
+      position = 'bottom',
+      size = 18,
+      elements = {
+        { id = 'console', size = 0.65 },
+        { id = 'repl',    size = 0.35 },
+      },
+    },
+  },
+})
 dap.listeners.after.event_initialized['dapui_config'] = function() dapui.open() end
 dap.listeners.before.event_terminated['dapui_config'] = function() dapui.close() end
 dap.listeners.before.event_exited['dapui_config'] = function() dapui.close() end
