@@ -6,3 +6,6 @@ vim/plugin
 # To add git credentials, custom commands, private aliases, etc.
 zsh/extra.zsh
 zsh/plugins
+
+# Direnv configs
+.envrc
