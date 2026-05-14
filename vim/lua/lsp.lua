@@ -1,144 +1,81 @@
--- LSP settings.
---  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
-  -- In this case, we create a function that lets us more easily define mappings specific
-  -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
-    if desc then
-      desc = 'LSP: ' .. desc
-    end
-
-    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
   end
 
-  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-
-  nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('gD', vim.lsp.buf.definition, '[G]oto [D]eclaration')
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-  nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-
-  -- See `:help K` for why this keymap
+  nmap('<leader>rn', vim.lsp.buf.rename, 'Rename')
+  nmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
+  nmap('gd', vim.lsp.buf.definition, 'Goto Definition')
+  nmap('gD', vim.lsp.buf.declaration, 'Goto Declaration')
+  nmap('gr', function() require('telescope.builtin').lsp_references() end, 'Goto References')
+  nmap('gI', vim.lsp.buf.implementation, 'Goto Implementation')
+  nmap('<leader>D', vim.lsp.buf.type_definition, 'Type Definition')
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  -- nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
-  -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    if vim.lsp.buf.format then
-      vim.lsp.buf.format()
-    elseif vim.lsp.buf.formatting then
-      vim.lsp.buf.formatting()
-    end
+    vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
-
-  nmap('<leader>f', ':Format<cr>', 'Format current buffer')
+  nmap('<leader>f', ':Format<cr>', 'Format buffer')
 end
 
--- Setup mason so it can manage external tooling
-require('mason').setup()
-
--- Enable the following language servers
--- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-local servers = { 'rust_analyzer', 'pylsp', 'ruff', 'lua_ls' }
-
--- Ensure the servers above are installed
-require('mason-lspconfig').setup {
-  ensure_installed = servers,
-}
-
--- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-for _, lsp in ipairs(servers) do
-  require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
-
--- Turn on lsp status information
-require('fidget').setup()
-
--- Example custom configuration for lua
---
--- Make runtime files discoverable to the server
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
-require('lspconfig').lua_ls.setup {
-  on_attach = on_attach,
+-- Global defaults: applied to every server
+vim.lsp.config('*', {
   capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+-- Server-specific overrides
+vim.lsp.config('lua_ls', {
   settings = {
     Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = runtime_path,
-      },
-      diagnostics = {
-        globals = { 'vim' },
-      },
+      diagnostics = { globals = { 'vim' } },
       workspace = {
         library = vim.api.nvim_get_runtime_file('', true),
-        checkThirdParty = false, -- Fix a message about 'luassert', see: https://github.com/folke/neodev.nvim/issues/88
+        checkThirdParty = false,
       },
-      -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = { enable = false },
     },
   },
-}
-
-
--- Configure `ruff`.
--- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ruff
--- For the default config, along with instructions on how to customize the settings
-require('lspconfig').ruff.setup({
-  init_options = {
-    settings = {
-      -- Server settings should go here
-    }
-  }
 })
 
--- Configure `python-lsp-server`
--- Make sure pylsp is installd: `pip install python-lsp-server`
--- Also make sure that Rope is installed: `pip install pylsp-rope`
+vim.lsp.config('ruff', {
+  init_options = { settings = {} },
+})
+
 -- See: https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
-require('lspconfig').pylsp.setup {
-  cmd = { "pylsp" },
-  filetypes = { "python" },
+vim.lsp.config('pylsp', {
   settings = {
     pylsp = {
       plugins = {
-        jedi_completion = { enabled = true },
-        jedi_hover = { enabled = true },
-        jedi_references = { enabled = true },
+        jedi_completion     = { enabled = true },
+        jedi_hover          = { enabled = true },
+        jedi_references     = { enabled = true },
         jedi_signature_help = { enabled = true },
-        jedi_symbols = { enabled = true, all_scopes = true },
-        pycodestyle = { enabled = false },
-        flake8 = {
-          enabled = true,
-          ignore = {},
-          maxLineLength = 160
-        },
-        pylint = { enabled = false },
-        pydocstyle = { enabled = false },
-        pyflakes = { enabled = false },
-        mccabe = { enabled = false },
-        preload = { enabled = false },
-        rope_completion = { enabled = true },
-        yapf = { enabled = false },
+        jedi_symbols        = { enabled = true, all_scopes = true },
+        pycodestyle         = { enabled = false },
+        flake8              = { enabled = true, ignore = {}, maxLineLength = 160 },
+        pylint              = { enabled = false },
+        pydocstyle          = { enabled = false },
+        pyflakes            = { enabled = false },
+        mccabe              = { enabled = false },
+        preload             = { enabled = false },
+        rope_completion     = { enabled = true },
+        yapf                = { enabled = false },
       },
     },
   },
-  on_attach = on_attach
-}
+})
+
+local servers = { 'rust_analyzer', 'pylsp', 'ruff', 'lua_ls', 'ts_ls' }
+
+-- Start servers when matching filetypes are opened
+vim.lsp.enable(servers)
+
+-- Mason: ensure server binaries are installed
+require('mason').setup()
+require('mason-lspconfig').setup({ ensure_installed = servers })
+
+require('fidget').setup()

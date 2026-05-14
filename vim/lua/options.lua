@@ -1,6 +1,10 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Disable netrw in favour of nvim-tree (must be set before plugins load)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Set highlight on search
 vim.o.hlsearch = true
 
@@ -50,3 +54,10 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 99
 
 vim.g.have_nerd_font = true
+
+-- Diagnostics (virtual_text was disabled by default in 0.11)
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+})

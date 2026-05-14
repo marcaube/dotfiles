@@ -11,7 +11,7 @@ wk.add({
   { "<leader>q", "<cmd>q<cr>", desc = "Quit" },
   { "<leader>Q", "<cmd>qa!<cr>", desc = "Quit All" },
   { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Open File Explorer" },
-  { "<leader>/", "<Plug>(comment_toggle_linewise_current)", desc = "Comment toggle current line" },
+  { "<leader>/", "gcc", desc = "Comment toggle current line" },
   { "<leader>r", "<cmd>source ~/.config/nvim/init.lua<cr>", desc = "Reload config" },
 })
 
@@ -20,6 +20,7 @@ wk.add({
   -- Git Commands
   { "<leader>g", group = "Git" },
   { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout Branch" },
+  { "<leader>gg", "<cmd>LazyGit<cr>", desc = "Lazygit" },
   { "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", desc = "Blame" },
   { "<leader>gL", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Live Blame toggle" },
   { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file" },
@@ -84,14 +85,46 @@ wk.add({
   { "<leader>tv", "<cmd>:TestVisit<cr>", desc = "Visit last test file" },
 
   -- Debugging (dap)
-  -- TODO: https://github.com/marcaube/dotfiles/blob/master/vim/lua/plugin_config/whichkey.lua#L118-L134
+  { "<leader>d", group = "Debug" },
+  { "<leader>dt", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
+  { "<leader>db", function() require("dap").step_back() end, desc = "Step Back" },
+  { "<leader>dc", function() require("dap").continue() end, desc = "Continue" },
+  { "<leader>dC", function() require("dap").run_to_cursor() end, desc = "Run To Cursor" },
+  { "<leader>dd", function() require("dap").disconnect() end, desc = "Disconnect" },
+  { "<leader>dg", function() require("dap").session() end, desc = "Get Session" },
+  { "<leader>di", function() require("dap").step_into() end, desc = "Step Into" },
+  { "<leader>do", function() require("dap").step_over() end, desc = "Step Over" },
+  { "<leader>du", function() require("dap").step_out() end, desc = "Step Out" },
+  { "<leader>dp", function() require("dap").pause() end, desc = "Pause" },
+  { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle Repl" },
+  { "<leader>ds", function() require("dap").continue() end, desc = "Start" },
+  { "<leader>dq", function() require("dap").close() end, desc = "Quit" },
+  { "<leader>dU", function() require("dapui").toggle() end, desc = "Toggle UI" },
 
   -- LSP
-  -- TODO: https://github.com/marcaube/dotfiles/blob/master/vim/lua/plugin_config/whichkey.lua#L137-L162
   { "<leader>l", group = "LSP" },
   { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Actions" },
+  { "<leader>ld", function() require("telescope.builtin").diagnostics({ bufnr = 0 }) end, desc = "Buffer Diagnostics" },
+  { "<leader>lw", function() require("telescope.builtin").diagnostics() end, desc = "Workspace Diagnostics" },
+  { "<leader>li", "<cmd>LspInfo<cr>", desc = "LSP Info" },
+  { "<leader>lI", "<cmd>Mason<cr>", desc = "Mason Info" },
+  { "<leader>lj", vim.diagnostic.goto_next, desc = "Next Diagnostic" },
+  { "<leader>lk", vim.diagnostic.goto_prev, desc = "Prev Diagnostic" },
+  { "<leader>ll", vim.lsp.codelens.run, desc = "CodeLens Action" },
+  { "<leader>lq", vim.diagnostic.setloclist, desc = "Quickfix" },
+  { "<leader>lr", vim.lsp.buf.rename, desc = "Rename" },
   { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
   { "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Workspace Symbols" },
+  { "<leader>le", function() require("telescope.builtin").quickfix() end, desc = "Telescope Quickfix" },
+
+  -- Refactoring
+  { "<leader>R", group = "Refactor" },
+  { "<leader>Re", function() require('refactoring').refactor('Extract Function') end, desc = "Extract Function", mode = "v" },
+  { "<leader>Rf", function() require('refactoring').refactor('Extract Function To File') end, desc = "Extract To File", mode = "v" },
+  { "<leader>Rv", function() require('refactoring').refactor('Extract Variable') end, desc = "Extract Variable", mode = "v" },
+  { "<leader>Ri", function() require('refactoring').refactor('Inline Variable') end, desc = "Inline Variable" },
+  { "<leader>Rb", function() require('refactoring').refactor('Extract Block') end, desc = "Extract Block" },
+  { "<leader>Rr", function() require('refactoring').select_refactor() end, desc = "Select Refactor", mode = { "n", "v" } },
 
   -- Package Management
   { "<leader>p", group = "Lazy.nvim" },

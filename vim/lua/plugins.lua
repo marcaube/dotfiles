@@ -48,20 +48,25 @@ require("lazy").setup({
     { "rafamadriz/friendly-snippets" },
 
     -- Highlight, edit, and navigate code
-    -- TODO: confirm configs
     {
       "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
-      requires = {},
+      build = ":TSUpdate",
     },
 
     -- Git related plugins
-    { "tpope/vim-fugitive" },
+    {
+      "tpope/vim-fugitive",
+      cmd = { "Git", "Gdiffsplit", "Gread", "GBrowse" },
+    },
     { "tpope/vim-rhubarb" },
-    { "lewis6991/gitsigns.nvim" },
+    {
+      "lewis6991/gitsigns.nvim",
+      event = "BufReadPre",
+      config = function() require('plugin_config.gitsigns') end,
+    },
 
     -- Color Schemes
-    { 
+    {
       -- https://github.com/catppuccin/nvim
       "catppuccin/nvim",
       name = "catppuccin",
@@ -74,33 +79,84 @@ require("lazy").setup({
 
     -- UI enhancements
     { "nvim-lualine/lualine.nvim" },
-    { "lukas-reineke/indent-blankline.nvim" },
-    { "numToStr/Comment.nvim" },
+    {
+      "lukas-reineke/indent-blankline.nvim",
+      event = "BufReadPost",
+      config = function() require('plugin_config.indent_blankline') end,
+    },
     { "tpope/vim-sleuth" },
 
     -- Navigation
-    { "nvim-tree/nvim-tree.lua" },
+    {
+      "nvim-tree/nvim-tree.lua",
+      cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+      config = function() require('plugin_config.nvim-tree') end,
+    },
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-    { "ggandor/leap.nvim" },
-    { "christoomey/vim-tmux-navigator" },
+    {
+      url = "https://codeberg.org/andyg/leap.nvim",
+      event = "BufReadPost",
+      config = function() require('plugin_config.leap') end,
+    },
+    {
+      "christoomey/vim-tmux-navigator",
+      event = "VeryLazy",
+      config = function() require('plugin_config.tmux-navigator') end,
+    },
     {
       "ThePrimeagen/harpoon",
+      event = "VeryLazy",
       dependencies = { "nvim-lua/plenary.nvim" },
     },
-
 
     -- Keybindings
     { "folke/which-key.nvim" },
 
     -- Text manipulation
-    { "tpope/vim-surround" },
-    { "tpope/vim-repeat" },
-    { "windwp/nvim-autopairs" },
+    {
+      "tpope/vim-surround",
+      event = "BufReadPost",
+    },
+    {
+      "tpope/vim-repeat",
+      event = "BufReadPost",
+    },
+    {
+      "windwp/nvim-autopairs",
+      event = "InsertEnter",
+      config = function() require('plugin_config.autopairs') end,
+    },
 
     -- Testing
-    { "vim-test/vim-test" },
+    {
+      "vim-test/vim-test",
+      cmd = { "TestFile", "TestNearest", "TestLast", "TestSuite", "TestVisit" },
+      config = function() require('plugin_config.testing') end,
+    },
+
+    -- Refactoring
+    {
+      'ThePrimeagen/refactoring.nvim',
+      event = 'BufReadPre',
+      dependencies = {
+        'nvim-lua/plenary.nvim',
+        'nvim-treesitter/nvim-treesitter',
+        'lewis6991/async.nvim',
+      },
+      config = function()
+        require('refactoring').setup()
+      end,
+    },
+
+    -- Git UI
+    {
+      'kdheepak/lazygit.nvim',
+      cmd = { 'LazyGit', 'LazyGitConfig', 'LazyGitCurrentFile', 'LazyGitFilter' },
+      dependencies = { 'nvim-lua/plenary.nvim' },
+    },
 
     -- Debugging
+    -- Run :MasonInstall codelldb js-debug-adapter to enable Rust and TypeScript debugging
     { "mfussenegger/nvim-dap" },
     { "mfussenegger/nvim-dap-python" },
     {
@@ -111,18 +167,25 @@ require("lazy").setup({
     { "nvim-telescope/telescope-dap.nvim" },
 
     -- Copilot
-    { "github/copilot.vim" },
+    {
+      "github/copilot.vim",
+      event = "InsertEnter",
+    },
 
     -- Fuzzy Finder
     {
       "nvim-telescope/telescope.nvim",
+      cmd = "Telescope",
       branch = "0.1.x",
-      dependencies = { "nvim-lua/plenary.nvim" },
-    },
-    {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-      cond = vim.fn.executable("make") == 1,
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        {
+          "nvim-telescope/telescope-fzf-native.nvim",
+          build = "make",
+          cond = vim.fn.executable("make") == 1,
+        },
+      },
+      config = function() require('plugin_config.telescope') end,
     },
   },
 
@@ -131,5 +194,8 @@ require("lazy").setup({
   install = { colorscheme = { "catppuccin-mocha" } },
 
   -- automatically check for plugin updates
-  checker = { enabled = true, notify = false, frequency = 86400 }
+  checker = { enabled = true, notify = false, frequency = 86400 },
+
+  -- disable luarocks integration to avoid jsregexp build failures with LuaSnip
+  rocks = { enabled = false },
 })
