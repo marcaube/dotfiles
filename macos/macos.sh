@@ -146,8 +146,13 @@ sudo chflags uchg /private/var/vm/sleepimage
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Trackpad: three-finger swipe down for App Exposé
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerVertSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 2
 
 # Trackpad: map bottom right corner to right-click
 # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
@@ -194,6 +199,54 @@ sudo systemsetup -settimezone "America/Montreal" > /dev/null
 
 # Stop iTunes from responding to the keyboard media keys
 # launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
+
+###############################################################################
+# Menu bar (Control Center)                                                   #
+###############################################################################
+
+# Show the Sound (volume) icon in the menu bar
+defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool true
+
+###############################################################################
+# Keyboard shortcuts (symbolic hotkeys)                                       #
+###############################################################################
+# Parameter array format: [unicode-char (65535=none), keycode, modifier-mask]
+# Modifier masks: Control=262144, Option=524288, Shift=131072, Command=1048576
+# Keycodes: ←=123, →=124, ↑=126, ↓=125
+
+# ctrl + ← → Show Notification Center  (hotkey ID 163)
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 163 "
+<dict>
+  <key>enabled</key><true/>
+  <key>value</key>
+  <dict>
+    <key>parameters</key>
+    <array>
+      <integer>65535</integer>
+      <integer>123</integer>
+      <integer>262144</integer>
+    </array>
+    <key>type</key><string>standard</string>
+  </dict>
+</dict>
+"
+
+# ctrl + → → Toggle Do Not Disturb / Focus  (hotkey ID 175)
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 175 "
+<dict>
+  <key>enabled</key><true/>
+  <key>value</key>
+  <dict>
+    <key>parameters</key>
+    <array>
+      <integer>65535</integer>
+      <integer>124</integer>
+      <integer>262144</integer>
+    </array>
+    <key>type</key><string>standard</string>
+  </dict>
+</dict>
+"
 
 ###############################################################################
 # Screen                                                                      #
@@ -736,11 +789,15 @@ defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool t
 # Kill affected applications                                                  #
 ###############################################################################
 
+# Reload symbolic hotkeys immediately, no logout needed
+/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+
 for app in "Activity Monitor" \
     "Address Book" \
     "Calendar" \
     "cfprefsd" \
     "Contacts" \
+    "ControlCenter" \
     "Dock" \
     "Finder" \
     "Google Chrome" \
