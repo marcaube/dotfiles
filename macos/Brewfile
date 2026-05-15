@@ -1,6 +1,5 @@
 # Taps
 tap 'remind101/formulae'        # for assume-role
-tap 'wpscanteam/tap'            # for wpscan
 tap 'yqrashawn/goku'            # For Goku
 
 # Install Binaries
@@ -21,12 +20,11 @@ brew 'gnu-sed'          # sed, but a better version than what ships with OSX
 brew 'graphviz'         # graph/diagrams generation
 brew 'htop'
 brew 'httpie'           # to test HTTP calls from the CLI
-brew 'hyperfine'        # a benchmarking tool
+brew 'hyperfine'        # a CLI benchmarking tool, to compare the performance of different commands
 brew 'jc'               # To convert the output of commands to json, pairs nicely with jq
 brew 'jq'               # When you want to manipulate JSON piped from httpie
 brew 'mackup'           # to sync my Mac configs
 brew 'mas'              # to install Mac App Store apps from the CLI
-brew 'neofetch'
 brew 'organize-tool'    # file management automation tool
 brew 'ouch'             # easily compress/decompress files and directories
 brew 'ripgrep'          # like grep, but faster
@@ -40,6 +38,7 @@ brew 'tokei'            # to quickly count lines of code, like cloc, but faster
 brew 'tree'             # to display directories tree
 brew 'yt-dlp'           # when you want to archive a video locally
 brew 'wget'
+brew 'wrk'              # a HTTP benchmarking tool, like ab, but better
 brew 'zoxide'           # a faster way to navigate your filesystem
 
 # Development
@@ -50,6 +49,7 @@ brew 'git'              # OSX's version is out of date
 brew 'git-lfs'          # git's large file system
 brew 'git-who'          # git blame for file trees
 brew 'lazygit'          # terminal UI for git
+brew 'neovim'           # the editor
 
 # Productivity and automation (see: https://tighten.com/blog/how-to-train-your-keyboard/)
 cask 'karabiner-elements'   # Remap keys and shortcuts at the kernel level
@@ -84,7 +84,6 @@ brew 'john-jumbo'       # John the ripper
 brew 'gdb'              # the basic Binjitsu weapon
 brew 'pngcheck'
 brew 'sqlmap'           # SQL injection
-brew 'wpscan'           # WordPress vulnerability scanner
 brew 'zbar'             # barcode /qrcode reading
 cask 'burp-suite'
 cask 'hex-fiend'        # a simple GUI hex editor
