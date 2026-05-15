@@ -161,4 +161,5 @@ wk.add({
     vim.wo.signcolumn = show and "yes" or "no"
     vim.cmd(show and "IBLEnable" or "IBLDisable")
   end, desc = "Toggle focus mode (hide UI chrome)" },
+  { "<leader>ck", "<cmd>CloakToggle<cr>", desc = "Toggle cloak (.env masking)" },
 })

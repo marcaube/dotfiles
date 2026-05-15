@@ -166,6 +166,22 @@ require("lazy").setup({
     { "theHamsta/nvim-dap-virtual-text" },
     { "nvim-telescope/telescope-dap.nvim" },
 
+    -- Mask .env values on screen (useful for screensharing)
+    {
+      "laytan/cloak.nvim",
+      event = "BufReadPre",
+      config = function()
+        require('cloak').setup({
+          enabled = true,
+          cloak_character = '*',
+          highlight_group = 'Comment',
+          patterns = {
+            { file_pattern = { '.env', '.env.*', '*.env' }, cloak_pattern = '=.+' },
+          },
+        })
+      end,
+    },
+
     -- Copilot
     {
       "github/copilot.vim",
