@@ -74,3 +74,6 @@ map('i', ',,', '<esc>mxA,<esc>`xa', { desc = 'Append a trailing comma' })
 -- Add a trailing semi-colon and come back (Rust, PHP)
 map('n', ';;', 'mxA;<esc>`x', { desc = 'Append a trailing semicolon' })
 map('i', ';;', '<esc>mxA;<esc>`xa', { desc = 'Append a trailing semicolon' })
+
+-- Split line at cursor (opposite of J)
+map('n', 'X', 'i<CR><Esc>k$', { desc = 'Split line at cursor' })

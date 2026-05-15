@@ -26,9 +26,16 @@ require('telescope').setup {
       },
     },
   },
+  pickers = {
+    buffers = {
+      mappings = {
+        i = { ['<C-d>'] = actions.delete_buffer },
+        n = { ['<C-d>'] = actions.delete_buffer },
+      },
+    },
+  },
 }
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 pcall(require('telescope').load_extension, 'dap')
-

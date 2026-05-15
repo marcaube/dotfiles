@@ -154,4 +154,11 @@ wk.add({
   { "<leader>cs", "<cmd>set spell!<cr>", desc = "Toggle spell check" },
   { "<leader>cw", "<cmd>set wrap!<cr>", desc = "Toggle wrap" },
   { "<leader>cz", "<cmd>set foldcolumn=0<cr>", desc = "Toggle fold column" },
+  { "<leader>cf", function()
+    local show = not vim.wo.number
+    vim.wo.number = show
+    vim.wo.relativenumber = show
+    vim.wo.signcolumn = show and "yes" or "no"
+    vim.cmd(show and "IBLEnable" or "IBLDisable")
+  end, desc = "Toggle focus mode (hide UI chrome)" },
 })
