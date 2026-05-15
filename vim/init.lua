@@ -4,10 +4,12 @@ require('plugins')
 require('plugin_config')
 require('lsp')
 
--- Open NvimTree on startup
+-- Open NvimTree on startup, but not when a file was passed as argument
 vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
-    require('nvim-tree.api').tree.open()
+    if vim.fn.argc() == 0 then
+      require('nvim-tree.api').tree.open()
+    end
   end,
 })
 
