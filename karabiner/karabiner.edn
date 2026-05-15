@@ -9,12 +9,10 @@
         :apple-wireless [{:product_id 598 :vendor_id 1452}]
         :macbook-m1 [{:product_id 834 :vendor_id 1452}]
         :macbook [{:product_id 633 :vendor_id 1452}]
-        :corne-ish-zen [{:product_id 0 :vendor_id 0}]
-        :corne-ish-zen-usb [{:product_id 24926 :vendor_id 7504}]
     }
 
     :layers {
-        :launch {:key :caps_lock :alone {:key :escape} :condi [:!moonlander :!corne-ish-zen :!corne-ish-zen-usb]}
+        :launch {:key :caps_lock :alone {:key :escape} :condi [:!moonlander]}
     }
 
     :main [
@@ -38,7 +36,7 @@
         {
             :des "Split KB Launch layer"
             :rules [
-                [:condi :moonlander :corne-ish-zen :corne-ish-zen-usb]
+                [:condi :moonlander]
                 [:!!a [:launch "Activity\\ Monitor.app"]]
                 [:!!s [:launch "Slack.app"]]
                 [:!!d [:launch "Discord.app"]]
@@ -63,7 +61,7 @@
         {
             :des "Split KB Hammerspoon"
             :rules [
-                [:condi :moonlander :corne-ish-zen :corne-ish-zen-usb]
+                [:condi :moonlander]
                 [:!!o [:hs "open" "default"]]
                 [:!!w [:hs "slack-rw-wave" "default"]]
             ]
