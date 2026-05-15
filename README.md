@@ -1,5 +1,7 @@
 # My dotfiles
 
+[![CI](https://github.com/marcaube/dotfiles/actions/workflows/ci.yml/badge.svg)](https://github.com/marcaube/dotfiles/actions/workflows/ci.yml)
+
 This repo contains my dotfiles, terminal configs, a "manifest" of apps that
 should be installed on my system and an installation script to make the process
 of setting up a new computer as seamless as possible.
@@ -97,13 +99,13 @@ For example, that's where you could define your `GIT_AUTHOR_NAME` and
 - [`gitignore_global`](./git/gitignore_global) is a list of files and extensions that should be globally ignored by git
 - [`mackup.cfg`](./macos/mackup.cfg) is the [Mackup](https://github.com/lra/mackup) configuration, to sync app settings using iCloud instead of Dropbox
 - [`macos.sh`](./macos/macos.sh)  contains my macOS preferences
-- [`zshrc`](./zsh/zshrc)  contains my Oh My ZSH preferences
+- [`zshrc`](./zsh/zshrc) contains my Z shell config (plugins are sourced directly, no Oh My ZSH)
 - [`aliases.zsh`](./zsh/aliases.zsh) defines a list of useful CLI aliases, shortcuts and functions
 - [`Brewfile`](./macos/Brewfile) contains the list of binaries (homebrew) and apps (cask and mas) that I want installed on my system
 - [`exports.zsh`](./zsh/exports.zsh) contains the `PATH` env variable configs
 - `zsh/extra.zsh` is a file ignored by git where you can add your git credentials, custom commands, private aliases, etc.
 - [`install`](./install) is the installation script to make this all work "automagically"
-- [`config.lua`](./vim/config.lua) contains my [LunarVim](https://www.lunarvim.org/) configs
+- [`init.lua`](./vim/init.lua) is my [Neovim](https://neovim.io/) entry point — modular config under `vim/lua/`, plugins managed by [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 
 ## Inspired by...

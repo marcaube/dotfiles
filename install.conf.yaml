@@ -6,10 +6,10 @@
 
 - shell:
     - description: Validating sudo credentials
-      command: "sudo --validate"
+      command: "[ -n \"$CI\" ] || sudo --validate"
 
     - description: Installing XCode Command Line Tools
-      command: "[ -x \"$(which xcodebuild)\" ] || xcode-select --install"
+      command: "[ -n \"$CI\" ] || [ -x \"$(which xcodebuild)\" ] || xcode-select --install"
 
 - clean: ['~']
 
@@ -18,6 +18,7 @@
     - ~/.tmux/plugins
     - ~/bin
     - ~/.config/karabiner/karabiner.json
+    - ~/Library/Application Support/organize
 
 - link:
     # Binaries
@@ -34,7 +35,9 @@
     ~/bin/xkcd: bin/xkcd
 
     # Git
-    ~/.gitconfig: git/gitconfig
+    ~/.gitconfig:
+        path: git/gitconfig
+        force: true
     ~/.gitignore_global: git/gitignore_global
     ~/.git_allowed_signers: git/git_allowed_signers
     ~/.config/catppuccin.gitconfig: git/catppuccin.gitconfig
@@ -68,11 +71,8 @@
     - description: Updating Homebrew
       command: "brew update"
 
-    - description: Installing brew bundler
-      command: "brew tap homebrew/bundle"
-
     - description: Installing Brewfile bundle
-      command: "brew bundle --file=macos/Brewfile"
+      command: "if [ -n \"$CI\" ]; then grep -E '^(tap|brew)' macos/Brewfile | brew bundle --file=-; else brew bundle --file=macos/Brewfile; fi"
       stdout: true
       stderr: true
 
@@ -81,16 +81,13 @@
       command: "[ -f ~/.hushlogin ] || touch ~/.hushlogin"
 
     - description: Adding ZSH to list of acceptable shells
-      command: "[[ \"$(ag $(which zsh) /etc/shells)\" ]] || sudo sh -c \"echo $(which zsh) >> /etc/shells\""
+      command: "[ -n \"$CI\" ] || [[ \"$(ag $(which zsh) /etc/shells)\" ]] || sudo sh -c \"echo $(which zsh) >> /etc/shells\""
 
     - description: Making ZSH the default shell
-      command: "sudo chsh -s $(which zsh)"
+      command: "[ -n \"$CI\" ] || sudo chsh -s $(which zsh)"
 
     - description: Installing ZSH autocompletions
       command: "git clone https://github.com/zsh-users/zsh-completions ${DOTFILES}/zsh/plugins/zsh-completions 2> /dev/null || exit 0"
-
-    - description: (Re)build the ZSH completion cache
-      command: "rm -f ~/.zcompdump* && autoload -U compinit && compinit"
 
     - description: Installing ZSH autosuggestions
       command: "git clone https://github.com/zsh-users/zsh-autosuggestions ${DOTFILES}/zsh/plugins/zsh-autosuggestions 2> /dev/null || exit 0"

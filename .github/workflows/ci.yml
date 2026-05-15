@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  schedule:
+    - cron: '0 9 * * 1'  # every Monday at 9am UTC — uncached fresh-machine simulation
+  workflow_dispatch:
+    inputs:
+      skip_cache:
+        description: 'Skip the Homebrew cache (simulates fresh machine)'
+        type: boolean
+        default: false
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
+
+jobs:
+  test:
+    runs-on: macos-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set DOTFILES env var
+        run: |
+          echo "DOTFILES=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+          ln -sf "$GITHUB_WORKSPACE" "$HOME/.dotfiles"
+
+      - name: Cache Homebrew packages
+        if: github.event_name != 'schedule' && !(github.event_name == 'workflow_dispatch' && inputs.skip_cache)
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Caches/Homebrew
+            /opt/homebrew/Cellar
+            /opt/homebrew/Library/Taps
+          key: brew-${{ hashFiles('macos/Brewfile') }}
+          restore-keys: brew-
+
+      - name: Install bats-core
+        run: |
+          brew install bats-core
+          brew link --overwrite bats-core
+
+      - name: Run install
+        run: ./install
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Run tests
+        run: bats tests/
