@@ -100,7 +100,10 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 sudo systemsetup -setrestartfreeze on
 
 # Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off > /dev/null
+# Disabled: prevents the Mac from ever sleeping, so the screensaver runs forever
+# instead of the system sleeping and turning the screen off. Manage sleep via
+# System Settings → Battery instead.
+# sudo systemsetup -setcomputersleep Off > /dev/null
 
 # Disable Notification Center and remove the menu bar icon
 # launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
