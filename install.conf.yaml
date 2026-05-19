@@ -60,6 +60,11 @@
         path: lazygit/config.yml
         force: true
 
+    # gh-dash
+    ~/.config/gh-dash/config.yml:
+        path: gh-dash/config.yml
+        force: true
+
     # Karabiner, Hammerspoon and Goku
     ~/.config/karabiner.edn: karabiner/karabiner.edn
     ~/.hammerspoon: hammerspoon
