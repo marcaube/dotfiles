@@ -1,63 +1,49 @@
--- [[ Configure Treesitter ]]
+-- [[ Configure Treesitter (main branch — Nvim 0.12+) ]]
 -- See `:help nvim-treesitter`
-require('nvim-treesitter.configs').setup {
-  -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'lua', 'python', 'rust', 'typescript' },
+require('nvim-treesitter').install({ 'lua', 'python', 'rust', 'typescript' })
 
-  highlight = { enable = true },
-  indent = { enable = true },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      scope_incremental = '<c-s>',
-      node_decremental = '<c-backspace>',
-    },
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ['aa'] = '@parameter.outer',
-        ['ia'] = '@parameter.inner',
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
-      },
-      goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
-      },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
-      },
-    },
-    swap = {
-      enable = true,
-      swap_next = {
-        ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
-      },
-    },
-  },
-}
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function(args)
+    local ft = vim.bo[args.buf].filetype
+    local lang = vim.treesitter.language.get_lang(ft) or ft
+    if pcall(vim.treesitter.start, args.buf, lang) then
+      vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  end,
+})
 
+require('nvim-treesitter-textobjects').setup({
+  select = {
+    lookahead = true,
+  },
+  move = {
+    set_jumps = true,
+  },
+})
+
+local select = require('nvim-treesitter-textobjects.select')
+local move = require('nvim-treesitter-textobjects.move')
+local swap = require('nvim-treesitter-textobjects.swap')
+
+local function sel(obj)
+  return function() select.select_textobject(obj, 'textobjects') end
+end
+
+vim.keymap.set({ 'x', 'o' }, 'aa', sel('@parameter.outer'))
+vim.keymap.set({ 'x', 'o' }, 'ia', sel('@parameter.inner'))
+vim.keymap.set({ 'x', 'o' }, 'af', sel('@function.outer'))
+vim.keymap.set({ 'x', 'o' }, 'if', sel('@function.inner'))
+vim.keymap.set({ 'x', 'o' }, 'ac', sel('@class.outer'))
+vim.keymap.set({ 'x', 'o' }, 'ic', sel('@class.inner'))
+
+vim.keymap.set({ 'n', 'x', 'o' }, ']m', function() move.goto_next_start('@function.outer', 'textobjects') end)
+vim.keymap.set({ 'n', 'x', 'o' }, ']]', function() move.goto_next_start('@class.outer', 'textobjects') end)
+vim.keymap.set({ 'n', 'x', 'o' }, ']M', function() move.goto_next_end('@function.outer', 'textobjects') end)
+vim.keymap.set({ 'n', 'x', 'o' }, '][', function() move.goto_next_end('@class.outer', 'textobjects') end)
+vim.keymap.set({ 'n', 'x', 'o' }, '[m', function() move.goto_previous_start('@function.outer', 'textobjects') end)
+vim.keymap.set({ 'n', 'x', 'o' }, '[[', function() move.goto_previous_start('@class.outer', 'textobjects') end)
+vim.keymap.set({ 'n', 'x', 'o' }, '[M', function() move.goto_previous_end('@function.outer', 'textobjects') end)
+vim.keymap.set({ 'n', 'x', 'o' }, '[]', function() move.goto_previous_end('@class.outer', 'textobjects') end)
+
+vim.keymap.set('n', '<leader>a', function() swap.swap_next('@parameter.inner') end)
+vim.keymap.set('n', '<leader>A', function() swap.swap_previous('@parameter.inner') end)

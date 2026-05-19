@@ -50,6 +50,7 @@ brew 'git-lfs'          # git's large file system
 brew 'git-who'          # git blame for file trees
 brew 'lazygit'          # terminal UI for git
 brew 'neovim'           # the editor
+brew 'tree-sitter-cli'  # CLI used by nvim-treesitter (main) to build parsers
 
 # Productivity and automation (see: https://tighten.com/blog/how-to-train-your-keyboard/)
 cask 'karabiner-elements'   # Remap keys and shortcuts at the kernel level

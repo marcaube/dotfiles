@@ -50,7 +50,12 @@ require("lazy").setup({
     -- Highlight, edit, and navigate code
     {
       "nvim-treesitter/nvim-treesitter",
+      branch = "main",
+      lazy = false,
       build = ":TSUpdate",
+      dependencies = {
+        { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
+      },
     },
 
     -- Git related plugins
