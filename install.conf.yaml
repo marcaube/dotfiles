@@ -45,6 +45,11 @@
     # Kitty shell
     ~/.config/kitty: kitty
 
+    # Lazygit
+    ~/Library/Application Support/lazygit/config.yml:
+        path: lazygit/config.yml
+        force: true
+
     # Karabiner, Hammerspoon and Goku
     ~/.config/karabiner.edn: karabiner/karabiner.edn
     ~/.hammerspoon: hammerspoon
