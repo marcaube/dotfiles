@@ -42,6 +42,11 @@
     ~/.git_allowed_signers: git/git_allowed_signers
     ~/.config/catppuccin.gitconfig: git/catppuccin.gitconfig
 
+    # Atuin
+    ~/.config/atuin:
+        path: atuin
+        force: true
+
     # Kitty shell
     ~/.config/kitty: kitty
 
