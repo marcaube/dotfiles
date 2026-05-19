@@ -22,7 +22,6 @@ wk.add({
   { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout Branch" },
   { "<leader>gg", "<cmd>LazyGit<cr>", desc = "Lazygit" },
   { "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", desc = "Blame" },
-  { "<leader>gL", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Live Blame toggle" },
   { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file" },
   { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
   { "<leader>gC", "<cmd>Telescope git_bcommits<cr>", desc = "Checkout commit (buffer)" },
@@ -141,25 +140,26 @@ wk.add({
   { "<leader>ps", "<cmd>Lazy sync<cr>", desc = "Sync (Run install, clean and update)" },
   { "<leader>pu", "<cmd>Lazy update<cr>", desc = "Update" },
 
-  -- Configs
-  { "<leader>c", group = "Editor Configs"},
-  { "<leader>cl", "<cmd>set relativenumber!<cr>", desc = "Toggle relative line numbers" },
-  { "<leader>cc", function()
+  -- UI Toggles
+  { "<leader>u", group = "UI Toggle" },
+  { "<leader>ub", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Live blame" },
+  { "<leader>uc", function()
     if vim.wo.colorcolumn == "" then
       vim.wo.colorcolumn = "80,120,160"
     else
       vim.wo.colorcolumn = ""
     end
-  end, desc = "Toggle color columns" },
-  { "<leader>cs", "<cmd>set spell!<cr>", desc = "Toggle spell check" },
-  { "<leader>cw", "<cmd>set wrap!<cr>", desc = "Toggle wrap" },
-  { "<leader>cz", "<cmd>set foldcolumn=0<cr>", desc = "Toggle fold column" },
-  { "<leader>cf", function()
+  end, desc = "Color columns" },
+  { "<leader>uf", function()
     local show = not vim.wo.number
     vim.wo.number = show
     vim.wo.relativenumber = show
     vim.wo.signcolumn = show and "yes" or "no"
     vim.cmd(show and "IBLEnable" or "IBLDisable")
-  end, desc = "Toggle focus mode (hide UI chrome)" },
-  { "<leader>ck", "<cmd>CloakToggle<cr>", desc = "Toggle cloak (.env masking)" },
+  end, desc = "Focus mode (hide UI chrome)" },
+  { "<leader>uk", "<cmd>CloakToggle<cr>", desc = "Cloak (.env masking)" },
+  { "<leader>ul", "<cmd>set relativenumber!<cr>", desc = "Relative line numbers" },
+  { "<leader>us", "<cmd>set spell!<cr>", desc = "Spell" },
+  { "<leader>uw", "<cmd>set wrap!<cr>", desc = "Wrap" },
+  { "<leader>uz", "<cmd>set foldcolumn=0<cr>", desc = "Fold column" },
 })
