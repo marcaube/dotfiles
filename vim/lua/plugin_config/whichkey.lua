@@ -18,16 +18,13 @@ wk.add({
 -- Keybinding categories
 wk.add({
   -- Git Commands
+  -- Branch ops, commit graph, staging, and diffs go through lazygit (<leader>gg).
+  -- These bindings cover cursor/buffer-scoped ops lazygit can't reach as fast.
   { "<leader>g", group = "Git" },
-  { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout Branch" },
   { "<leader>gg", "<cmd>LazyGit<cr>", desc = "Lazygit" },
   { "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", desc = "Blame" },
   { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file" },
-  { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
-  { "<leader>gC", "<cmd>Telescope git_bcommits<cr>", desc = "Checkout commit (buffer)" },
-  { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Git Diff" },
-  { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage hunk" },
-  { "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>", desc = "Stage buffer" },
+  { "<leader>gC", "<cmd>Telescope git_bcommits<cr>", desc = "File history" },
 
   -- Search and Navigation
   { "<leader>s", group = "Search" },
