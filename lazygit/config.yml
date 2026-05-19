@@ -1,3 +1,6 @@
+git:
+  overrideGpg: true
+
 # Catppuccin Mocha (Blue accent)
 # https://github.com/catppuccin/lazygit
 gui:
