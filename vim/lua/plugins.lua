@@ -197,7 +197,7 @@ require("lazy").setup({
     {
       "nvim-telescope/telescope.nvim",
       cmd = "Telescope",
-      branch = "0.1.x",
+      branch = "master",
       dependencies = {
         "nvim-lua/plenary.nvim",
         {
