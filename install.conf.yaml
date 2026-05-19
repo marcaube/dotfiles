@@ -17,7 +17,7 @@
     - ~/Code
     - ~/.tmux/plugins
     - ~/bin
-    - ~/.config/karabiner/karabiner.json
+    - ~/.config/karabiner
     - ~/Library/Application Support/organize
 
 - link:
