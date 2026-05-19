@@ -76,9 +76,9 @@ require("lazy").setup({
       "catppuccin/nvim",
       name = "catppuccin",
       priority = 1000,
-      init = function()
-	vim.cmd.colorscheme "catppuccin-mocha"
+      config = function()
 	vim.o.termguicolors = true
+	vim.cmd.colorscheme "catppuccin-mocha"
       end,
     },
 
