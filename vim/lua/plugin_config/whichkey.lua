@@ -5,13 +5,14 @@ local wk = require('which-key')
 
 -- Top level Items
 wk.add({
-  { "<leader>w", "<cmd>w!<cr>", desc = "Save" },
-  { "<leader>x", "<cmd>bd<cr>", desc = "Close buffer" },
-  { "<leader>q", "<cmd>q<cr>", desc = "Quit" },
-  { "<leader>Q", "<cmd>qa!<cr>", desc = "Quit All" },
-  { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Open File Explorer" },
+  { "<leader><space>", hidden = true },
+  { "<leader>w", "<cmd>w!<cr>", desc = "Save", hidden = true },
+  { "<leader>x", "<cmd>bd<cr>", desc = "Close buffer", hidden = true },
+  { "<leader>q", "<cmd>q<cr>", desc = "Quit", hidden = true },
+  { "<leader>Q", "<cmd>qa!<cr>", desc = "Quit All", hidden = true },
+  { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Open File Explorer", hidden = true },
   { "<leader>/", "gcc", desc = "Comment toggle current line" },
-  { "<leader>R", "<cmd>source ~/.config/nvim/init.lua<cr>", desc = "Reload config" },
+  { "<leader>R", "<cmd>source ~/.config/nvim/init.lua<cr>", desc = "Reload config", hidden = true },
 })
 
 -- Keybinding categories
