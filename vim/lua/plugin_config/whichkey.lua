@@ -12,7 +12,7 @@ wk.add({
   { "<leader>Q", "<cmd>qa!<cr>", desc = "Quit All" },
   { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Open File Explorer" },
   { "<leader>/", "gcc", desc = "Comment toggle current line" },
-  { "<leader>r", "<cmd>source ~/.config/nvim/init.lua<cr>", desc = "Reload config" },
+  { "<leader>R", "<cmd>source ~/.config/nvim/init.lua<cr>", desc = "Reload config" },
 })
 
 -- Keybinding categories
@@ -120,15 +120,15 @@ wk.add({
   { "<leader>le", function() require("telescope.builtin").quickfix() end, desc = "Telescope Quickfix" },
 
   -- Refactoring
-  { "<leader>R", group = "Refactor" },
-  { "<leader>Re", function() require('refactoring').refactor('Extract Function') end, desc = "Extract Function", mode = "v" },
-  { "<leader>Rf", function() require('refactoring').refactor('Extract Function To File') end, desc = "Extract To File", mode = "v" },
-  { "<leader>Rv", function() require('refactoring').refactor('Extract Variable') end, desc = "Extract Variable", mode = "v" },
-  { "<leader>Ri", function() require('refactoring').refactor('Inline Variable') end, desc = "Inline Variable" },
-  { "<leader>Rb", function() require('refactoring').refactor('Extract Block') end, desc = "Extract Block" },
-  { "<leader>Rr", function() require('refactoring').select_refactor() end, desc = "Select Refactor", mode = { "n", "v" } },
-  { "<leader>Ra", function() require('nvim-treesitter-textobjects.swap').swap_next('@parameter.inner') end, desc = "Swap parameter with next" },
-  { "<leader>RA", function() require('nvim-treesitter-textobjects.swap').swap_previous('@parameter.inner') end, desc = "Swap parameter with previous" },
+  { "<leader>r", group = "Refactor" },
+  { "<leader>re", function() require('refactoring').refactor('Extract Function') end, desc = "Extract Function", mode = "v" },
+  { "<leader>rf", function() require('refactoring').refactor('Extract Function To File') end, desc = "Extract To File", mode = "v" },
+  { "<leader>rv", function() require('refactoring').refactor('Extract Variable') end, desc = "Extract Variable", mode = "v" },
+  { "<leader>ri", function() require('refactoring').refactor('Inline Variable') end, desc = "Inline Variable" },
+  { "<leader>rb", function() require('refactoring').refactor('Extract Block') end, desc = "Extract Block" },
+  { "<leader>rr", function() require('refactoring').select_refactor() end, desc = "Select Refactor", mode = { "n", "v" } },
+  { "<leader>ra", function() require('nvim-treesitter-textobjects.swap').swap_next('@parameter.inner') end, desc = "Swap parameter with next" },
+  { "<leader>rA", function() require('nvim-treesitter-textobjects.swap').swap_previous('@parameter.inner') end, desc = "Swap parameter with previous" },
 
   -- Package Management
   { "<leader>p", group = "Lazy.nvim" },
