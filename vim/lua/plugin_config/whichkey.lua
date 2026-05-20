@@ -156,7 +156,10 @@ wk.add({
     vim.wo.number = show
     vim.wo.relativenumber = show
     vim.wo.signcolumn = show and "yes" or "no"
+    vim.wo.colorcolumn = show and "80,120,160" or ""
     vim.cmd(show and "IBLEnable" or "IBLDisable")
+    vim.diagnostic.enable(show)
+    vim.lsp.inlay_hint.enable(show)
   end, desc = "Focus mode (hide UI chrome)" },
   { "<leader>ud", function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, desc = "Diagnostics" },
   { "<leader>uh", "<cmd>nohlsearch<cr>", desc = "No Highlight" },
