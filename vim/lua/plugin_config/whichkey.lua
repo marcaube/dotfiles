@@ -158,6 +158,7 @@ wk.add({
     vim.wo.signcolumn = show and "yes" or "no"
     vim.cmd(show and "IBLEnable" or "IBLDisable")
   end, desc = "Focus mode (hide UI chrome)" },
+  { "<leader>ud", function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, desc = "Diagnostics" },
   { "<leader>uh", "<cmd>nohlsearch<cr>", desc = "No Highlight" },
   { "<leader>ui", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({})) end, desc = "Inlay hints" },
   { "<leader>uk", "<cmd>CloakToggle<cr>", desc = "Cloak (.env masking)" },
