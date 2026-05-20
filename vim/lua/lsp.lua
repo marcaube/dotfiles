@@ -3,19 +3,15 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
   end
 
-  nmap('<leader>rn', vim.lsp.buf.rename, 'Rename')
-  nmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
   nmap('gd', vim.lsp.buf.definition, 'Goto Definition')
   nmap('gD', vim.lsp.buf.declaration, 'Goto Declaration')
   nmap('gr', function() require('telescope.builtin').lsp_references() end, 'Goto References')
   nmap('gI', vim.lsp.buf.implementation, 'Goto Implementation')
-  nmap('<leader>D', vim.lsp.buf.type_definition, 'Type Definition')
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
-  nmap('<leader>f', ':Format<cr>', 'Format buffer')
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
