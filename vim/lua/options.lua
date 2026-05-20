@@ -5,6 +5,14 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Disable unused language-host providers (avoids ~1.8s python3 interpreter
+-- search the first time a .py file is opened). DAP/LSP/plugins still work —
+-- they spawn interpreters directly, not via these providers.
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+
 -- Set highlight on search
 vim.o.hlsearch = true
 
