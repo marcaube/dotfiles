@@ -127,6 +127,8 @@ wk.add({
   { "<leader>Ri", function() require('refactoring').refactor('Inline Variable') end, desc = "Inline Variable" },
   { "<leader>Rb", function() require('refactoring').refactor('Extract Block') end, desc = "Extract Block" },
   { "<leader>Rr", function() require('refactoring').select_refactor() end, desc = "Select Refactor", mode = { "n", "v" } },
+  { "<leader>Ra", function() require('nvim-treesitter-textobjects.swap').swap_next('@parameter.inner') end, desc = "Swap parameter with next" },
+  { "<leader>RA", function() require('nvim-treesitter-textobjects.swap').swap_previous('@parameter.inner') end, desc = "Swap parameter with previous" },
 
   -- Package Management
   { "<leader>p", group = "Lazy.nvim" },
