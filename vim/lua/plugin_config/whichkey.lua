@@ -5,7 +5,6 @@ local wk = require('which-key')
 
 -- Top level Items
 wk.add({
-  { "<leader>h", "<cmd>nohlsearch<cr>", desc = "No Highlight" },
   { "<leader>w", "<cmd>w!<cr>", desc = "Save" },
   { "<leader>x", "<cmd>bd<cr>", desc = "Close buffer" },
   { "<leader>q", "<cmd>q<cr>", desc = "Quit" },
@@ -158,6 +157,7 @@ wk.add({
     vim.wo.signcolumn = show and "yes" or "no"
     vim.cmd(show and "IBLEnable" or "IBLDisable")
   end, desc = "Focus mode (hide UI chrome)" },
+  { "<leader>uh", "<cmd>nohlsearch<cr>", desc = "No Highlight" },
   { "<leader>uk", "<cmd>CloakToggle<cr>", desc = "Cloak (.env masking)" },
   { "<leader>ul", "<cmd>set relativenumber!<cr>", desc = "Relative line numbers" },
   { "<leader>us", "<cmd>set spell!<cr>", desc = "Spell" },
