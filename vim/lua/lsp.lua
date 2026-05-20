@@ -1,4 +1,4 @@
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
   end
@@ -9,11 +9,6 @@ local on_attach = function(client, bufnr)
   nmap('grr', function() require('telescope.builtin').lsp_references() end, 'Goto References')
   nmap('gri', function() require('telescope.builtin').lsp_implementations() end, 'Goto Implementation')
   nmap('grt', function() require('telescope.builtin').lsp_type_definitions() end, 'Goto Type Definition')
-
-  -- Enable inlay hints when the server supports them (toggle via <leader>ui)
-  if client and client.server_capabilities.inlayHintProvider then
-    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-  end
 
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
@@ -74,6 +69,9 @@ local servers = { 'rust_analyzer', 'basedpyright', 'ruff', 'lua_ls', 'ts_ls' }
 
 -- Start servers when matching filetypes are opened
 vim.lsp.enable(servers)
+
+-- Inlay hints on by default; <leader>ui toggles. Servers without support are no-ops.
+vim.lsp.inlay_hint.enable(true)
 
 -- Mason: ensure server binaries are installed
 require('mason').setup()
