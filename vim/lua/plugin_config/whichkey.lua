@@ -159,6 +159,7 @@ wk.add({
     vim.cmd(show and "IBLEnable" or "IBLDisable")
   end, desc = "Focus mode (hide UI chrome)" },
   { "<leader>uh", "<cmd>nohlsearch<cr>", desc = "No Highlight" },
+  { "<leader>ui", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({})) end, desc = "Inlay hints" },
   { "<leader>uk", "<cmd>CloakToggle<cr>", desc = "Cloak (.env masking)" },
   { "<leader>ul", "<cmd>set relativenumber!<cr>", desc = "Relative line numbers" },
   { "<leader>us", "<cmd>set spell!<cr>", desc = "Spell" },

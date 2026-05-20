@@ -1,4 +1,4 @@
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   local nmap = function(keys, func, desc)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
   end
@@ -9,6 +9,11 @@ local on_attach = function(_, bufnr)
   nmap('grr', function() require('telescope.builtin').lsp_references() end, 'Goto References')
   nmap('gri', function() require('telescope.builtin').lsp_implementations() end, 'Goto Implementation')
   nmap('grt', function() require('telescope.builtin').lsp_type_definitions() end, 'Goto Type Definition')
+
+  -- Enable inlay hints when the server supports them (toggle via <leader>ui)
+  if client and client.server_capabilities.inlayHintProvider then
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  end
 
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
@@ -38,35 +43,34 @@ vim.lsp.config('lua_ls', {
   },
 })
 
+-- Ruff handles linting and formatting; let basedpyright own hover/definitions.
+-- Per-project type rules go in pyrightconfig.json or pyproject.toml [tool.basedpyright].
 vim.lsp.config('ruff', {
   init_options = { settings = {} },
+  on_attach = function(client, bufnr)
+    client.server_capabilities.hoverProvider = false
+    on_attach(client, bufnr)
+  end,
 })
 
--- See: https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
-vim.lsp.config('pylsp', {
+vim.lsp.config('basedpyright', {
   settings = {
-    pylsp = {
-      plugins = {
-        jedi_completion     = { enabled = true },
-        jedi_hover          = { enabled = true },
-        jedi_references     = { enabled = true },
-        jedi_signature_help = { enabled = true },
-        jedi_symbols        = { enabled = true, all_scopes = true },
-        pycodestyle         = { enabled = false },
-        flake8              = { enabled = true, ignore = {}, maxLineLength = 160 },
-        pylint              = { enabled = false },
-        pydocstyle          = { enabled = false },
-        pyflakes            = { enabled = false },
-        mccabe              = { enabled = false },
-        preload             = { enabled = false },
-        rope_completion     = { enabled = true },
-        yapf                = { enabled = false },
+    basedpyright = {
+      analysis = {
+        typeCheckingMode = 'standard',  -- 'off' | 'basic' | 'standard' | 'strict' | 'all'
+        autoImportCompletions = true,
+        diagnosticMode = 'openFilesOnly',
+        inlayHints = {
+          variableTypes = true,
+          functionReturnTypes = true,
+          callArgumentNames = true,
+        },
       },
     },
   },
 })
 
-local servers = { 'rust_analyzer', 'pylsp', 'ruff', 'lua_ls', 'ts_ls' }
+local servers = { 'rust_analyzer', 'basedpyright', 'ruff', 'lua_ls', 'ts_ls' }
 
 -- Start servers when matching filetypes are opened
 vim.lsp.enable(servers)
