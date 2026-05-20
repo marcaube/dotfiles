@@ -95,7 +95,6 @@ wk.add({
   { "<leader>du", function() require("dap").step_out() end, desc = "Step Out" },
   { "<leader>dp", function() require("dap").pause() end, desc = "Pause" },
   { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle Repl" },
-  { "<leader>ds", function() require("dap").continue() end, desc = "Start" },
   { "<leader>dR", function() require("dap").run_last() end, desc = "Rerun Last" },
   { "<leader>dq", function() require("dap").close() end, desc = "Quit" },
   { "<leader>dU", function() require("dapui").toggle() end, desc = "Toggle UI" },
