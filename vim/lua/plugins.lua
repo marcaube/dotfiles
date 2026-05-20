@@ -205,6 +205,7 @@ require("lazy").setup({
           build = "make",
           cond = vim.fn.executable("make") == 1,
         },
+        "nvim-telescope/telescope-ui-select.nvim",
       },
       config = function() require('plugin_config.telescope') end,
     },

@@ -3,7 +3,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
   end
 
-  nmap('gd', vim.lsp.buf.definition, 'Goto Definition')
+  nmap('gd', function() require('telescope.builtin').lsp_definitions() end, 'Goto Definition')
   nmap('gD', vim.lsp.buf.declaration, 'Goto Declaration')
   -- Override Neovim 0.11+ defaults (grr/gri/grt) to use telescope picker UI
   nmap('grr', function() require('telescope.builtin').lsp_references() end, 'Goto References')

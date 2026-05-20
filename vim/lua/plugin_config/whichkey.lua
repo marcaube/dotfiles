@@ -105,6 +105,8 @@ wk.add({
   -- LSP
   { "<leader>l", group = "LSP" },
   { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Actions" },
+  { "<leader>lc", "<cmd>Telescope lsp_incoming_calls<cr>", desc = "Incoming calls" },
+  { "<leader>lC", "<cmd>Telescope lsp_outgoing_calls<cr>", desc = "Outgoing calls" },
   { "<leader>ld", function() require("telescope.builtin").diagnostics({ bufnr = 0 }) end, desc = "Buffer Diagnostics" },
   { "<leader>lf", function() vim.lsp.buf.format() end, desc = "Format buffer" },
   { "<leader>lw", function() require("telescope.builtin").diagnostics() end, desc = "Workspace Diagnostics" },

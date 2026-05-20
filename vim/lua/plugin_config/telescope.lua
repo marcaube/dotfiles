@@ -39,3 +39,5 @@ require('telescope').setup {
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 pcall(require('telescope').load_extension, 'dap')
+-- Route vim.ui.select through telescope (affects code actions, codelens, refactoring menu, etc.)
+pcall(require('telescope').load_extension, 'ui-select')
