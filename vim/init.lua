@@ -13,6 +13,14 @@ vim.api.nvim_create_autocmd('VimEnter', {
   end,
 })
 
+-- Mark git commit limits: subject at 50, body at 72
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'gitcommit',
+  callback = function()
+    vim.wo.colorcolumn = '51,73'
+  end,
+})
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
