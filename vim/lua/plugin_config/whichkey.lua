@@ -167,6 +167,14 @@ wk.add({
   { "<leader>uk", "<cmd>CloakToggle<cr>", desc = "Cloak (.env masking)" },
   { "<leader>ul", "<cmd>set relativenumber!<cr>", desc = "Relative line numbers" },
   { "<leader>us", "<cmd>set spell!<cr>", desc = "Spell" },
-  { "<leader>uw", "<cmd>set wrap!<cr>", desc = "Wrap" },
+  { "<leader>uw", function()
+    local on = not vim.wo.wrap
+    vim.wo.wrap = on
+    vim.wo.linebreak = on
+    vim.wo.breakindent = on
+  end, desc = "Soft wrap (wrap+linebreak+breakindent)" },
+  { "<leader>ut", function()
+    vim.bo.textwidth = vim.bo.textwidth == 120 and 0 or 120
+  end, desc = "Hard wrap at 120 (textwidth)" },
   { "<leader>uz", "<cmd>set foldcolumn=0<cr>", desc = "Fold column" },
 })
