@@ -17,7 +17,9 @@
     - ~/Code
     - ~/.tmux/plugins
     - ~/bin
+    - ~/.config/gh-dash
     - ~/.config/karabiner
+    - ~/Library/Application Support/lazygit
     - ~/Library/Application Support/organize
 
 - link:
