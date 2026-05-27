@@ -98,8 +98,14 @@
           [ -x "$b" ] && eval "$("$b" shellenv)" && break
         done
         brew bundle --file=brew/Brewfile.common
-        if [ "$(uname -s)" = "Darwin" ] && [ -z "$CI" ]; then
-          brew bundle --file=brew/Brewfile.darwin
+        if [ "$(uname -s)" = "Darwin" ]; then
+          if [ -n "$CI" ]; then
+            # CI can't install casks or Mac App Store apps, so bundle only the
+            # taps and brew formulae from the macOS file.
+            grep -E '^(tap|brew)' brew/Brewfile.darwin | brew bundle --file=-
+          else
+            brew bundle --file=brew/Brewfile.darwin
+          fi
         fi
       stdout: true
       stderr: true
