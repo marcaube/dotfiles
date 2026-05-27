@@ -1,0 +1,72 @@
+# macOS-only Homebrew packages: casks, Mac App Store apps and formulae that
+# only make sense on macOS. Bundled after Brewfile.common on macOS only.
+
+# Taps
+tap 'remind101/formulae'        # for assume-role
+tap 'yqrashawn/goku'            # For Goku
+
+# Formulae that ship natively on Linux or are macOS-specific
+brew 'coreutils'        # Those that come with macOS are outdated (Linux has GNU natively)
+brew 'gnu-sed'          # sed, but a better version than what ships with OSX
+brew 'mackup'           # to sync my Mac configs
+brew 'mas'              # to install Mac App Store apps from the CLI
+
+# Productivity and automation (see: https://tighten.com/blog/how-to-train-your-keyboard/)
+cask 'karabiner-elements'   # Remap keys and shortcuts at the kernel level
+cask 'hammerspoon'          # Take Karabiner's shortcuts and make the magic happen
+cask 'handy'                # Offline speech-to-text for dictating text and commands
+brew 'yqrashawn/goku/goku'  # Manage Karabiner configs with ease
+
+# Pentesting / CTF / Forensics (GUI)
+cask 'burp-suite'
+cask 'hex-fiend'        # a simple GUI hex editor
+
+# Apps
+cask '1password'
+cask 'alfred'
+cask 'anki'             # flash cards, for learning and memorization (active recall, spaced repetition, etc)
+cask 'caffeine'         # when I don't want my computer to fall asleep
+cask 'cleanshot'        # Gorgeous, expansive (and expensive!) screeshot app
+cask 'dash'             # offline docs and code snippets FTW!
+cask 'deckset'          # slide decks for conference talks
+cask 'docker-desktop'
+cask 'firefox'
+cask 'hiddenbar'        # keep my statusbar tidy
+cask 'heynote'          # a nice scratchpad app
+cask 'imagealpha'       # optimize transparent PNGs
+cask 'imageoptim'       # optimize images
+cask 'insomnia'         # a nice API client GUI
+cask 'pycharm'
+cask 'kaleidoscope@2'
+cask 'keybase'
+cask 'keycastr'         # when pairing remotely, to show all keypresses in vim/neovim
+cask 'kitty'
+cask 'ngrok'
+cask 'obsidian'
+cask 'rectangle'        # no better ways to move windows around
+cask 'slack'
+cask 'sublime-text'
+cask 'zoom'
+
+# Gaming
+cask 'battle-net'
+cask 'discord'
+
+# Quicklook
+cask 'betterzip'        # preview zip archives
+cask 'qlmarkdown'       # preview Markdown files
+cask 'qlprettypatch'    # preview diff patches
+cask 'quicklook-csv'    # preview CSV files
+
+# Fonts
+cask 'font-fira-code'
+cask 'font-hack-nerd-font'    # This font adds support for nice icons in NerdTree/NVIMTREE
+
+# Install Mac App Store apps
+mas 'Bear', id: 1091189122          # note taking app
+mas 'Ivory', id: 6444602274         # Mastodon/Fediverse client
+mas 'Next Meeting', id: 1017470484  # See what meeting is up next, right in the status bar
+mas 'Pixelmator Pro', id: 1289583905
+mas 'Reeder', id: 1529448980        # RSS reader
+mas 'stts', id: 1187772509          # status of cloud services, right in the status bar
+mas 'Vimari', id: 1480933944        # vim bindings for Safari

@@ -79,10 +79,14 @@ For example, that's where you could define your `GIT_AUTHOR_NAME` and
 
 ## Features
 
+- cross-platform: works on macOS (Apple Silicon) and Debian/Ubuntu Linux — the
+  `./install` wrapper layers an OS-specific Dotbot config on top of a shared one,
+  and the shell config branches at runtime via `zsh/lib/os.zsh`
 - sensible [`macos`](./macos/macos.sh) configs, see [this repo](https://github.com/kevinSuttle/MacOS-Defaults) for more options
-- a [`Brewfile`](./macos/Brewfile) with a list of binaries and apps I use all the time, see [the caskroom](https://caskroom.github.io/search) for more
-    - binaries are installed with [Homebrew](http://brew.sh/)
-    - apps are either installed with Homebrew Cask or [MAS](https://github.com/mas-cli/mas)
+- split Brewfiles: [`brew/Brewfile.common`](./brew/Brewfile.common) (cross-platform CLI tools) and
+  [`brew/Brewfile.darwin`](./brew/Brewfile.darwin) (macOS casks + Mac App Store apps), see [the caskroom](https://caskroom.github.io/search) for more
+    - binaries are installed with [Homebrew](http://brew.sh/) (Linuxbrew on Linux)
+    - apps are either installed with Homebrew Cask or [MAS](https://github.com/mas-cli/mas) (macOS only)
 - an [`aliases.zsh`](./zsh/aliases.zsh) file with a bunch of useful aliases and functions
     - CLI app launchers
     - encoding and crypto utility functions
@@ -101,10 +105,13 @@ For example, that's where you could define your `GIT_AUTHOR_NAME` and
 - [`macos.sh`](./macos/macos.sh)  contains my macOS preferences
 - [`zshrc`](./zsh/zshrc) contains my Z shell config (plugins are sourced directly, no Oh My ZSH)
 - [`aliases.zsh`](./zsh/aliases.zsh) defines a list of useful CLI aliases, shortcuts and functions
-- [`Brewfile`](./macos/Brewfile) contains the list of binaries (homebrew) and apps (cask and mas) that I want installed on my system
+- [`brew/Brewfile.common`](./brew/Brewfile.common) and [`brew/Brewfile.darwin`](./brew/Brewfile.darwin) list the binaries (homebrew) and apps (cask and mas) I want installed
 - [`exports.zsh`](./zsh/exports.zsh) contains the `PATH` env variable configs
+- [`zsh/lib/os.zsh`](./zsh/lib/os.zsh) detects the platform and exposes `is_macos`/`is_linux` so the rest of the shell config can branch
+- `zsh/aliases.darwin.zsh` / `zsh/aliases.linux.zsh` hold the platform-specific aliases (sourced as `aliases.${OS}.zsh`)
 - `zsh/extra.zsh` is a file ignored by git where you can add your git credentials, custom commands, private aliases, etc.
 - [`install`](./install) is the installation script to make this all work "automagically"
+- `install.conf.common.yaml` plus `install.conf.darwin.yaml` / `install.conf.linux.yaml` are the [Dotbot](https://github.com/anishathalye/dotbot) configs
 - [`init.lua`](./vim/init.lua) is my [Neovim](https://neovim.io/) entry point — modular config under `vim/lua/`, plugins managed by [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 

@@ -20,7 +20,11 @@ concurrency:
 
 jobs:
   test:
-    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 45
 
     steps:
@@ -34,16 +38,35 @@ jobs:
           echo "DOTFILES=$GITHUB_WORKSPACE" >> $GITHUB_ENV
           ln -sf "$GITHUB_WORKSPACE" "$HOME/.dotfiles"
 
-      - name: Cache Homebrew packages
-        if: github.event_name != 'schedule' && !(github.event_name == 'workflow_dispatch' && inputs.skip_cache)
+      - name: Install Homebrew (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          if ! command -v brew >/dev/null 2>&1; then
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+          fi
+          echo "/home/linuxbrew/.linuxbrew/bin" >> "$GITHUB_PATH"
+
+      - name: Cache Homebrew packages (macOS)
+        if: runner.os == 'macOS' && github.event_name != 'schedule' && !(github.event_name == 'workflow_dispatch' && inputs.skip_cache)
         uses: actions/cache@v4
         with:
           path: |
             ~/Library/Caches/Homebrew
             /opt/homebrew/Cellar
             /opt/homebrew/Library/Taps
-          key: brew-${{ hashFiles('macos/Brewfile') }}
-          restore-keys: brew-
+          key: brew-macos-${{ hashFiles('brew/Brewfile.common', 'brew/Brewfile.darwin') }}
+          restore-keys: brew-macos-
+
+      - name: Cache Homebrew packages (Linux)
+        if: runner.os == 'Linux' && github.event_name != 'schedule' && !(github.event_name == 'workflow_dispatch' && inputs.skip_cache)
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/Homebrew
+            /home/linuxbrew/.linuxbrew/Cellar
+            /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps
+          key: brew-linux-${{ hashFiles('brew/Brewfile.common') }}
+          restore-keys: brew-linux-
 
       - name: Install bats-core
         run: |

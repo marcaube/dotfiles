@@ -2,14 +2,24 @@
 
 set -e
 
-CONFIG="install.conf.yaml"
 DOTBOT_DIR="git/submodules/dotbot"
 
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Pick the OS-specific config to layer on top of the common one.
+case "$(uname -s)" in
+    Darwin) OS_CONFIG="install.conf.darwin.yaml" ;;
+    Linux)  OS_CONFIG="install.conf.linux.yaml" ;;
+    *)      echo "Unsupported OS: $(uname -s)" >&2; exit 1 ;;
+esac
+
 cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir git/submodules/dotbot-gh-extension -c "${CONFIG}" "${@}"
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" \
+    --plugin-dir git/submodules/dotbot-gh-extension \
+    -c "install.conf.common.yaml" \
+    -c "${OS_CONFIG}" \
+    "${@}"
