@@ -1,8 +1,14 @@
 # Path to your dotfiles installation.
 export DOTFILES=$HOME/.dotfiles
 
+# OS detection — must come first so everything below can branch on platform
+source $DOTFILES/zsh/lib/os.zsh
+
 # Aliases, exports and functions
 source $DOTFILES/zsh/aliases.zsh
+if [ -f $DOTFILES/zsh/aliases.${OS}.zsh ]; then
+  source $DOTFILES/zsh/aliases.${OS}.zsh
+fi
 source $DOTFILES/zsh/exports.zsh
 if [ -f $DOTFILES/zsh/extra.zsh ]; then
   source $DOTFILES/zsh/extra.zsh
@@ -14,9 +20,10 @@ source $DOTFILES/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $DOTFILES/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh
 source $DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# fzf — direct paths instead of the detection plugin
-source /opt/homebrew/opt/fzf/shell/completion.zsh
-source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
+# fzf — direct paths instead of the detection plugin (Homebrew prefix differs
+# between macOS and Linux, so resolve it dynamically)
+source "$(brew --prefix)/opt/fzf/shell/completion.zsh"
+source "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh"
 
 # Keep sensitive info out of history
 setopt HIST_IGNORE_SPACE

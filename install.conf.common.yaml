@@ -1,3 +1,7 @@
+# Cross-platform Dotbot config. Run on every platform, before the
+# OS-specific config (install.conf.darwin.yaml / install.conf.linux.yaml)
+# selected by the ./install wrapper.
+
 - defaults:
     link:
         relink: true
@@ -8,8 +12,17 @@
     - description: Validating sudo credentials
       command: "[ -n \"$CI\" ] || sudo --validate"
 
+    - description: Installing Debian/Ubuntu prerequisites
+      command: |
+        if [ "$(uname -s)" = "Linux" ] && command -v apt-get >/dev/null 2>&1; then
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            zsh build-essential procps curl file git \
+            xclip wl-clipboard libnotify-bin telnet
+        fi
+
     - description: Installing XCode Command Line Tools
-      command: "[ -n \"$CI\" ] || [ -x \"$(which xcodebuild)\" ] || xcode-select --install"
+      command: "[ \"$(uname -s)\" != \"Darwin\" ] || [ -n \"$CI\" ] || [ -x \"$(which xcodebuild)\" ] || xcode-select --install"
 
 - clean: ['~']
 
@@ -18,9 +31,6 @@
     - ~/.tmux/plugins
     - ~/bin
     - ~/.config/gh-dash
-    - ~/.config/karabiner
-    - ~/Library/Application Support/lazygit
-    - ~/Library/Application Support/organize
 
 - link:
     # Binaries
@@ -57,25 +67,10 @@
     # Kitty shell
     ~/.config/kitty: kitty
 
-    # Lazygit
-    ~/Library/Application Support/lazygit/config.yml:
-        path: lazygit/config.yml
-        force: true
-
     # gh-dash
     ~/.config/gh-dash/config.yml:
         path: gh-dash/config.yml
         force: true
-
-    # Karabiner, Hammerspoon and Goku
-    ~/.config/karabiner.edn: karabiner/karabiner.edn
-    ~/.hammerspoon: hammerspoon
-
-    # Mackup
-    ~/.mackup.cfg: macos/mackup.cfg
-
-    # Organize
-    ~/Library/Application Support/organize/config.yaml: macos/organize.yaml
 
     # Tmux
     ~/.tmux.conf: tmux/tmux.conf
@@ -88,13 +83,30 @@
 
 - shell:
     - description: Installing Homebrew
-      command: "[ -x \"$(which brew)\" ] || /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\""
+      command: "[ -x \"$(command -v brew)\" ] || /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\""
 
     - description: Updating Homebrew
-      command: "brew update"
+      command: |
+        for b in /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew /usr/local/bin/brew; do
+          [ -x "$b" ] && eval "$("$b" shellenv)" && break
+        done
+        brew update
 
     - description: Installing Brewfile bundle
-      command: "if [ -n \"$CI\" ]; then grep -E '^(tap|brew)' macos/Brewfile | brew bundle --file=-; else brew bundle --file=macos/Brewfile; fi"
+      command: |
+        for b in /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew /usr/local/bin/brew; do
+          [ -x "$b" ] && eval "$("$b" shellenv)" && break
+        done
+        brew bundle --file=brew/Brewfile.common || exit 1
+        if [ "$(uname -s)" = "Darwin" ]; then
+          if [ -n "$CI" ]; then
+            # CI can't install casks or Mac App Store apps, so bundle only the
+            # taps and brew formulae from the macOS file.
+            grep -E '^(tap|brew)' brew/Brewfile.darwin | brew bundle --file=- || exit 1
+          else
+            brew bundle --file=brew/Brewfile.darwin || exit 1
+          fi
+        fi
       stdout: true
       stderr: true
 
@@ -103,10 +115,10 @@
       command: "[ -f ~/.hushlogin ] || touch ~/.hushlogin"
 
     - description: Adding ZSH to list of acceptable shells
-      command: "[ -n \"$CI\" ] || [[ \"$(ag $(which zsh) /etc/shells)\" ]] || sudo sh -c \"echo $(which zsh) >> /etc/shells\""
+      command: "[ -n \"$CI\" ] || grep -q \"$(which zsh)\" /etc/shells || sudo sh -c \"echo $(which zsh) >> /etc/shells\""
 
     - description: Making ZSH the default shell
-      command: "[ -n \"$CI\" ] || sudo chsh -s $(which zsh)"
+      command: "[ -n \"$CI\" ] || [ \"$SHELL\" = \"$(which zsh)\" ] || sudo chsh -s $(which zsh) $(whoami)"
 
     - description: Installing ZSH autocompletions
       command: "git clone https://github.com/zsh-users/zsh-completions ${DOTFILES}/zsh/plugins/zsh-completions 2> /dev/null || exit 0"
@@ -124,12 +136,21 @@
       command: "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || exit 0"
 
     - description: Clear sudo credential cache
-      command: "sudo --reset-timestamp"
+      command: "[ -n \"$CI\" ] || sudo --reset-timestamp"
 
     - description: Installing bat's theme
-      command: "mkdir -p \"$(bat --config-dir)/themes\" && wget -P \"$(bat --config-dir)/themes\" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme && bat cache --build || exit 0"
+      command: |
+        for b in /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew /usr/local/bin/brew; do
+          [ -x "$b" ] && eval "$("$b" shellenv)" && break
+        done
+        mkdir -p "$(bat --config-dir)/themes" && \
+          wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme && \
+          bat cache --build || exit 0
 
-# Install `gh` extensions
-- ghe:
-    - dlvhdr/gh-dash
-    - korosuke613/gh-user-stars
+    - description: Installing gh extensions
+      command: |
+        for b in /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew /usr/local/bin/brew; do
+          [ -x "$b" ] && eval "$("$b" shellenv)" && break
+        done
+        gh extension install dlvhdr/gh-dash 2>/dev/null || true
+        gh extension install korosuke613/gh-user-stars 2>/dev/null || true

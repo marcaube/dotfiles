@@ -1,0 +1,22 @@
+# macOS-only Dotbot config. Run after install.conf.common.yaml on macOS.
+
+- create:
+    - ~/.config/karabiner
+    - ~/Library/Application Support/lazygit
+    - ~/Library/Application Support/organize
+
+- link:
+    # Lazygit
+    ~/Library/Application Support/lazygit/config.yml:
+        path: lazygit/config.yml
+        force: true
+
+    # Karabiner, Hammerspoon and Goku
+    ~/.config/karabiner.edn: karabiner/karabiner.edn
+    ~/.hammerspoon: hammerspoon
+
+    # Mackup
+    ~/.mackup.cfg: macos/mackup.cfg
+
+    # Organize
+    ~/Library/Application Support/organize/config.yaml: macos/organize.yaml

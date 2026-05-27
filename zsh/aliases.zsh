@@ -30,14 +30,11 @@ alias ...="cd ../.."
 alias code="cd ~/Code;pwd"
 alias dl='cd ~/Downloads'
 alias dotfiles="cd $DOTFILES"
-alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/;pwd'
-alias library="cd $HOME/Library"
 alias www='cd ~/Code;pwd'
 
 # Application launchers
 alias cat='bat --theme="Catppuccin Mocha"'
 alias woman=tldr # Grace Hopper approved
-alias chromeopen='/usr/bin/open -a "/Applications/Google Chrome.app"'
 
 # Some aliases I used from oh-my-zsh
 # see: https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/common-aliases/common-aliases.plugin.zsh
@@ -50,20 +47,6 @@ alias grep='grep --color'
 alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
-
-# Show/hide hidden files in Finder
-alias hide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
-alias show='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
-
-# Show/hide all desktop icons (useful when presenting)
-alias hidedesktop='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
-alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true && killall Finder'
-
-# Disable Spotlight
-alias spotoff="sudo mdutil -a -i off"
-
-# Enable Spotlight
-alias spoton="sudo mdutil -a -i on"
 
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
@@ -81,32 +64,14 @@ alias kp='ps -a | fzf --prompt="Choose process to kill: " | cut -d " " -f 1 | xa
 # For those times when you just don't look busy enough
 alias busy='export GREP_COLOR='\''1;32'\''; cat /dev/urandom | hexdump -C | grep --color=auto "ca fe"'
 
-# Display a notification
-# (useful when executing time-consuming commands)
-alias notify='/usr/bin/osascript -e "display notification \"Finished!\" with title \"Zsh\""'
-
 # Get week number
 alias week='date +%V'
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
-# Get macOS Software Updates, update Homebrew and its installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew upgrade --cask; brew cleanup; mas upgrade;tldr --update'
-
-# Check if I've got outdated versions of applications
-alias outdated='brew outdated; mas outdated'
-
-# IP addresses
+# My public IP (works everywhere `dig` is available)
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip='ipconfig getifaddr en0'
-alias ips='ifconfig -a | grep -o '\''inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)'\'' | awk '\''{ sub(/inet6? (addr:)? ?/, ""); print }'\'''
-
-# Show active network interfaces
-alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
-
-# Flush Directory Service (DNS) cache
-alias flush='dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
 
 # Pipe my public key to my clipboard.
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
@@ -155,11 +120,6 @@ function server() {
 # Scrape a single webpage with all assets
 function scrapeUrl() {
     wget --adjust-extension --convert-links --page-requisites --span-hosts --no-host-directories "$1"
-}
-
-# Shortcut for the OSX quick-look command
-function ql() {
-   quick-look "$1"
 }
 
 # Function to easily match text using regexes in a command pipeline, second param is the capture group number

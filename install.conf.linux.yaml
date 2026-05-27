@@ -1,0 +1,15 @@
+# Linux-only Dotbot config. Run after install.conf.common.yaml on Linux.
+# Tools that store config under ~/Library on macOS use ~/.config here.
+
+- create:
+    - ~/.config/lazygit
+    - ~/.config/organize
+
+- link:
+    # Lazygit
+    ~/.config/lazygit/config.yml:
+        path: lazygit/config.yml
+        force: true
+
+    # Organize
+    ~/.config/organize/config.yaml: macos/organize.yaml

@@ -20,7 +20,11 @@ concurrency:
 
 jobs:
   test:
-    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 45
 
     steps:
@@ -34,16 +38,38 @@ jobs:
           echo "DOTFILES=$GITHUB_WORKSPACE" >> $GITHUB_ENV
           ln -sf "$GITHUB_WORKSPACE" "$HOME/.dotfiles"
 
-      - name: Cache Homebrew packages
-        if: github.event_name != 'schedule' && !(github.event_name == 'workflow_dispatch' && inputs.skip_cache)
+      - name: Install Homebrew (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          if ! command -v brew >/dev/null 2>&1; then
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+          fi
+          echo "/home/linuxbrew/.linuxbrew/bin" >> "$GITHUB_PATH"
+
+      - name: Cache Homebrew packages (macOS)
+        if: runner.os == 'macOS' && github.event_name != 'schedule' && !(github.event_name == 'workflow_dispatch' && inputs.skip_cache)
         uses: actions/cache@v4
         with:
           path: |
             ~/Library/Caches/Homebrew
             /opt/homebrew/Cellar
             /opt/homebrew/Library/Taps
-          key: brew-${{ hashFiles('macos/Brewfile') }}
-          restore-keys: brew-
+          key: brew-macos-${{ hashFiles('brew/Brewfile.common', 'brew/Brewfile.darwin') }}
+          restore-keys: brew-macos-
+
+      - name: Cache Homebrew packages (Linux)
+        if: runner.os == 'Linux' && github.event_name != 'schedule' && !(github.event_name == 'workflow_dispatch' && inputs.skip_cache)
+        uses: actions/cache@v4
+        with:
+          # Only cache downloads, not the installed Cellar: the runner ships a
+          # preinstalled Linuxbrew, and restoring cached kegs on top of it
+          # leaves them present-but-unregistered, which breaks `brew bundle`'s
+          # upgrade step ("File exists" / "No such keg"). Caching downloads
+          # still skips re-fetching bottles while installing cleanly each run.
+          path: |
+            ~/.cache/Homebrew
+          key: brew-linux-v2-${{ hashFiles('brew/Brewfile.common') }}
+          restore-keys: brew-linux-v2-
 
       - name: Install bats-core
         run: |
