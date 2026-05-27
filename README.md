@@ -16,10 +16,15 @@ before reinstalling everything from scratch...
 1. save/backup all important documents from non-iCloud directories
 1. save all your work from apps which aren't synced through iCloud
 1. export important data from your local databases
-1. update [mackup](https://github.com/lra/mackup) to the latest version and run `mackup backup`
+1. update [mackup](https://github.com/lra/mackup) to the latest version and run `mackup backup` *(macOS only)*
 
 
 ## Installation
+
+The `./install` script detects the platform (`uname`) and runs the right
+combination of configs, so the first four steps are the same everywhere.
+
+### macOS
 
 ```bash
 # 1. Update macOS to the latest version with the App Store
@@ -31,7 +36,7 @@ chmod 600 <name_of_the_key>
 # 3. Clone this repo to ~/.dotfiles
 cd ~; git clone git@github.com:marcaube/dotfiles.git .dotfiles
 
-# 4. Run install.sh to start the installation
+# 4. Run the install script
 cd ~/.dotfiles; ./install; cd -
 
 # 5. Login with your Apple ID, check iCloud Drive and let it sync for a while
@@ -44,6 +49,28 @@ brew doctor
 
 # 8. Restart your computer to finalize the process
 shutdown -r now
+```
+
+### Debian / Ubuntu Linux
+
+The Apple-specific steps (App Store update, iCloud, `mackup`) don't apply.
+`./install` installs the apt prerequisites it needs (build tools, `zsh`,
+`xclip`/`wl-clipboard`, …) and Linuxbrew, then symlinks everything.
+
+```bash
+# 1. Update the system
+sudo apt update && sudo apt upgrade
+
+# 2. Copy your SSH keys to ~/.ssh and make sure they're set to 600
+chmod 600 <name_of_the_key>
+
+# 3. Clone this repo to ~/.dotfiles
+cd ~; git clone git@github.com:marcaube/dotfiles.git .dotfiles
+
+# 4. Run the install script
+cd ~/.dotfiles; ./install; cd -
+
+# 5. Log out and back in so the new login shell (zsh) takes effect
 ```
 
 
@@ -61,7 +88,7 @@ git pull
 # 3. Reload the configs
 reload
 
-# 4. Restore preferences
+# 4. Restore preferences (macOS only)
 mackup restore
 ```
 
