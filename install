@@ -18,8 +18,13 @@ cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
+# Dotbot's -c takes a single config file, so merge the common and OS-specific
+# configs (both are top-level YAML sequences) into one before running.
+MERGED_CONFIG="$(mktemp)"
+trap 'rm -f "${MERGED_CONFIG}"' EXIT
+cat "install.conf.common.yaml" "${OS_CONFIG}" > "${MERGED_CONFIG}"
+
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" \
     --plugin-dir git/submodules/dotbot-gh-extension \
-    -c "install.conf.common.yaml" \
-    -c "${OS_CONFIG}" \
+    -c "${MERGED_CONFIG}" \
     "${@}"
