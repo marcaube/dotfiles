@@ -10,6 +10,7 @@ brew 'coreutils'        # Those that come with macOS are outdated (Linux has GNU
 brew 'gnu-sed'          # sed, but a better version than what ships with OSX
 brew 'mackup'           # to sync my Mac configs
 brew 'mas'              # to install Mac App Store apps from the CLI
+brew 'telnet'           # Homebrew's telnet formula is macOS-only; Linux gets it via apt
 
 # Productivity and automation (see: https://tighten.com/blog/how-to-train-your-keyboard/)
 cask 'karabiner-elements'   # Remap keys and shortcuts at the kernel level

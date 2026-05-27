@@ -26,7 +26,6 @@ brew 'ouch'             # easily compress/decompress files and directories
 brew 'ripgrep'          # like grep, but faster
 brew 'rm-improved'      # a better rm, with trash support
 brew 'starship'         # a minimalist CLI prompt
-brew 'telnet'
 brew 'tldr'             # like 'man' but for lazy people with deadlines
 brew 'tmux'
 brew 'tmuxinator'

@@ -18,7 +18,7 @@
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends \
             zsh build-essential procps curl file git \
-            xclip wl-clipboard libnotify-bin
+            xclip wl-clipboard libnotify-bin telnet
         fi
 
     - description: Installing XCode Command Line Tools
@@ -97,14 +97,14 @@
         for b in /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew /usr/local/bin/brew; do
           [ -x "$b" ] && eval "$("$b" shellenv)" && break
         done
-        brew bundle --file=brew/Brewfile.common
+        brew bundle --file=brew/Brewfile.common || exit 1
         if [ "$(uname -s)" = "Darwin" ]; then
           if [ -n "$CI" ]; then
             # CI can't install casks or Mac App Store apps, so bundle only the
             # taps and brew formulae from the macOS file.
-            grep -E '^(tap|brew)' brew/Brewfile.darwin | brew bundle --file=-
+            grep -E '^(tap|brew)' brew/Brewfile.darwin | brew bundle --file=- || exit 1
           else
-            brew bundle --file=brew/Brewfile.darwin
+            brew bundle --file=brew/Brewfile.darwin || exit 1
           fi
         fi
       stdout: true
