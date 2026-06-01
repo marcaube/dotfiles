@@ -151,6 +151,18 @@ require("lazy").setup({
       cmd = { "TestFile", "TestNearest", "TestLast", "TestSuite", "TestVisit" },
       config = function() require('plugin_config.testing') end,
     },
+    -- Floating terminal — backs vim-test's `floaterm` strategy (test output in a popup)
+    {
+      "voldikss/vim-floaterm",
+      cmd = { "FloatermNew", "FloatermToggle", "FloatermNext", "FloatermPrev", "FloatermKill" },
+      init = function()
+        vim.g.floaterm_width = 0.8           -- 80% of the screen width
+        vim.g.floaterm_height = 0.8          -- 80% of the screen height
+        vim.g.floaterm_position = 'center'
+        vim.g.floaterm_title = 'tests ($1/$2)'
+        vim.g.floaterm_borderchars = '─│─│╭╮╯╰'  -- rounded corners
+      end,
+    },
 
     -- Refactoring
     {
