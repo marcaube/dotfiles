@@ -58,6 +58,14 @@ require("lazy").setup({
       },
     },
 
+    -- Sticky context header showing the enclosing scope (function/class/etc.)
+    {
+      "nvim-treesitter/nvim-treesitter-context",
+      event = "BufReadPost",
+      dependencies = { "nvim-treesitter/nvim-treesitter" },
+      config = function() require('plugin_config.treesitter-context') end,
+    },
+
     -- Git related plugins
     {
       "tpope/vim-fugitive",
