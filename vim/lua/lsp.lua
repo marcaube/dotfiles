@@ -73,6 +73,15 @@ vim.lsp.enable(servers)
 -- Inlay hints on by default; <leader>ui toggles. Servers without support are no-ops.
 vim.lsp.inlay_hint.enable(true)
 
+-- Format Rust files on save via rust_analyzer (rustfmt).
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.rs',
+  callback = function(args)
+    vim.lsp.buf.format({ bufnr = args.buf })
+  end,
+  desc = 'Format Rust buffer on save (rustfmt)',
+})
+
 -- Mason: ensure server binaries are installed
 require('mason').setup()
 require('mason-lspconfig').setup({ ensure_installed = servers })
