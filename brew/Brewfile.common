@@ -2,6 +2,9 @@
 # Bundled on every platform. macOS-only formulae, casks and MAS apps live in
 # Brewfile.darwin.
 
+# Taps
+tap 'agavra/tap'        # for tuicr
+
 # CLI utilities
 brew 'atuin'            # shell history on steroids
 brew 'bat'              # like 'cat', with highlighting, git support and pagination
@@ -46,6 +49,7 @@ brew 'git-who'          # git blame for file trees
 brew 'lazygit'          # terminal UI for git
 brew 'neovim'           # the editor
 brew 'tree-sitter-cli'  # CLI used by nvim-treesitter (main) to build parsers
+brew 'agavra/tap/tuicr' # TUI for code reviews (https://tuicr.dev)
 
 # Tools for work
 # brew 'assume-role'

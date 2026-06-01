@@ -1,0 +1,31 @@
+# tuicr — TUI for code reviews (https://tuicr.dev)
+# Config reference: https://github.com/agavra/tuicr/blob/main/docs/CONFIG.md
+
+# Theme — matches the rest of my CLI tools (bat, git-delta, lazygit, ...)
+theme = "catppuccin-mocha"
+
+# Diff display
+diff_view = "side-by-side"    # two columns: old | new
+wrap = false                  # don't soft-wrap long lines; scroll horizontally
+ignore_whitespace = true      # hide whitespace-only changes in local diffs
+scroll_offset = 10            # keep 10 lines of context around the cursor (matches nvim scrolloff)
+
+# UI
+leader = " "                  # <Space> prefixes panel focus / sidebar toggles
+show_file_list = true         # show the file-list panel on startup
+cursor_line = true            # highlight the current line / visual selection
+mouse = true                  # wheel scroll, clicks, drag-to-select
+transparent_background = true # let the terminal background show through panels
+
+# Review comment categories — built-in defaults plus a "nit" type,
+# colored from the catppuccin-mocha palette.
+comment_types = [
+  { id = "nit", label = "nitpick", definition = "small optional tweaks", color = "#fab387" }, # peach
+  { id = "suggestion", definition = "a possible improvement",            color = "#a6e3a1" }, # green
+  { id = "issue",      definition = "a problem that should be fixed",    color = "#f38ba8" }, # red
+  { id = "note",       definition = "general remark or question",        color = "#89b4fa" }, # blue
+  { id = "praise",     definition = "positive feedback",                 color = "#f9e2af" }, # yellow
+]
+
+[forge]
+comment_type_prefix = false   # submit comments without a [TYPE] tag prefix

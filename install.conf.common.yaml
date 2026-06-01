@@ -31,6 +31,7 @@
     - ~/.tmux/plugins
     - ~/bin
     - ~/.config/gh-dash
+    - ~/.config/tuicr
 
 - link:
     # Binaries
@@ -70,6 +71,11 @@
     # gh-dash
     ~/.config/gh-dash/config.yml:
         path: gh-dash/config.yml
+        force: true
+
+    # tuicr
+    ~/.config/tuicr/config.toml:
+        path: tuicr/config.toml
         force: true
 
     # Tmux
