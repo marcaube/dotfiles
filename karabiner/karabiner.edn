@@ -6,13 +6,14 @@
 
     :devices {
         :moonlander [{:product_id 6505 :vendor_id 12951}]
+        :piantor-pro [{:product_id 2 :vendor_id 48875}]
         :apple-wireless [{:product_id 598 :vendor_id 1452}]
         :macbook-m1 [{:product_id 834 :vendor_id 1452}]
         :macbook [{:product_id 633 :vendor_id 1452}]
     }
 
     :layers {
-        :launch {:key :caps_lock :alone {:key :escape} :condi [:!moonlander]}
+        :launch {:key :caps_lock :alone {:key :escape} :condi [:!moonlander :!piantor-pro]}
     }
 
     :main [
@@ -36,7 +37,7 @@
         {
             :des "Split KB Launch layer"
             :rules [
-                [:condi :moonlander]
+                [:condi :moonlander :piantor-pro]
                 [:!!a [:launch "Activity\\ Monitor.app"]]
                 [:!!s [:launch "Slack.app"]]
                 [:!!d [:launch "Discord.app"]]
@@ -61,7 +62,7 @@
         {
             :des "Split KB Hammerspoon"
             :rules [
-                [:condi :moonlander]
+                [:condi :moonlander :piantor-pro]
                 [:!!o [:hs "open" "default"]]
                 [:!!w [:hs "slack-rw-wave" "default"]]
             ]
