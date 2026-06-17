@@ -80,6 +80,7 @@
 
     # Tmux
     ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux/now-playing.sh: tmux/now-playing.sh
 
     # Nvim
     ~/.config/nvim: vim

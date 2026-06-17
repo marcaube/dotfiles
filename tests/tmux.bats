@@ -26,3 +26,26 @@ teardown() {
   result=$(tmux -L "$TMUX_SOCKET" show-option -g prefix)
   [[ "$result" == *"C-a"* ]]
 }
+
+@test "now-playing script is installed and executable" {
+  [ -x "$HOME/.tmux/now-playing.sh" ]
+}
+
+@test "now-playing segment is prepended to status-right" {
+  tmux -L "$TMUX_SOCKET" -f "$HOME/.tmux.conf" new-session -d -s bats_tmux
+  result=$(tmux -L "$TMUX_SOCKET" show-option -g status-right)
+  [[ "$result" == *"now-playing.sh"* ]]
+  # It must come before the window (#W) and session (#S) segments.
+  [[ "${result%%now-playing.sh*}" != *"#W"* ]]
+}
+
+@test "now-playing script exits cleanly" {
+  run "$HOME/.tmux/now-playing.sh"
+  [ "$status" -eq 0 ]
+}
+
+@test "catppuccin v2 theme is loaded (palette variables defined)" {
+  tmux -L "$TMUX_SOCKET" -f "$HOME/.tmux.conf" new-session -d -s bats_tmux
+  result=$(tmux -L "$TMUX_SOCKET" show-option -gv @thm_pink)
+  [[ "$result" == "#"* ]]
+}
