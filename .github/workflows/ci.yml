@@ -50,12 +50,15 @@ jobs:
         if: runner.os == 'macOS' && github.event_name != 'schedule' && !(github.event_name == 'workflow_dispatch' && inputs.skip_cache)
         uses: actions/cache@v4
         with:
+          # Only cache downloads, not the installed Cellar: the runner ships a
+          # preinstalled Homebrew, and restoring cached kegs on top of it
+          # leaves them present-but-unregistered, which breaks `brew bundle`'s
+          # pour step ("File exists" / "No such keg"). Caching downloads still
+          # skips re-fetching bottles while installing cleanly each run.
           path: |
             ~/Library/Caches/Homebrew
-            /opt/homebrew/Cellar
-            /opt/homebrew/Library/Taps
-          key: brew-macos-${{ hashFiles('brew/Brewfile.common', 'brew/Brewfile.darwin') }}
-          restore-keys: brew-macos-
+          key: brew-macos-v2-${{ hashFiles('brew/Brewfile.common', 'brew/Brewfile.darwin') }}
+          restore-keys: brew-macos-v2-
 
       - name: Cache Homebrew packages (Linux)
         if: runner.os == 'Linux' && github.event_name != 'schedule' && !(github.event_name == 'workflow_dispatch' && inputs.skip_cache)
