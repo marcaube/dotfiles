@@ -76,6 +76,14 @@ jobs:
           brew install bats-core
           brew link --overwrite bats-core
 
+      - name: Trust third-party taps
+        # Homebrew refuses to load formulae from non-official taps when
+        # HOMEBREW_REQUIRE_TAP_TRUST is set (the default in CI), which fails
+        # `brew bundle` on the agavra/tap/tuicr formula. Trust it up front.
+        run: |
+          brew tap agavra/tap
+          brew trust --formula agavra/tap/tuicr
+
       - name: Run install
         run: ./install
         env:
