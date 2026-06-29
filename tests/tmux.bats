@@ -44,6 +44,29 @@ teardown() {
   [ "$status" -eq 0 ]
 }
 
+@test "next-meeting script is installed and executable" {
+  [ -x "$HOME/.tmux/next-meeting.sh" ]
+}
+
+@test "next-meeting segment is prepended to status-right" {
+  tmux -L "$TMUX_SOCKET" -f "$HOME/.tmux.conf" new-session -d -s bats_tmux
+  result=$(tmux -L "$TMUX_SOCKET" show-option -g status-right)
+  [[ "$result" == *"next-meeting.sh"* ]]
+  # It must come before the now-playing, window (#W) and session (#S) segments.
+  [[ "${result%%next-meeting.sh*}" != *"now-playing.sh"* ]]
+  [[ "${result%%next-meeting.sh*}" != *"#W"* ]]
+}
+
+@test "next-meeting script exits cleanly" {
+  # Seed a fresh (empty) cache and stamp so the script renders the "nothing to
+  # show" path and returns immediately, instead of spawning the slow,
+  # permission-gated background Calendar query mid-test.
+  : > "${TMPDIR:-/tmp}/tmux-next-meeting.cache"
+  date +%s > "${TMPDIR:-/tmp}/tmux-next-meeting.stamp"
+  run "$HOME/.tmux/next-meeting.sh"
+  [ "$status" -eq 0 ]
+}
+
 @test "catppuccin v2 theme is loaded (palette variables defined)" {
   tmux -L "$TMUX_SOCKET" -f "$HOME/.tmux.conf" new-session -d -s bats_tmux
   result=$(tmux -L "$TMUX_SOCKET" show-option -gv @thm_pink)

@@ -81,6 +81,7 @@
     # Tmux
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux/now-playing.sh: tmux/now-playing.sh
+    ~/.tmux/next-meeting.sh: tmux/next-meeting.sh
 
     # Nvim
     ~/.config/nvim: vim
