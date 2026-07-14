@@ -20,10 +20,10 @@ transparent_background = true # let the terminal background show through panels
 # Review comment categories — built-in defaults plus a "nit" type,
 # colored from the catppuccin-mocha palette.
 comment_types = [
+  { id = "note",       definition = "general remark or question",        color = "#89b4fa" }, # blue
   { id = "nit", label = "nitpick", definition = "small optional tweaks", color = "#fab387" }, # peach
   { id = "suggestion", definition = "a possible improvement",            color = "#a6e3a1" }, # green
   { id = "issue",      definition = "a problem that should be fixed",    color = "#f38ba8" }, # red
-  { id = "note",       definition = "general remark or question",        color = "#89b4fa" }, # blue
   { id = "praise",     definition = "positive feedback",                 color = "#f9e2af" }, # yellow
 ]
 
