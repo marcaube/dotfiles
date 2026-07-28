@@ -7,6 +7,7 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
+$custom\
 $cmd_duration\
 $line_break\
 $python\
@@ -25,7 +26,9 @@ format = "[$branch]($style)"
 style = "overlay0"
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](pink) ($ahead_behind$stashed)]($style)"
+# The trailing space lives inside the group so it only appears when the group
+# does, keeping whatever follows from butting up against the stash/ahead marker.
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](pink) ($ahead_behind$stashed )]($style)"
 style = "teal"
 conflicted = "​"
 untracked = "​"
@@ -46,6 +49,45 @@ style = "yellow"
 [python]
 format = "[$virtualenv]($style) [$version](green) "
 style = "overlay0"
+
+# Assumed AWS role, coloured by environment so a prod shell is hard to mistake
+# for a dev one. The built-in `aws` module can't do this: its style is a single
+# static string, so it takes one module per environment, each shown when its
+# `when` exits 0. Precedence is prod > stage > dev, so a profile whose name
+# mentions more than one can't light up two segments at once. They read
+# AWS_PROFILE rather than a variable the role-assuming script could export, so
+# the colour can't drift from the profile actually in effect.
+#
+# The label is the environment plus the region's first component, taken from the
+# region variables rather than parsed out of the profile name: prod in
+# ca-central-1 reads `prod:ca`, and a profile with no region set reads `prod`.
+
+[custom.aws_prod]
+when = 'case "$AWS_PROFILE" in *prod*) exit 0;; *) exit 1;; esac'
+command = 'r=${AWS_REGION:-${AWS_DEFAULT_REGION:-}}; printf "prod%s" "${r:+:${r%%-*}}"'
+format = '[$output]($style) '
+style = "bold red"
+
+[custom.aws_stage]
+when = 'case "$AWS_PROFILE" in *prod*) exit 1;; *stag*) exit 0;; *) exit 1;; esac'
+command = 'r=${AWS_REGION:-${AWS_DEFAULT_REGION:-}}; printf "stage%s" "${r:+:${r%%-*}}"'
+format = '[$output]($style) '
+style = "peach"
+
+[custom.aws_dev]
+when = 'case "$AWS_PROFILE" in *prod*|*stag*) exit 1;; *dev*) exit 0;; *) exit 1;; esac'
+command = 'r=${AWS_REGION:-${AWS_DEFAULT_REGION:-}}; printf "dev%s" "${r:+:${r%%-*}}"'
+format = '[$output]($style) '
+style = "green"
+
+# Catch-all for a profile that names no environment: without it an unrecognised
+# profile would render nothing, making "some other role" look like "no role at
+# all". Nothing to shorten it to, so it shows the profile name as-is.
+[custom.aws_other]
+when = 'case "${AWS_PROFILE:-}" in "") exit 1;; *prod*|*stag*|*dev*) exit 1;; *) exit 0;; esac'
+command = 'printf %s "${AWS_PROFILE%-profile}"'
+format = '[$output]($style) '
+style = "sapphire"
 
 # Catppuccin Mocha palette — https://github.com/catppuccin/starship
 [palettes.catppuccin_mocha]
