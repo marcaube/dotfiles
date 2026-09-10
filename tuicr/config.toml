@@ -8,7 +8,6 @@ theme = "catppuccin-mocha"
 diff_view = "side-by-side"    # two columns: old | new
 wrap = false                  # don't soft-wrap long lines; scroll horizontally
 ignore_whitespace = true      # hide whitespace-only changes in local diffs
-scroll_offset = 10            # keep 10 lines of context around the cursor (matches nvim scrolloff)
 
 # UI
 leader = " "                  # <Space> prefixes panel focus / sidebar toggles
